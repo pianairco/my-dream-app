@@ -6,21 +6,21 @@ import {AppComponent} from './app.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatSelectModule} from '@angular/material/select';
 import {ReactiveFormsModule} from '@angular/forms';
-import {FirstComponent} from './first/first.component';
+import {LoginComponent} from './view/login/login.component';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 import {MatDialogModule} from '@angular/material/dialog';
-import { SidebarComponent } from './sidebar/sidebar.component';
+import { SidebarComponent } from './component/sidebar/sidebar.component';
 import {PERFECT_SCROLLBAR_CONFIG, PerfectScrollbarModule} from 'ngx-perfect-scrollbar';
 import {BsDropdownModule} from 'ngx-bootstrap/dropdown';
-import { HomeComponent } from './home/home.component';
+import { HomeComponent } from './view/home/home.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    FirstComponent,
+    LoginComponent,
     SidebarComponent,
     HomeComponent
   ],

@@ -1,13 +1,13 @@
 import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
 import Bootstrap from 'bootstrap/dist/js/bootstrap';
-import {SidebarService} from '../sidebar.service';
+import {SidebarService} from '../../sidebar.service';
 
 @Component({
-  selector: 'app-first',
-  templateUrl: './first.component.html',
-  styleUrls: ['./first.component.css']
+  selector: 'app-login',
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.css']
 })
-export class FirstComponent implements OnInit, AfterViewInit  {
+export class LoginComponent implements OnInit, AfterViewInit  {
   modalDirect: Bootstrap.Modal;
   @ViewChild('demoModal') input;
   showModal = true;
