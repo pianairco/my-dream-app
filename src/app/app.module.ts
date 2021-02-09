@@ -11,11 +11,18 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
+import {MatDialogModule} from '@angular/material/dialog';
+import { SidebarComponent } from './sidebar/sidebar.component';
+import {PERFECT_SCROLLBAR_CONFIG, PerfectScrollbarModule} from 'ngx-perfect-scrollbar';
+import {BsDropdownModule} from 'ngx-bootstrap/dropdown';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    FirstComponent
+    FirstComponent,
+    SidebarComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
@@ -26,13 +33,21 @@ import {MatButtonModule} from '@angular/material/button';
     MatInputModule,
     MatIconModule,
     MatButtonModule,
-    ReactiveFormsModule
+    MatDialogModule,
+    ReactiveFormsModule,
+    BsDropdownModule.forRoot(),
+    PerfectScrollbarModule
   ],
   exports: [
     MatFormFieldModule,
     MatInputModule,
   ],
-  providers: [],
+  providers: [
+    {
+      provide: PERFECT_SCROLLBAR_CONFIG,
+      useValue: PERFECT_SCROLLBAR_CONFIG
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

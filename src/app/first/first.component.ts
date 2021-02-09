@@ -1,5 +1,6 @@
 import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
 import Bootstrap from 'bootstrap/dist/js/bootstrap';
+import {SidebarService} from '../sidebar.service';
 
 @Component({
   selector: 'app-first',
@@ -12,7 +13,7 @@ export class FirstComponent implements OnInit, AfterViewInit  {
   showModal = true;
   hide = true;
 
-  constructor() {
+  constructor(public sidebarservice: SidebarService) {
     console.log('constructor: %o', this.input);
   }
 
@@ -29,5 +30,19 @@ export class FirstComponent implements OnInit, AfterViewInit  {
     console.log('ngAfterViewInit: %o', this.input);
     // this.modalDirect = new Bootstrap.Modal(this.input, {})  ;
     console.log('ngAfterViewInit: %o', this.input);
+  }
+
+  toggleSidebar() {
+    this.sidebarservice.setSidebarState(!this.sidebarservice.getSidebarState());
+  }
+  toggleBackgroundImage() {
+    this.sidebarservice.hasBackgroundImage = !this.sidebarservice.hasBackgroundImage;
+  }
+  getSideBarState() {
+    return this.sidebarservice.getSidebarState();
+  }
+
+  hideSidebar() {
+    this.sidebarservice.setSidebarState(true);
   }
 }

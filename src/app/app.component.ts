@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import {FormControl} from '@angular/forms';
+import {SidebarService} from './sidebar.service';
 
 @Component({
   selector: 'app-root',
@@ -8,7 +9,4 @@ import {FormControl} from '@angular/forms';
 })
 export class AppComponent {
   title = 'my-dream-app';
-  toppings = new FormControl();
-
-  toppingList: string[] = ['Extra cheese', 'Mushroom', 'Onion', 'Pepperoni', 'Sausage', 'Tomato'];
 }
