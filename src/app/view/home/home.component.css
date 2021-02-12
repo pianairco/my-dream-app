@@ -1,15 +1,20 @@
+.btn:focus {
+  outline: none;
+  box-shadow: none;
+}
+
 .page-wrapper {
   height: 100vh;
 }
 .page-wrapper .page-content {
   display: inline-block;
   width: 100%;
-  padding-top: 20px;
+  padding-top: 0px;
   transition: padding-right 0.3s ease;
 }
 @media screen and (min-width: 768px) {
   .page-wrapper .page-content {
-    padding-right: 300px;
+    padding-right: 260px;
   }
 }
 .page-wrapper .page-content .overlay {

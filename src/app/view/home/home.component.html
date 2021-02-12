@@ -1,13 +1,20 @@
 <div class="page-wrapper" [ngClass]="{'toggled' : getSideBarState()}">
   <app-sidebar *ngIf="!getSideBarState()"></app-sidebar>
   <main class="page-content">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <button class="btn" type="button" (click)="toggleSidebar()">
+        <span *ngIf="!getSideBarState()" class="fa fa-caret-right" style="color: white"></span>
+        <span *ngIf="getSideBarState()" class="fa fa-caret-left" style="color: white"></span>
+<!--        <span class="navbar-toggler-icon"></span>-->
+      </button>
+    </nav>
     <div class="container-fluid">
       <div class="row">
         <div class="form-group col-md-12">
-          <a href="#" class="btn btn-secondary" (click)="toggleBackgroundImage()">Toggle Background Image</a>
+<!--          <button class="btn btn-secondary" (click)="toggleBackgroundImage()">Toggle Background Image</button>-->
         </div>
         <div class="form-group col-md-12">
-          <a href="#" class="btn btn-outline-secondary mr-1 mb-1" (click)="toggleSidebar()">Toggle Sidebar</a>
+<!--          <button class="btn btn-outline-secondary mr-1 mb-1" (click)="toggleSidebar()">Toggle Sidebar</button>-->
         </div>
       </div>
     </div>
