@@ -16,13 +16,16 @@ import { SidebarComponent } from './component/sidebar/sidebar.component';
 import {PERFECT_SCROLLBAR_CONFIG, PerfectScrollbarModule} from 'ngx-perfect-scrollbar';
 import {BsDropdownModule} from 'ngx-bootstrap/dropdown';
 import { HomeComponent } from './view/home/home.component';
+import {ContainerComponent} from './view/container/container.component';
+import {MatSidenavModule} from '@angular/material/sidenav';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     SidebarComponent,
-    HomeComponent
+    HomeComponent,
+    ContainerComponent
   ],
   imports: [
     BrowserModule,
@@ -34,6 +37,7 @@ import { HomeComponent } from './view/home/home.component';
     MatIconModule,
     MatButtonModule,
     MatDialogModule,
+    MatSidenavModule,
     ReactiveFormsModule,
     BsDropdownModule.forRoot(),
     PerfectScrollbarModule
