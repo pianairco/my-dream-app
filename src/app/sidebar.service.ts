@@ -7,7 +7,7 @@ export class SidebarService {
   toggled = false;
   _hasBackgroundImage = true;
   menus = [
-    {
+    /*{
       title: 'general',
       type: 'header'
     },
@@ -113,29 +113,35 @@ export class SidebarService {
           title: 'Open street map'
         }
       ]
-    },
+    },*/
     {
-      title: 'Extra',
+      title: 'تنظیمات',
       type: 'header'
     },
     {
-      title: 'Documentation',
+      title: 'دفتر تلفن',
       icon: 'fa fa-book',
       active: false,
       type: 'simple',
-      badge: {
-        text: 'Beta',
-        class: 'badge-primary'
-      },
+      // badge: {
+      //   text: 'Beta',
+      //   class: 'badge-primary'
+      // },
     },
     {
-      title: 'Calendar',
+      title: 'ارسال گروهی',
       icon: 'fa fa-calendar',
       active: false,
       type: 'simple'
     },
     {
-      title: 'Examples',
+      title: 'ارسال پیامک',
+      icon: 'fa fa-folder',
+      active: false,
+      type: 'simple'
+    },
+    {
+      title: 'xxx',
       icon: 'fa fa-folder',
       active: false,
       type: 'simple'

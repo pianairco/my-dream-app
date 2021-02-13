@@ -1,15 +1,21 @@
-import {Component, OnInit} from '@angular/core';
+import {AfterViewChecked, AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
 import {SidebarService} from '../../sidebar.service';
+import {MatDrawer} from '@angular/material/sidenav';
 
 @Component({
   selector: 'app-home',
   templateUrl: './container.component.html',
   styleUrls: ['./container.component.css']
 })
-export class ContainerComponent implements OnInit {
+export class ContainerComponent implements OnInit, AfterViewChecked {
   showFiller = false;
+  @ViewChild('drawer', {static: true}) matDrawer: MatDrawer;
 
   constructor(public sidebarservice: SidebarService) {
+  }
+
+  ngAfterViewChecked(): void {
+    console.log(this.matDrawer)
   }
 
   ngOnInit(): void {

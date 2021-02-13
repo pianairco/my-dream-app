@@ -20,26 +20,27 @@
         <div class="modal-body">
           <div class="container">
             <div class="col-12">
-              <mat-form-field appearance="fill">
-                <mat-label>نام کاربری</mat-label>
-                <input matInput  type="text" class="example-right-align" />
-                <button mat-icon-button matSuffix>
-                  <mat-icon>ok</mat-icon>
-                </button>
-                <!--              <span matPrefix>.00</span>-->
-              </mat-form-field>
+              <p>
+                <mat-form-field appearance="outline">
+                  <mat-label>نام کاربری</mat-label>
+                  <input matInput [(ngModel)]="loginInfo.username">
+                  <mat-icon matSuffix></mat-icon>
+                </mat-form-field>
+              </p>
             </div>
             <div class="col-12">
-              <mat-form-field appearance="fill" >
-                <mat-label>کلمه عبور</mat-label>
-                <input matInput [type]="hide ? 'password' : 'text'" />
-                <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
-                  <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-                </button>
-              </mat-form-field>
+              <p>
+                <mat-form-field appearance="outline">
+                  <mat-label>کلمه عبور</mat-label>
+                  <input matInput [attr.type]="hide ? 'password' : 'text'" [(ngModel)]="loginInfo.password">
+                  <mat-icon matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                    {{hide ? 'visibility_off' : 'visibility'}}
+                  </mat-icon>
+                </mat-form-field>
+              </p>
             </div>
             <div class="col-12">
-              <button mat-raised-button color="primary">ورود</button>
+              <button mat-raised-button color="primary" (click)="login()">ورود</button>
             </div>
           </div>
         </div>

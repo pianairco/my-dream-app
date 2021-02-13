@@ -1,5 +1,6 @@
 import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
 import Bootstrap from 'bootstrap/dist/js/bootstrap';
+import axios from "axios";
 import {SidebarService} from '../../sidebar.service';
 
 @Component({
@@ -12,6 +13,14 @@ export class LoginComponent implements OnInit, AfterViewInit  {
   @ViewChild('demoModal') input;
   showModal = true;
   hide = true;
+
+  loginInfo: {
+    username: '',
+    password: ''
+   } = {
+    username: '',
+    password: ''
+  }
 
   constructor(public sidebarservice: SidebarService) {
     console.log('constructor: %o', this.input);
@@ -32,17 +41,14 @@ export class LoginComponent implements OnInit, AfterViewInit  {
     console.log('ngAfterViewInit: %o', this.input);
   }
 
-  toggleSidebar() {
-    this.sidebarservice.setSidebarState(!this.sidebarservice.getSidebarState());
-  }
-  toggleBackgroundImage() {
-    this.sidebarservice.hasBackgroundImage = !this.sidebarservice.hasBackgroundImage;
-  }
-  getSideBarState() {
-    return this.sidebarservice.getSidebarState();
-  }
-
-  hideSidebar() {
-    this.sidebarservice.setSidebarState(true);
+  login() {
+    axios.post('api/sign-in', this.loginInfo,
+      {headers: {'content-type': 'application/json'}}).then(
+        res => {
+          console.log(res);
+        }, err => {
+          console.log(err)
+      }
+    );
   }
 }

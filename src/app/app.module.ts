@@ -5,7 +5,7 @@ import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatSelectModule} from '@angular/material/select';
-import {ReactiveFormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {LoginComponent} from './view/login/login.component';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
@@ -18,6 +18,7 @@ import {BsDropdownModule} from 'ngx-bootstrap/dropdown';
 import { HomeComponent } from './view/home/home.component';
 import {ContainerComponent} from './view/container/container.component';
 import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatToolbarModule} from '@angular/material/toolbar';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,8 @@ import {MatSidenavModule} from '@angular/material/sidenav';
   ],
   imports: [
     BrowserModule,
+    FormsModule,
+    ReactiveFormsModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MatSelectModule,
@@ -38,6 +41,7 @@ import {MatSidenavModule} from '@angular/material/sidenav';
     MatButtonModule,
     MatDialogModule,
     MatSidenavModule,
+    MatToolbarModule,
     ReactiveFormsModule,
     BsDropdownModule.forRoot(),
     PerfectScrollbarModule

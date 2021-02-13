@@ -1,15 +1,27 @@
-<mat-drawer-container class="example-container" autosize>
-  <mat-drawer #drawer class="example-sidenav" mode="side" *ngIf="showFiller">
-    <p>Auto-resizing sidenav</p>
-    <button (click)="showFiller = !showFiller" mat-raised-button>
-      Toggle extra text
-    </button>
-  </mat-drawer>
+<div class="page-wrapper" [ngClass]="{'toggled' : getSideBarState()}">
+  <app-sidebar *ngIf="!getSideBarState()"></app-sidebar>
+  <main class="page-content">
+    <mat-toolbar class="bg-dark text-white">
+      <button mat-icon-button class="example-icon" (click)="toggleSidebar()">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <span>My App</span>
+      <span class="example-spacer"></span>
+    </mat-toolbar>
 
-  <div class="example-sidenav-content">
-    <button type="button" mat-button >
-      Toggle sidenav
-    </button>
-  </div>
 
-</mat-drawer-container>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="form-group col-md-12">
+          <!--          <button class="btn btn-secondary" (click)="toggleBackgroundImage()">Toggle Background Image</button>-->
+        </div>
+        <div class="form-group col-md-12">
+          <!--          <button class="btn btn-outline-secondary mr-1 mb-1" (click)="toggleSidebar()">Toggle Sidebar</button>-->
+        </div>
+      </div>
+    </div>
+    <div class="overlay" (click)="toggleSidebar()" [ngClass]="{'show' : !getSideBarState()}"></div>
+  </main>
+
+  <!-- <a href="https://github.com/azouaoui-med/angular-pro-sidebar"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png" alt="Fork me on GitHub"></a> -->
+</div>
