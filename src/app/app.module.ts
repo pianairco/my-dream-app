@@ -2,7 +2,7 @@ import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 
 import {AppRoutingModule} from './app-routing.module';
-import {AppComponent} from './app.component';
+import {RootComponent} from './view/root/root.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatSelectModule} from '@angular/material/select';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
@@ -19,14 +19,23 @@ import { HomeComponent } from './view/home/home.component';
 import {ContainerComponent} from './view/container/container.component';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatToolbarModule} from '@angular/material/toolbar';
+import { FormMakerComponent } from './component/form-maker/form-maker.component';
+import { SmsSenderComponent } from './view/sms-sender/sms-sender.component';
+import {TileComponent} from './view/tile/tile.component';
+import {MtFormMakerComponent} from './component/mt-form-maker/mt-form-maker.component';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 
 @NgModule({
   declarations: [
-    AppComponent,
+    RootComponent,
     LoginComponent,
     SidebarComponent,
     HomeComponent,
-    ContainerComponent
+    ContainerComponent,
+    FormMakerComponent,
+    MtFormMakerComponent,
+    SmsSenderComponent,
+    TileComponent
   ],
   imports: [
     BrowserModule,
@@ -42,6 +51,7 @@ import {MatToolbarModule} from '@angular/material/toolbar';
     MatDialogModule,
     MatSidenavModule,
     MatToolbarModule,
+    MatCheckboxModule,
     ReactiveFormsModule,
     BsDropdownModule.forRoot(),
     PerfectScrollbarModule
@@ -56,6 +66,6 @@ import {MatToolbarModule} from '@angular/material/toolbar';
       useValue: PERFECT_SCROLLBAR_CONFIG
     }
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [RootComponent]
 })
 export class AppModule { }

@@ -139,7 +139,7 @@ export class SidebarService {
       icon: 'fa fa-folder',
       active: false,
       type: 'simple',
-      route: '/sms'
+      route: '/sms-sender'
     },
     {
       title: 'xxx',

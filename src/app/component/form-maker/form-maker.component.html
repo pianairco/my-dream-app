@@ -1,0 +1,36 @@
+<div class="container">
+  <div class="row align-items-start">
+    <div class="col col-12" *ngFor="let inputConfig of formConfig.inputs">
+      <div class="mb-3">
+        <ng-container *ngIf="inputConfig.type === 'radio'">
+          <div class="form-check"  *ngFor="let radio of inputConfig.radios">
+            <input class="form-check-input" [name]="inputConfig.name"
+                   [value]="radio.value"
+                   type="radio" [(ngModel)]="obj[inputConfig.name]">
+            <label class="form-check-label">
+              {{radio.title}}
+            </label>
+          </div>
+        </ng-container>
+        <div class="form-check" *ngIf="inputConfig.type === 'check'">
+          <input class="form-check-input" type="checkbox" [(ngModel)]="obj[inputConfig.name]">
+          <label class="form-label">{{inputConfig.title}}</label>
+        </div>
+        <label *ngIf="inputConfig.type != 'check'" class="form-label">{{inputConfig.title}}</label>
+        <textarea *ngIf="inputConfig.type === 'textarea'"
+                  [(ngModel)]="obj[inputConfig.name]"
+                  class="form-control" rows="6"></textarea>
+        <input *ngIf="inputConfig.type === 'text'"
+               type="text" class="form-control"
+               [(ngModel)]="obj[inputConfig.name]">
+        <select *ngIf="inputConfig.type === 'select'" class="form-select" [(ngModel)]="obj[inputConfig.name]">
+          <option *ngFor="let option of inputConfig.options" [value]="option.value">{{option.title}}</option>
+        </select>
+      </div>
+    </div>
+    <div class="col col-12" >
+      <button type="button" class="btn btn-danger mr-1">انصراف</button>
+      <button type="button" class="btn btn-success" (click)="submit()">ارسال</button>
+    </div>
+  </div>
+</div>

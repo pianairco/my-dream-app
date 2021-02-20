@@ -47,6 +47,7 @@ export class LoginComponent implements OnInit, AfterViewInit  {
 
   login() {
     this.authService.setLogin(this.loginInfo);
-    this.router.navigate(["/container"]);
+    this.router.navigate(["/home/sms-sender"]);
+    // this.router.navigate(["/tile/container"]);
   }
 }
