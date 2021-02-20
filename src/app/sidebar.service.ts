@@ -138,7 +138,8 @@ export class SidebarService {
       title: 'ارسال پیامک',
       icon: 'fa fa-folder',
       active: false,
-      type: 'simple'
+      type: 'simple',
+      route: '/sms'
     },
     {
       title: 'xxx',
