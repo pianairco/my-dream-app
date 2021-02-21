@@ -6,6 +6,7 @@ import {LoginGuard} from './guard/login.guard';
 import {SmsSenderComponent} from './view/sms-sender/sms-sender.component';
 import {TileComponent} from './view/tile/tile.component';
 import {HomeComponent} from './view/home/home.component';
+import {GroupSenderComponent} from './view/group-sender/group-sender.component';
 
 const routes: Routes = [
   {
@@ -15,6 +16,7 @@ const routes: Routes = [
           { path: 'home', component: HomeComponent, canActivate:[LoginGuard], children:[
               { path: '', redirectTo: '/sms-sender', pathMatch: 'full' },
               { path: 'sms-sender', component: SmsSenderComponent },
+              { path: 'group-sender', component: GroupSenderComponent },
               { path: 'container', component: ContainerComponent},
             ] }
         ]

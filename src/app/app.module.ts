@@ -24,6 +24,8 @@ import { SmsSenderComponent } from './view/sms-sender/sms-sender.component';
 import {TileComponent} from './view/tile/tile.component';
 import {MtFormMakerComponent} from './component/mt-form-maker/mt-form-maker.component';
 import {MatCheckboxModule} from '@angular/material/checkbox';
+import { GroupSenderComponent } from './view/group-sender/group-sender.component';
+import {MatRadioModule} from '@angular/material/radio';
 
 @NgModule({
   declarations: [
@@ -35,7 +37,8 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     FormMakerComponent,
     MtFormMakerComponent,
     SmsSenderComponent,
-    TileComponent
+    TileComponent,
+    GroupSenderComponent
   ],
   imports: [
     BrowserModule,
@@ -52,6 +55,7 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     MatSidenavModule,
     MatToolbarModule,
     MatCheckboxModule,
+    MatRadioModule,
     ReactiveFormsModule,
     BsDropdownModule.forRoot(),
     PerfectScrollbarModule

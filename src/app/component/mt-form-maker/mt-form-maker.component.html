@@ -11,14 +11,29 @@
         <mat-checkbox *ngIf="inputConfig.type === 'check'"
                       [(ngModel)]="obj[inputConfig.name]">{{inputConfig.title}}</mat-checkbox>
 
-        <mat-form-field appearance="fill" *ngIf="inputConfig.type === 'text'">
+        <mat-form-field [appearance]="inputConfig.appearance" *ngIf="inputConfig.type === 'text'">
           <mat-label>{{inputConfig.title}}</mat-label>
           <input matInput [(ngModel)]="obj[inputConfig.name]">
         </mat-form-field>
-        <mat-form-field appearance="fill" *ngIf="inputConfig.type === 'textarea' || inputConfig.type === 'text-array'">
+        <mat-form-field appearance="fill"
+                        *ngIf="inputConfig.type === 'textarea' || inputConfig.type === 'text-array'">
           <mat-label>{{inputConfig.title}}</mat-label>
           <textarea [rows]="6" matInput [(ngModel)]="obj[inputConfig.name]"></textarea>
         </mat-form-field>
+        <mat-form-field appearance="fill"
+                        *ngIf="inputConfig.type === 'select'">
+          <mat-label>{{inputConfig.title}}</mat-label>
+          <mat-select [(ngModel)]="obj[inputConfig.name]">
+            <mat-option *ngFor="let option of inputConfig.options" [value]="option.value">{{option.title}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <label *ngIf="inputConfig.type === 'radio'" [id]="inputConfig.name">{{inputConfig.title}}</label>
+        <mat-radio-group aria-labelledby="{{inputConfig.name}}"
+                         [(ngModel)]="obj[inputConfig.name]"
+                         *ngIf="inputConfig.type === 'radio'">
+          <mat-radio-button *ngFor="let radio of inputConfig.radios"
+            [value]="radio.value">{{radio.title}}</mat-radio-button>
+        </mat-radio-group>
       </div>
     </div>
     <div class="col col-12">

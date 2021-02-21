@@ -44,17 +44,19 @@ export class FormConfig {
 
 export class InputConfig {
   type: string;
+  appearance: string = 'fill';
   title: string;
   name: string;
   default: any;
   options: OptionConfig[];
   radios: RadioConfig[];
 
-  constructor(type, title, name, defaultValue, options, radios) {
+  constructor(type, title, name, defaultValue, appearance, options, radios) {
     this.type = type;
     this.title = title;
     this.name = name;
     this.default = defaultValue;
+    this.appearance = appearance;
     this.options = options;
     this.radios = radios;
   }

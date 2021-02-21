@@ -132,14 +132,15 @@ export class SidebarService {
       title: 'ارسال گروهی',
       icon: 'fa fa-calendar',
       active: false,
-      type: 'simple'
+      type: 'simple',
+      route: '/home/group-sender'
     },
     {
       title: 'ارسال پیامک',
       icon: 'fa fa-folder',
       active: false,
       type: 'simple',
-      route: '/sms-sender'
+      route: '/home/sms-sender'
     },
     {
       title: 'xxx',
