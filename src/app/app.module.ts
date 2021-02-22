@@ -19,10 +19,10 @@ import { HomeComponent } from './view/home/home.component';
 import {ContainerComponent} from './view/container/container.component';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatToolbarModule} from '@angular/material/toolbar';
-import { FormMakerComponent } from './component/form-maker/form-maker.component';
+import {FormMakerComponent} from './component/form-maker/form-maker.component';
 import { SmsSenderComponent } from './view/sms-sender/sms-sender.component';
 import {TileComponent} from './view/tile/tile.component';
-import {MtFormMakerComponent} from './component/mt-form-maker/mt-form-maker.component';
+import {MtFormMakerComponent, FormMakerDialogComponent} from './component/mt-form-maker/mt-form-maker.component';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import { GroupSenderComponent } from './view/group-sender/group-sender.component';
 import {MatRadioModule} from '@angular/material/radio';
@@ -38,7 +38,8 @@ import {MatRadioModule} from '@angular/material/radio';
     MtFormMakerComponent,
     SmsSenderComponent,
     TileComponent,
-    GroupSenderComponent
+    GroupSenderComponent,
+    FormMakerDialogComponent
   ],
   imports: [
     BrowserModule,

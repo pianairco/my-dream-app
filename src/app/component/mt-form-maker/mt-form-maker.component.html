@@ -32,6 +32,7 @@
                          [(ngModel)]="obj[inputConfig.name]"
                          *ngIf="inputConfig.type === 'radio'">
           <mat-radio-button *ngFor="let radio of inputConfig.radios"
+                            (change)="radioSelect(radio)"
             [value]="radio.value">{{radio.title}}</mat-radio-button>
         </mat-radio-group>
       </div>

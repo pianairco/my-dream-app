@@ -1,5 +1,7 @@
-import {Component, Input, OnInit, Output, EventEmitter} from '@angular/core';
-import {FormConfig} from '../form-maker/form-maker.component';
+import {Component, Input, OnInit, Output, EventEmitter, Inject} from '@angular/core';
+import {FormConfig, RadioConfig} from '../form-maker/form-maker.component';
+import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material/dialog';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-mt-form-maker',
@@ -12,7 +14,7 @@ export class MtFormMakerComponent implements OnInit {
 
   obj: object = {};
 
-  constructor() { }
+  constructor(public dialog: MatDialog) { }
 
   ngOnInit(): void {
     for(let input of this.formConfig.inputs) {
@@ -45,5 +47,43 @@ export class MtFormMakerComponent implements OnInit {
       }
     }
     this.submitClick.emit(clone);
+  }
+
+  radioSelect(radioConfig: RadioConfig) {
+    if(radioConfig.modal != null) {
+      this.openDialog(radioConfig.modal);
+    }
+  }
+
+  openDialog(data): void {
+    const dialogRef = this.dialog.open(FormMakerDialogComponent, {
+      width: '250px',
+      data: data
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed => ', result);
+    });
+  }
+}
+
+@Component({
+  selector: 'form-maker-dialog',
+  templateUrl: 'form-maker-dialog.component.html',
+})
+export class FormMakerDialogComponent {
+
+  constructor(
+    private router: Router,
+    public dialogRef: MatDialogRef<FormMakerDialogComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: object) {
+  }
+
+  okClick () {
+    this.router.navigate([this.data['route']])
+    this.dialogRef.close();
+  }
+  cancelClick(): void {
+    this.dialogRef.close();
   }
 }

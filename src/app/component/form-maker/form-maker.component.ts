@@ -1,4 +1,5 @@
-import {Component, Input, OnInit, Output, EventEmitter} from '@angular/core';
+import {Component, Input, OnInit, Output, EventEmitter, Inject} from '@angular/core';
+import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material/dialog';
 
 @Component({
   selector: 'app-form-maker',
@@ -77,9 +78,15 @@ export class OptionConfig {
 export class RadioConfig {
   title: string
   value: any;
+  modal: {
+    title: string,
+    description: string,
+    route: string
+  }
 
-  constructor(title, value) {
+  constructor(title, value, modal) {
     this.title = title;
-    this.value = name;
+    this.value = value;
+    this.modal = modal;
   }
 }
