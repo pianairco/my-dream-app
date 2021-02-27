@@ -1,5 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import {FormConfig, InputConfig, OptionConfig, RadioConfig} from '../../component/form-maker/form-maker.component';
+import {
+  ButtonConfig,
+  FormConfig,
+  InputConfig,
+  OptionConfig,
+  RadioConfig
+} from '../../component/form-maker/form-maker.component';
 
 @Component({
   selector: 'app-group-sender',
@@ -18,16 +24,38 @@ export class GroupSenderComponent implements OnInit {
       ], null),
       new InputConfig('text-array', 'شماره گیرندگان', 'deliveries', null,null,null, null),
       new InputConfig('textarea', 'متن پیامک', 'bodyMessage', null,null, null,null),
-      new InputConfig('check', 'فعال سازی قابلیت ارسال', 'active', null,null, null,null),
       new InputConfig('date', 'تاریخ', 'date', null, 'outline', null,null),
-      new InputConfig('radio', 'نحوه وارد کردن مخاطبین', 'plane', null,null, null,[
-        new RadioConfig("مستقیم", "1",
-          {title: 'تایید ارسال تست', description: 'ارسال تست را انجام نداده اید. آیا میخواهید به مرحله بعد بروید؟', route: '/home/sms-sender'}),
-        new RadioConfig("دفترچه", "2", {title: 'تایید ارسال تست', description: 'ارسال تست را انجام نداده اید. آیا میخواهید به مرحله بعد بروید؟', route: '/home/sms-sender'}),
-        new RadioConfig("ِسلی", "3", null)
+      new InputConfig('radio', 'نحوه وارد کردن مخاطبین', 'sendType', null,null, null,[
+        new RadioConfig("مستقیم", "1", null),
+        new RadioConfig("دفترچه", "2", null),
+        new RadioConfig("یسل", "3", null)
       ]),
+    ],
+    buttons: [
+      new ButtonConfig('ارسال', 'modal', [{
+        show: {name: 'sendType', equal: "1"},
+        title: 'تایید ارسال تست',
+        description: 'ارسال تست را انجام نداده اید. آیا میخواهید به مرحله بعد بروید؟',
+        yesRoute: '/home/send-direct',
+        noRoute: null,
+      }, {
+        show: {name: 'sendType', equal: "2"},
+        title: 'تایید ارسال تست',
+        description: 'ارسال تست را انجام نداده ای به مرحله بعد بروید؟',
+        yesRoute: '/home/send-contact',
+        noRoute: null,
+      }, {
+        show: {name: 'sendType', equal: "3"},
+        title: 'تایید ارسال تست',
+        description: 'ارسال تست  به مرحله بعد بروید؟',
+        yesRoute: '/home/sms-sender',
+        noRoute: null,
+      }]),
+      new ButtonConfig('انصراف', 'clear', null),
     ]
   }
+
+// {title: 'تایید ارسال تست', description: 'ارسال تست را انجام نداده اید. آیا میخواهید به مرحله بعد بروید؟', route: '/home/sms-sender'}
   constructor() { }
 
   ngOnInit(): void {

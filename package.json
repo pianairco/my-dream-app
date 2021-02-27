@@ -7,7 +7,9 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "serve": "ng serve --disable-host-check",
+    "pwa": "ng build --prod"
   },
   "private": true,
   "dependencies": {
@@ -27,7 +29,6 @@
     "bootstrap": "^5.0.0-beta1",
     "jalali-moment": "^3.3.10",
     "ngx-bootstrap": "^6.2.0",
-    "ngx-material-timepicker": "^5.5.3",
     "ngx-perfect-scrollbar": "^10.1.0",
     "popper.js": "^1.16.1",
     "rxjs": "~6.6.0",

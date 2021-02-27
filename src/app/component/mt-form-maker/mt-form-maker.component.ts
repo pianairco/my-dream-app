@@ -35,25 +35,39 @@ export class MtFormMakerComponent implements OnInit {
     }
   }
 
-  submit() {
-    console.log("sss", JSON.stringify(this.obj));
-    const clone = JSON.parse(JSON.stringify(this.obj));
-    for(let input of this.formConfig.inputs) {
-      if (input.type === 'text-array') {
-        if (clone[input.name]) {
-          let x = clone[input.name].split("\n");
-          clone[input.name] = x;
-        } else {
-          clone[input.name] = [];
-        }
-      }
-    }
-    this.submitClick.emit(clone);
-  }
+  // submit() {
+  //   console.log("sss", JSON.stringify(this.obj));
+  //   const clone = JSON.parse(JSON.stringify(this.obj));
+  //   for(let input of this.formConfig.inputs) {
+  //     if (input.type === 'text-array') {
+  //       if (clone[input.name]) {
+  //         let x = clone[input.name].split("\n");
+  //         clone[input.name] = x;
+  //       } else {
+  //         clone[input.name] = [];
+  //       }
+  //     }
+  //   }
+  //   this.submitClick.emit(clone);
+  // }
 
   radioSelect(radioConfig: RadioConfig) {
     if(radioConfig.modal != null) {
       this.openDialog(radioConfig.modal);
+    }
+  }
+
+  btnClick(btn) {
+    console.log(btn, this.obj)
+    if(btn.type === 'clear') {
+
+    } else if(btn.type === 'modal') {
+      for(let modal of btn.modals) {
+        if(this.obj[modal.show.name] === modal.show.equal) {
+          this.openDialog(modal);
+          break;
+        }
+      }
     }
   }
 
@@ -93,11 +107,14 @@ export class FormMakerDialogComponent {
   }
 
   okClick () {
-    this.router.navigate([this.data['route']])
+    this.router.navigate([this.data['yesRoute']])
     this.dialogRef.close();
   }
 
   cancelClick(): void {
+    if(this.data['noRoute']) {
+      this.router.navigate([this.data['noRoute']])
+    }
     this.dialogRef.close();
   }
 }

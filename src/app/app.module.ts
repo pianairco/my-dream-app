@@ -20,7 +20,7 @@ import {ContainerComponent} from './view/container/container.component';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {FormMakerComponent} from './component/form-maker/form-maker.component';
-import { SmsSenderComponent } from './view/sms-sender/sms-sender.component';
+import {SmsSenderComponent} from './view/sms-sender/sms-sender.component';
 import {TileComponent} from './view/tile/tile.component';
 import {MtFormMakerComponent, FormMakerDialogComponent} from './component/mt-form-maker/mt-form-maker.component';
 import {MatCheckboxModule} from '@angular/material/checkbox';
@@ -31,6 +31,8 @@ import {DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE, NativeDateAdapter} from 
 import * as moment from 'jalali-moment';
 import { Platform } from '@angular/cdk/platform';
 import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
+import {SendDirectComponent} from "./view/send-direct/send-direct.component";
+import {SendContactComponent} from "./view/send-contact/send-contact.component";
 // import {MatDatepickerModulePersian} from '@angular-persian/material-date-picker/src';
 
 export class CustomDateAdapter extends NativeDateAdapter {
@@ -67,7 +69,9 @@ const MY_DATE_FORMATS = {
     SmsSenderComponent,
     TileComponent,
     GroupSenderComponent,
-    FormMakerDialogComponent
+    FormMakerDialogComponent,
+    SendDirectComponent,
+    SendContactComponent
   ],
   imports: [
     BrowserModule,
@@ -89,8 +93,7 @@ const MY_DATE_FORMATS = {
     MatDatepickerModule,
     ReactiveFormsModule,
     BsDropdownModule.forRoot(),
-    PerfectScrollbarModule,
-    // NgxMaterialTimepickerModule
+    PerfectScrollbarModule
   ],
   exports: [
     MatFormFieldModule,
