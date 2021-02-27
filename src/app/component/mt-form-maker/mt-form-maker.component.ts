@@ -2,7 +2,7 @@ import {Component, Input, OnInit, Output, EventEmitter, Inject} from '@angular/c
 import {FormConfig, RadioConfig} from '../form-maker/form-maker.component';
 import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material/dialog';
 import {Router} from '@angular/router';
-import moment = require('jalali-moment');
+import * as moment from 'jalali-moment';
 
 @Component({
   selector: 'app-mt-form-maker',
@@ -36,6 +36,7 @@ export class MtFormMakerComponent implements OnInit {
   }
 
   submit() {
+    console.log("sss", JSON.stringify(this.obj));
     const clone = JSON.parse(JSON.stringify(this.obj));
     for(let input of this.formConfig.inputs) {
       if (input.type === 'text-array') {
@@ -95,6 +96,7 @@ export class FormMakerDialogComponent {
     this.router.navigate([this.data['route']])
     this.dialogRef.close();
   }
+
   cancelClick(): void {
     this.dialogRef.close();
   }

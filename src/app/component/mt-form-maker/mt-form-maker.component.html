@@ -13,7 +13,8 @@
 <!--      </div>-->
       <div class="mb-3">
         <mat-form-field *ngIf="inputConfig.type === 'date'">
-          <input #dateInput matInput [matDatepicker]="picker" [(ngModel)]="date" (change)="dateChange($event,dateInput,picker)" placeholder="انتخاب تاریخ">
+          <input #dateInput matInput [matDatepicker]="picker" [(ngModel)]="date"
+                 (change)="dateChange($event,dateInput,picker)" placeholder="انتخاب تاریخ">
           <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
           <mat-datepicker #picker></mat-datepicker>
         </mat-form-field>
