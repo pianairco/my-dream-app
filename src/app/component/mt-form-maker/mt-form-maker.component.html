@@ -7,7 +7,16 @@
   </div>
   <div class="row align-items-start">
     <div class="col col-12" *ngFor="let inputConfig of formConfig.inputs">
+<!--      <div class="mb-3">-->
+<!--        <input [ngxTimepicker]="picker">-->
+<!--        <ngx-material-timepicker #picker></ngx-material-timepicker>-->
+<!--      </div>-->
       <div class="mb-3">
+        <mat-form-field *ngIf="inputConfig.type === 'date'">
+          <input #dateInput matInput [matDatepicker]="picker" [(ngModel)]="date" (change)="dateChange($event,dateInput,picker)" placeholder="انتخاب تاریخ">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
         <mat-checkbox *ngIf="inputConfig.type === 'check'"
                       [(ngModel)]="obj[inputConfig.name]">{{inputConfig.title}}</mat-checkbox>
 

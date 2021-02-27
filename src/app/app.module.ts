@@ -1,5 +1,5 @@
 import {BrowserModule} from '@angular/platform-browser';
-import {NgModule} from '@angular/core';
+import {NgModule, PLATFORM_ID} from '@angular/core';
 
 import {AppRoutingModule} from './app-routing.module';
 import {RootComponent} from './view/root/root.component';
@@ -26,6 +26,34 @@ import {MtFormMakerComponent, FormMakerDialogComponent} from './component/mt-for
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import { GroupSenderComponent } from './view/group-sender/group-sender.component';
 import {MatRadioModule} from '@angular/material/radio';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE, NativeDateAdapter} from '@angular/material/core';
+import * as moment from 'jalali-moment';
+import { Platform } from '@angular/cdk/platform';
+import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
+// import {MatDatepickerModulePersian} from '@angular-persian/material-date-picker/src';
+
+export class CustomDateAdapter extends NativeDateAdapter {
+  constructor(matDateLocale: string) {
+    super(matDateLocale, new Platform(PLATFORM_ID));
+  }
+  format(date: Date, displayFormat: object): string {
+    var faDate = moment(date.toDateString()).locale('fa').format('YYYY/MM/DD');
+    return faDate;
+  }
+}
+
+const MY_DATE_FORMATS = {
+  parse: {
+    dateInput: { month: 'short', year: 'numeric', day: 'numeric' }
+  },
+  display: {
+    dateInput: 'input',
+    monthYearLabel: { year: 'numeric', month: 'short' },
+    dateA11yLabel: { year: 'numeric', month: 'long', day: 'numeric' },
+    monthYearA11yLabel: { year: 'numeric', month: 'long' }
+  }
+}
 
 @NgModule({
   declarations: [
@@ -57,15 +85,21 @@ import {MatRadioModule} from '@angular/material/radio';
     MatToolbarModule,
     MatCheckboxModule,
     MatRadioModule,
+    // MatDatepickerModulePersian,
+    MatDatepickerModule,
     ReactiveFormsModule,
     BsDropdownModule.forRoot(),
-    PerfectScrollbarModule
+    PerfectScrollbarModule,
+    // NgxMaterialTimepickerModule
   ],
   exports: [
     MatFormFieldModule,
     MatInputModule,
   ],
   providers: [
+    { provide: MAT_DATE_LOCALE, useValue: 'fa-IR' },
+    { provide: DateAdapter, useClass: CustomDateAdapter, deps: [MAT_DATE_LOCALE] },
+    { provide: MAT_DATE_FORMATS, useValue: MY_DATE_FORMATS },
     {
       provide: PERFECT_SCROLLBAR_CONFIG,
       useValue: PERFECT_SCROLLBAR_CONFIG

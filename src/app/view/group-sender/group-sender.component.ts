@@ -19,6 +19,7 @@ export class GroupSenderComponent implements OnInit {
       new InputConfig('text-array', 'شماره گیرندگان', 'deliveries', null,null,null, null),
       new InputConfig('textarea', 'متن پیامک', 'bodyMessage', null,null, null,null),
       new InputConfig('check', 'فعال سازی قابلیت ارسال', 'active', null,null, null,null),
+      new InputConfig('date', 'تاریخ', 'date', null, 'outline', null,null),
       new InputConfig('radio', 'نحوه وارد کردن مخاطبین', 'plane', null,null, null,[
         new RadioConfig("مستقیم", "1",
           {title: 'تایید ارسال تست', description: 'ارسال تست را انجام نداده اید. آیا میخواهید به مرحله بعد بروید؟', route: '/home/sms-sender'}),

@@ -2,6 +2,7 @@ import {Component, Input, OnInit, Output, EventEmitter, Inject} from '@angular/c
 import {FormConfig, RadioConfig} from '../form-maker/form-maker.component';
 import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material/dialog';
 import {Router} from '@angular/router';
+import moment = require('jalali-moment');
 
 @Component({
   selector: 'app-mt-form-maker',
@@ -53,6 +54,17 @@ export class MtFormMakerComponent implements OnInit {
     if(radioConfig.modal != null) {
       this.openDialog(radioConfig.modal);
     }
+  }
+
+  date = ''
+
+  dateChange(event: any, dateInput: any,picker:any) {
+    var faDate = dateInput.value;
+    moment.locale('fa');
+    var enDateMomentFormat  = moment(faDate).locale('en');
+    var enDate = new Date(enDateMomentFormat.toLocaleString());
+    picker._validSelected = enDate;
+    picker.startAt = enDate;
   }
 
   openDialog(data): void {
