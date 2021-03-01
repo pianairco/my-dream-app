@@ -20,7 +20,7 @@ import {ContainerComponent} from './view/container/container.component';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {FormMakerComponent} from './component/form-maker/form-maker.component';
-import { SmsSenderComponent } from './view/sms-sender/sms-sender.component';
+import {SmsSenderComponent} from './view/sms-sender/sms-sender.component';
 import {TileComponent} from './view/tile/tile.component';
 import {MtFormMakerComponent, FormMakerDialogComponent} from './component/mt-form-maker/mt-form-maker.component';
 import {MatCheckboxModule} from '@angular/material/checkbox';
@@ -31,8 +31,11 @@ import {MatTreeModule} from '@angular/material/tree';
 import {DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE, NativeDateAdapter} from '@angular/material/core';
 import * as moment from 'jalali-moment';
 import { Platform } from '@angular/cdk/platform';
-import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
-import {MatFileUploadModule} from 'angular-material-fileupload';
+import {SendDirectComponent} from "./view/send-direct/send-direct.component";
+import {SendContactComponent} from "./view/send-contact/send-contact.component";
+import {SendFileComponent} from './view/send-file/send-file.component';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
+import {MatFileUploadModule} from 'mat-file-upload';
 // import {MatDatepickerModulePersian} from '@angular-persian/material-date-picker/src';
 
 export class CustomDateAdapter extends NativeDateAdapter {
@@ -69,7 +72,10 @@ const MY_DATE_FORMATS = {
     SmsSenderComponent,
     TileComponent,
     GroupSenderComponent,
-    FormMakerDialogComponent
+    FormMakerDialogComponent,
+    SendDirectComponent,
+    SendContactComponent,
+    SendFileComponent
   ],
   imports: [
     BrowserModule,
@@ -87,18 +93,19 @@ const MY_DATE_FORMATS = {
     MatToolbarModule,
     MatCheckboxModule,
     MatRadioModule,
-    // MatTreeModule,
+    MatTreeModule,
+    MatProgressBarModule,
     MatFileUploadModule,
     // MatDatepickerModulePersian,
     MatDatepickerModule,
     ReactiveFormsModule,
     BsDropdownModule.forRoot(),
-    PerfectScrollbarModule,
-    // NgxMaterialTimepickerModule
+    PerfectScrollbarModule
   ],
   exports: [
     MatFormFieldModule,
     MatInputModule,
+    MatProgressBarModule,
   ],
   providers: [
     { provide: MAT_DATE_LOCALE, useValue: 'fa-IR' },

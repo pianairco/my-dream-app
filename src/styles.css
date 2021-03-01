@@ -1,16 +1,17 @@
 /* You can add global styles to this file, and also import other style files */
 
 @font-face {
-  font-family: IranianSans;
-  src: url(./assets/Iranian_Sans.ttf);
+  font-family: IRANSansWeb;
+  src: url(./assets/IRANSansWeb.woff);
 }
 
-*:not(.material-icons) {
-  font-family: IranianSans !important;
+*:not(.material-icons, .fa, .far, .fas, .fab) {
+  font-family: IRANSansWeb;
 }
 
 html, body { height: 100%; }
-
 body { margin: 0; }
 
-button:focus { outline:0; }
+
+
+button:focus {outline:0;}

@@ -143,7 +143,7 @@ export class SidebarService {
       route: '/home/sms-sender'
     },
     {
-      title: 'xxx',
+      title: 'گزارشگیری',
       icon: 'fa fa-folder',
       active: false,
       type: 'simple'

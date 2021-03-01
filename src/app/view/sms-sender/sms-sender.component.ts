@@ -17,7 +17,9 @@ export class SmsSenderComponent implements OnInit {
       ], null),
       new InputConfig('text-array', 'شماره گیرندگان', 'deliveries', null,null,null, null),
       new InputConfig('textarea', 'متن پیامک', 'bodyMessage', null,null, null, null),
-      new InputConfig('check', 'فعال سازی قابلیت ارسال', 'active', null,null,null, null),
+    ],
+    buttons: [
+
     ]
   }
 

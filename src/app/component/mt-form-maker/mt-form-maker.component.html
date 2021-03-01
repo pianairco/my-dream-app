@@ -1,19 +1,47 @@
 <div class="container m-5">
   <div class="row align-items-start">
-    <div class="col col-12">
+    <div class="col col-6">
       <h1  *ngIf="formConfig.title">{{formConfig.title}}</h1>
     </div>
 
   </div>
   <div class="row align-items-start">
-    <div class="col col-12" *ngFor="let inputConfig of formConfig.inputs">
+    <div class="col col-6" *ngFor="let inputConfig of formConfig.inputs" appearance="outline">
 <!--      <div class="mb-3">-->
 <!--        <input [ngxTimepicker]="picker">-->
 <!--        <ngx-material-timepicker #picker></ngx-material-timepicker>-->
 <!--      </div>-->
+
       <div class="mb-3">
-        <mat-form-field *ngIf="inputConfig.type === 'date'">
-          <input #dateInput matInput [matDatepicker]="picker" [(ngModel)]="date"
+        <ng-container *ngIf="inputConfig.type === 'time'">
+          <mat-form-field [appearance]="inputConfig.appearance" appearance="outline">
+            <mat-label>{{inputConfig.title}}</mat-label>
+            <input type="time" matInput [(ngModel)]="obj[inputConfig.name]">
+          </mat-form-field>
+        </ng-container>
+
+        <ng-container *ngIf="inputConfig.type === 'uploader'">
+          <mat-file-upload
+            [labelText]="inputConfig.title"
+            [selectButtonText]="'انتخاب کنید'"
+            [selectFilesButtonType]="'button'"
+            [uploadButtonText]="'Submit'"
+            [uploadButtonType]="'submit'"
+            [allowMultipleFiles]="true"
+            [showUploadButton]="true"
+            [customSvgIcon]="'close_custom'"
+            [acceptedTypes]="'.txt, .json, .xml'"
+            (uploadClicked)="onUploadClicked($event)"
+            (selectedFilesChanged)="onSelectedFilesChanged($event)"
+          >
+          </mat-file-upload>
+        </ng-container>
+        <ng-container *ngIf="inputConfig.type === 'empty'">
+          &nbsp;
+        </ng-container>
+
+        <mat-form-field *ngIf="inputConfig.type === 'date'" appearance="outline">
+          <input #dateInput matInput [matDatepicker]="picker" [(ngModel)]="obj[inputConfig.name]"
                  (change)="dateChange($event,dateInput,picker)" placeholder="انتخاب تاریخ">
           <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
           <mat-datepicker #picker></mat-datepicker>
@@ -21,35 +49,43 @@
         <mat-checkbox *ngIf="inputConfig.type === 'check'"
                       [(ngModel)]="obj[inputConfig.name]">{{inputConfig.title}}</mat-checkbox>
 
-        <mat-form-field [appearance]="inputConfig.appearance" *ngIf="inputConfig.type === 'text'">
+        <mat-form-field [appearance]="inputConfig.appearance" *ngIf="inputConfig.type === 'text'" appearance="outline">
           <mat-label>{{inputConfig.title}}</mat-label>
           <input matInput [(ngModel)]="obj[inputConfig.name]">
         </mat-form-field>
-        <mat-form-field appearance="fill"
+        <mat-form-field appearance="outline"
                         *ngIf="inputConfig.type === 'textarea' || inputConfig.type === 'text-array'">
           <mat-label>{{inputConfig.title}}</mat-label>
-          <textarea [rows]="6" matInput [(ngModel)]="obj[inputConfig.name]"></textarea>
+          <textarea [rows]="6" matInput #input maxlength="70" matInput [(ngModel)]="obj[inputConfig.name]"></textarea>
+          <mat-hint align="end">{{input.value?.length || 0}}/70</mat-hint>
         </mat-form-field>
-        <mat-form-field appearance="fill"
+        <mat-form-field appearance="outline"
                         *ngIf="inputConfig.type === 'select'">
           <mat-label>{{inputConfig.title}}</mat-label>
           <mat-select [(ngModel)]="obj[inputConfig.name]">
             <mat-option *ngFor="let option of inputConfig.options" [value]="option.value">{{option.title}}</mat-option>
           </mat-select>
         </mat-form-field>
-        <label *ngIf="inputConfig.type === 'radio'" [id]="inputConfig.name">{{inputConfig.title}}</label>
+
+        <div class="pb-1" *ngIf="inputConfig.type === 'radio'">
+          <label  [id]="inputConfig.name">{{inputConfig.title}}</label>
+        </div>
         <mat-radio-group aria-labelledby="{{inputConfig.name}}"
                          [(ngModel)]="obj[inputConfig.name]"
                          *ngIf="inputConfig.type === 'radio'">
           <mat-radio-button *ngFor="let radio of inputConfig.radios"
                             (change)="radioSelect(radio)"
+                            class="px-1"
             [value]="radio.value">{{radio.title}}</mat-radio-button>
         </mat-radio-group>
       </div>
     </div>
     <div class="col col-12">
-      <button type="button" class="btn btn-danger " >انصراف</button>
-      <button type="button" class="btn btn-success" (click)="submit()">ارسال</button>
+      <button *ngFor="let b of formConfig.buttons"
+              [type]="'button'"
+              (click)="btnClick(b)"
+              [class]="b.type === 'clear' ? 'btn btn-danger' : b.type === 'modal' ? 'btn btn-success' : 'btn btn-warning'" >{{b.title}}</button>
+<!--      <button type="button" class="btn btn-success" (click)="submit()">ارسال</button>-->
     </div>
   </div>
 </div>

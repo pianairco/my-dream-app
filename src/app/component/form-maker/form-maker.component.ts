@@ -41,6 +41,7 @@ export class FormMakerComponent implements OnInit {
 export class FormConfig {
   title: string;
   inputs: InputConfig[];
+  buttons: ButtonConfig[];
 }
 
 export class InputConfig {
@@ -89,4 +90,25 @@ export class RadioConfig {
     this.value = value;
     this.modal = modal;
   }
+}
+
+export class ButtonConfig {
+  title: string
+  type: string;
+  modals: ButtonModalConfig[];
+  route: string;
+
+  constructor(title, type, modals) {
+    this.title = title;
+    this.type = type;
+    this.modals = modals;
+  }
+}
+
+export class ButtonModalConfig {
+  show: {name: string, equal: any};
+  title: string;
+  description: string;
+  yesRoute: string;
+  noRoute: string;
 }
