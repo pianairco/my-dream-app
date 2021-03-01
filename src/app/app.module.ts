@@ -27,10 +27,12 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 import { GroupSenderComponent } from './view/group-sender/group-sender.component';
 import {MatRadioModule} from '@angular/material/radio';
 import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatTreeModule} from '@angular/material/tree';
 import {DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE, NativeDateAdapter} from '@angular/material/core';
 import * as moment from 'jalali-moment';
 import { Platform } from '@angular/cdk/platform';
 import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
+import {MatFileUploadModule} from 'angular-material-fileupload';
 // import {MatDatepickerModulePersian} from '@angular-persian/material-date-picker/src';
 
 export class CustomDateAdapter extends NativeDateAdapter {
@@ -85,6 +87,8 @@ const MY_DATE_FORMATS = {
     MatToolbarModule,
     MatCheckboxModule,
     MatRadioModule,
+    // MatTreeModule,
+    MatFileUploadModule,
     // MatDatepickerModulePersian,
     MatDatepickerModule,
     ReactiveFormsModule,
