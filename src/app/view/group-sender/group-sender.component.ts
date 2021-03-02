@@ -24,11 +24,11 @@ export class GroupSenderComponent implements OnInit {
       ], null),
       new InputConfig('text-array', 'شماره گیرندگان', 'deliveries', null,null,null, null),
       new InputConfig('textarea', 'متن پیامک', 'bodyMessage', null,null, null,null),
-      new InputConfig('date', 'تاریخ', 'date', null, 'outline', null,null),
+      // new InputConfig('date', 'تاریخ', 'date', null, 'outline', null,null),
       new InputConfig('radio', 'نحوه وارد کردن مخاطبین', 'sendType', null,null, null,[
-        new RadioConfig("مستقیم", "1", null),
-        new RadioConfig("دفترچه", "2", null),
-        new RadioConfig("یسل", "3", null)
+        new RadioConfig("وارد کردن مستقیم شماره ها", "1", null),
+        new RadioConfig("دفتر تلفن", "2", null),
+        new RadioConfig("فایل متن", "3", null)
       ]),
     ],
     buttons: [
@@ -41,17 +41,17 @@ export class GroupSenderComponent implements OnInit {
       }, {
         show: {name: 'sendType', equal: "2"},
         title: 'تایید ارسال تست',
-        description: 'ارسال تست را انجام نداده ای به مرحله بعد بروید؟',
+        description: 'ارسال تست را انجام نداده اید. آیا میخواهید به مرحله بعد بروید؟',
         yesRoute: '/home/send-contact',
         noRoute: null,
       }, {
         show: {name: 'sendType', equal: "3"},
         title: 'تایید ارسال تست',
-        description: 'ارسال تست  به مرحله بعد بروید؟',
-        yesRoute: '/home/sms-sender',
+        description: 'ارسال تست را انجام نداده اید. آیا میخواهید به مرحله بعد بروید؟',
+        yesRoute: '/home/send-file',
         noRoute: null,
       }]),
-      new ButtonConfig('انصراف', 'clear', null),
+      // new ButtonConfig('انصراف', 'clear', null),
     ]
   }
 

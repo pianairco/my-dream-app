@@ -20,6 +20,22 @@
           </mat-form-field>
         </ng-container>
 
+        <ng-container *ngIf="inputConfig.type === 'uploader'">
+          <mat-file-upload
+            [labelText]="inputConfig.title"
+            [selectButtonText]="'انتخاب کنید'"
+            [selectFilesButtonType]="'button'"
+            [uploadButtonText]="'Submit'"
+            [uploadButtonType]="'submit'"
+            [allowMultipleFiles]="true"
+            [showUploadButton]="true"
+            [customSvgIcon]="'close_custom'"
+            [acceptedTypes]="'.txt, .json, .xml'"
+            (uploadClicked)="onUploadClicked($event)"
+            (selectedFilesChanged)="onSelectedFilesChanged($event)"
+          >
+          </mat-file-upload>
+        </ng-container>
         <ng-container *ngIf="inputConfig.type === 'empty'">
           &nbsp;
         </ng-container>

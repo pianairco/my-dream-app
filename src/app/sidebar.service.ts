@@ -123,6 +123,7 @@ export class SidebarService {
       icon: 'fa fa-book',
       active: false,
       type: 'simple',
+      route: '/home/book'
       // badge: {
       //   text: 'Beta',
       //   class: 'badge-primary'

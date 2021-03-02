@@ -9,6 +9,8 @@ import {HomeComponent} from './view/home/home.component';
 import {GroupSenderComponent} from './view/group-sender/group-sender.component';
 import {SendDirectComponent} from "./view/send-direct/send-direct.component";
 import {SendContactComponent} from "./view/send-contact/send-contact.component";
+import {SendFileComponent} from './view/send-file/send-file.component';
+import {BookComponent} from "./view/book/book.component";
 
 const routes: Routes = [
   {
@@ -19,9 +21,11 @@ const routes: Routes = [
               { path: '', redirectTo: '/sms-sender', pathMatch: 'full' },
               { path: 'sms-sender', component: SmsSenderComponent },
               { path: 'group-sender', component: GroupSenderComponent },
-              { path: 'container', component: ContainerComponent},
-              { path: 'send-direct', component: SendDirectComponent},
-              { path: 'send-contact', component: SendContactComponent},
+              { path: 'container', component: ContainerComponent },
+              { path: 'send-direct', component: SendDirectComponent },
+              { path: 'send-contact', component: SendContactComponent },
+              { path: 'send-file', component: SendFileComponent },
+              { path: 'book', component: BookComponent },
             ] }
         ]
       },

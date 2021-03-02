@@ -82,6 +82,13 @@ export class MtFormMakerComponent implements OnInit {
     picker.startAt = enDate;
   }
 
+  onUploadClicked(file) {
+  }
+
+  onSelectedFilesChanged(file) {
+
+  }
+
   openDialog(data): void {
     const dialogRef = this.dialog.open(FormMakerDialogComponent, {
       width: '250px',

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FormConfig, InputConfig, OptionConfig} from '../../component/form-maker/form-maker.component';
+import {ButtonConfig, FormConfig, InputConfig, OptionConfig} from '../../component/form-maker/form-maker.component';
 
 @Component({
   selector: 'app-sms-sender',
@@ -19,8 +19,12 @@ export class SmsSenderComponent implements OnInit {
       new InputConfig('textarea', 'متن پیامک', 'bodyMessage', null,null, null, null),
     ],
     buttons: [
-
-    ]
+      new ButtonConfig('مرحله بعد', 'modal', []),
+      new ButtonConfig('مرحله قبل', 'clear', [{
+        yesRoute: '/home/sms-sender',
+        noRoute: null,
+      }]),
+    ],
   }
 
   constructor() { }
