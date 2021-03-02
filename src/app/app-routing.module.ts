@@ -25,7 +25,7 @@ const routes: Routes = [
               { path: 'send-direct', component: SendDirectComponent },
               { path: 'send-contact', component: SendContactComponent },
               { path: 'send-file', component: SendFileComponent },
-              { path: 'book', component: BookComponent },
+              { path: 'book', component: BookComponent }
             ] }
         ]
       },

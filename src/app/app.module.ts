@@ -12,32 +12,34 @@ import {MatInputModule} from '@angular/material/input';
 import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 import {MatDialogModule} from '@angular/material/dialog';
-import { SidebarComponent } from './component/sidebar/sidebar.component';
+import {SidebarComponent} from './component/sidebar/sidebar.component';
 import {PERFECT_SCROLLBAR_CONFIG, PerfectScrollbarModule} from 'ngx-perfect-scrollbar';
 import {BsDropdownModule} from 'ngx-bootstrap/dropdown';
-import { HomeComponent } from './view/home/home.component';
+import {HomeComponent} from './view/home/home.component';
 import {ContainerComponent} from './view/container/container.component';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {FormMakerComponent} from './component/form-maker/form-maker.component';
 import {SmsSenderComponent} from './view/sms-sender/sms-sender.component';
 import {TileComponent} from './view/tile/tile.component';
-import {MtFormMakerComponent, FormMakerDialogComponent} from './component/mt-form-maker/mt-form-maker.component';
+import {FormMakerDialogComponent, MtFormMakerComponent} from './component/mt-form-maker/mt-form-maker.component';
 import {MatCheckboxModule} from '@angular/material/checkbox';
-import { GroupSenderComponent } from './view/group-sender/group-sender.component';
+import {GroupSenderComponent} from './view/group-sender/group-sender.component';
 import {MatRadioModule} from '@angular/material/radio';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatTreeModule} from '@angular/material/tree';
 import {DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE, NativeDateAdapter} from '@angular/material/core';
 import * as moment from 'jalali-moment';
-import { Platform } from '@angular/cdk/platform';
+import {Platform} from '@angular/cdk/platform';
 import {SendDirectComponent} from "./view/send-direct/send-direct.component";
 import {SendContactComponent} from "./view/send-contact/send-contact.component";
+import {BookComponent} from './view/book/book.component';
+import {GridModule} from "@progress/kendo-angular-grid";
 import {SendFileComponent} from './view/send-file/send-file.component';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {MatFileUploadModule} from 'mat-file-upload';
-import { BookComponent } from './view/book/book.component';
-import {GridModule} from "@progress/kendo-angular-grid";
+import {MatTableModule} from '@angular/material/table';
+
 // import {MatDatepickerModulePersian} from '@angular-persian/material-date-picker/src';
 
 export class CustomDateAdapter extends NativeDateAdapter {
@@ -78,7 +80,9 @@ const MY_DATE_FORMATS = {
     SendDirectComponent,
     SendContactComponent,
     SendFileComponent,
-    BookComponent
+    BookComponent,
+    SendContactComponent,
+    SendFileComponent
   ],
   imports: [
     BrowserModule,
@@ -100,6 +104,9 @@ const MY_DATE_FORMATS = {
     MatProgressBarModule,
     MatFileUploadModule,
     GridModule,
+    MatTreeModule,
+    MatProgressBarModule,
+    MatTableModule,
     // MatDatepickerModulePersian,
     MatDatepickerModule,
     ReactiveFormsModule,
