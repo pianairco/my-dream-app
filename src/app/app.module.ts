@@ -36,6 +36,7 @@ import {SendContactComponent} from "./view/send-contact/send-contact.component";
 import {SendFileComponent} from './view/send-file/send-file.component';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {MatFileUploadModule} from 'mat-file-upload';
+import {MatTableModule} from '@angular/material/table';
 // import {MatDatepickerModulePersian} from '@angular-persian/material-date-picker/src';
 
 export class CustomDateAdapter extends NativeDateAdapter {
@@ -95,6 +96,7 @@ const MY_DATE_FORMATS = {
     MatRadioModule,
     MatTreeModule,
     MatProgressBarModule,
+    MatTableModule,
     MatFileUploadModule,
     // MatDatepickerModulePersian,
     MatDatepickerModule,
