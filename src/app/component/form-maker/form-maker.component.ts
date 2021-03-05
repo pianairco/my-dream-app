@@ -50,6 +50,7 @@ export class InputConfig {
   title: string;
   name: string;
   default: any;
+  hasHint: boolean = false;
   options: OptionConfig[];
   radios: RadioConfig[];
 
@@ -61,6 +62,11 @@ export class InputConfig {
     this.appearance = appearance;
     this.options = options;
     this.radios = radios;
+  }
+
+  setHasHint(hasHint): InputConfig {
+    this.hasHint = hasHint;
+    return this;
   }
 }
 

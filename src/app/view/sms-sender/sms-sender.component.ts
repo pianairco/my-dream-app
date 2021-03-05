@@ -16,7 +16,7 @@ export class SmsSenderComponent implements OnInit {
         new OptionConfig("09128899093", "09128899093", false)
       ], null),
       new InputConfig('text-array', 'شماره گیرندگان', 'deliveries', null,null,null, null),
-      new InputConfig('textarea', 'متن پیامک', 'bodyMessage', null,null, null, null),
+      new InputConfig('textarea', 'متن پیامک', 'bodyMessage', null,null, null, null).setHasHint(true),
     ],
     buttons: [
       new ButtonConfig('مرحله بعد', 'modal', []),

@@ -57,7 +57,7 @@
                         *ngIf="inputConfig.type === 'textarea' || inputConfig.type === 'text-array'">
           <mat-label>{{inputConfig.title}}</mat-label>
           <textarea [rows]="6" matInput #input maxlength="70" matInput [(ngModel)]="obj[inputConfig.name]"></textarea>
-          <mat-hint align="end">{{input.value?.length || 0}}/70</mat-hint>
+          <mat-hint *ngIf="inputConfig.hasHint" align="end">{{input.value?.length || 0}}/70</mat-hint>
         </mat-form-field>
         <mat-form-field appearance="outline"
                         *ngIf="inputConfig.type === 'select'">

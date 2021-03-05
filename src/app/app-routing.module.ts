@@ -11,6 +11,7 @@ import {SendDirectComponent} from "./view/send-direct/send-direct.component";
 import {SendContactComponent} from "./view/send-contact/send-contact.component";
 import {SendFileComponent} from './view/send-file/send-file.component';
 import {BookComponent} from "./view/book/book.component";
+import {GroupManagerComponent} from "./view/group-manager/group-manager.component";
 
 const routes: Routes = [
   {
@@ -25,6 +26,7 @@ const routes: Routes = [
               { path: 'send-direct', component: SendDirectComponent },
               { path: 'send-contact', component: SendContactComponent },
               { path: 'send-file', component: SendFileComponent },
+              { path: 'group-manager', component: GroupManagerComponent },
               { path: 'book', component: BookComponent }
             ] }
         ]

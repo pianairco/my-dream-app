@@ -39,6 +39,7 @@ import {SendFileComponent} from './view/send-file/send-file.component';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {MatFileUploadModule} from 'mat-file-upload';
 import {MatTableModule} from '@angular/material/table';
+import { GroupManagerComponent } from './view/group-manager/group-manager.component';
 
 // import {MatDatepickerModulePersian} from '@angular-persian/material-date-picker/src';
 
@@ -82,7 +83,8 @@ const MY_DATE_FORMATS = {
     SendFileComponent,
     BookComponent,
     SendContactComponent,
-    SendFileComponent
+    SendFileComponent,
+    GroupManagerComponent
   ],
   imports: [
     BrowserModule,

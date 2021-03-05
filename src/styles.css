@@ -1,4 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
+/*.k-rtl .k-grid-aria-root .k-grid-header {*/
+.k-grid-header {
+  padding: 0px 0px 0px 17px !important;
+}
 
 @font-face {
   font-family: IRANSansWeb;
