@@ -4,15 +4,14 @@ import {TodoItemFlatNode, TodoItemNode, TreeService} from '../../service/tree.se
 import {FlatTreeControl} from '@angular/cdk/tree';
 import {MatTreeFlatDataSource, MatTreeFlattener} from '@angular/material/tree';
 import {SelectionModel} from '@angular/cdk/collections';
-import * as moment from "jalali-moment";
 
 @Component({
-  selector: 'app-send-contact',
-  templateUrl: './send-contact.component.html',
-  styleUrls: ['./send-contact.component.css'],
+  selector: 'app-send-contact-old',
+  templateUrl: './send-contact-old.component.html',
+  styleUrls: ['./send-contact-old.component.css'],
   providers: [TreeService]
 })
-export class SendContactComponent implements OnInit {
+export class SendContactOldComponent implements OnInit {
   formConfig : FormConfig = {
     title: 'انتخاب مخاطبین از دفترچه تلفن',
     // new InputConfig('text', 'شماره فرستنده', 'sender', null, null, null),
@@ -29,7 +28,7 @@ export class SendContactComponent implements OnInit {
         noRoute: null,
       }]),
     ],
-  };
+  }
 
   /** Map from flat node to nested node. This helps us finding the nested node to be modified */
   flatNodeMap = new Map<TodoItemFlatNode, TodoItemNode>();
@@ -185,17 +184,5 @@ export class SendContactComponent implements OnInit {
 
   onSubmit(obj) {
     console.log(JSON.stringify(obj));
-  }
-
-  date = ''
-  time = ''
-
-  dateChange(event: any, dateInput: any,picker:any) {
-    var faDate = dateInput.value;
-    moment.locale('fa');
-    var enDateMomentFormat  = moment(faDate).locale('en');
-    var enDate = new Date(enDateMomentFormat.toLocaleString());
-    picker._validSelected = enDate;
-    picker.startAt = enDate;
   }
 }

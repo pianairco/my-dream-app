@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {products} from "./products";
+import {FormConfig} from "../../component/form-maker/form-maker.component";
 
 @Component({
   selector: 'app-book',

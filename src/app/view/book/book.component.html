@@ -1,27 +1,41 @@
 <section>
   <div class="container my-4">
-    <button class="mx-2" mat-raised-button color="primary">Primary</button>
-    <button class="mx-2" mat-raised-button color="primary">Primary</button>
-    <button class="mx-2" mat-raised-button color="primary">Primary</button>
+    <a class="mx-2" mat-raised-button color="primary"
+       [routerLink]="['/home/new']">درج مخاطب جدید</a>
+    <a class="mx-2" mat-raised-button color="primary"
+       [routerLink]="['/home/add-file']">افزودن از فایل</a>
+    <a class="mx-2" mat-raised-button color="primary"
+       [routerLink]="['/home/quick-add']">افزودن سریع</a>
     <a class="mx-2" mat-raised-button color="primary"
             [routerLink]="['/home/group-manager']">مدیریت گروه</a>
   </div>
 </section>
 
-<kendo-grid [data]="gridData" [height]="410" class="k-rtl">
-  <kendo-grid-column field="Discontinued" title="Discontinued" width="120" class="k-rtl">
+<kendo-grid [data]="gridData" [height]="410" class="k-rtl" [pageable]="true" [pageSize]="10">
+  <kendo-grid-column field="Discontinued" title="Discontinued" width="20" class="k-rtl">
     <ng-template kendoGridCellTemplate let-dataItem>
-      <input type="checkbox" [checked]="dataItem.Discontinued" disabled/>
+      <input type="checkbox" [checked]="dataItem.Discontinued" />
     </ng-template>
   </kendo-grid-column>
-  <kendo-grid-column field="ProductID" title="ID" width="40" class="k-rtl">
+  <kendo-grid-column field="ProductID" title="ردیف" width="40" class="k-rtl">
   </kendo-grid-column>
-  <kendo-grid-column field="ProductName" title="Name" width="250" class="k-rtl">
+  <kendo-grid-column field="ProductName" title="نام" width="40" class="k-rtl">
   </kendo-grid-column>
-  <kendo-grid-column field="Category.CategoryName" title="Category" class="k-rtl">
+  <kendo-grid-column field="lastName" title="نام خانوادگی" width="40" class="k-rtl">
   </kendo-grid-column>
-  <kendo-grid-column field="UnitPrice" title="Price" width="80" class="k-rtl">
+  <kendo-grid-column field="company" title="شرکت" width="40" class="k-rtl">
   </kendo-grid-column>
-  <kendo-grid-column field="UnitsInStock" title="In stock" width="80" class="k-rtl">
+  <kendo-grid-column field="tell" title="موبایل" width="40" class="k-rtl">
+  </kendo-grid-column>
+  <kendo-grid-column field="email" title="ایمیل" width="40" class="k-rtl">
+  </kendo-grid-column>
+  <kendo-grid-column field="Gender" title="جنسیت" width="40" class="k-rtl">
+  </kendo-grid-column>
+  <kendo-grid-column field="description" title="شرح" width="40" class="k-rtl">
+  </kendo-grid-column>
+  <kendo-grid-column field="Options" title="گزینه ها" width="40" class="k-rtl">
+  </kendo-grid-column>
+  <kendo-grid-column title="فعالیت" width="20" class="k-rtl">
+    <span><i class="k-icon k-delete"></i></span>
   </kendo-grid-column>
 </kendo-grid>

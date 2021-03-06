@@ -9,7 +9,7 @@
   src: url(./assets/IRANSansWeb.woff);
 }
 
-*:not(.material-icons, .fa, .far, .fas, .fab) {
+*:not(.material-icons, .fa, .far, .fas, .fab, .k-icon) {
   font-family: IRANSansWeb;
 }
 

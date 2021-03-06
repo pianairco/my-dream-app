@@ -12,6 +12,9 @@ import {SendContactComponent} from "./view/send-contact/send-contact.component";
 import {SendFileComponent} from './view/send-file/send-file.component';
 import {BookComponent} from "./view/book/book.component";
 import {GroupManagerComponent} from "./view/group-manager/group-manager.component";
+import {NewComponent} from "./view/new/new.component";
+import {QuickAddComponent} from "./view/quick-add/quick-add.component";
+import {AddFileComponent} from "./view/add-file/add-file.component";
 
 const routes: Routes = [
   {
@@ -27,7 +30,10 @@ const routes: Routes = [
               { path: 'send-contact', component: SendContactComponent },
               { path: 'send-file', component: SendFileComponent },
               { path: 'group-manager', component: GroupManagerComponent },
-              { path: 'book', component: BookComponent }
+              { path: 'book', component: BookComponent },
+              {path: 'new', component : NewComponent},
+              {path: 'quick-add', component : QuickAddComponent},
+              {path: 'add-file' , component : AddFileComponent}
             ] }
         ]
       },

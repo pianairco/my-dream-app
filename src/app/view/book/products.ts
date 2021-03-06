@@ -1,7 +1,7 @@
 export const sampleProducts = [
   {
     "ProductID": 1,
-    "ProductName": "Chai",
+    "ProductName": "علی",
     "SupplierID": 1,
     "CategoryID": 1,
     "QuantityPerUnit": "10 boxes x 20 bags",
@@ -19,7 +19,7 @@ export const sampleProducts = [
   },
   {
     "ProductID": 2,
-    "ProductName": "Chang",
+    "ProductName": "حسن",
     "SupplierID": 1,
     "CategoryID": 1,
     "QuantityPerUnit": "24 - 12 oz bottles",
@@ -30,7 +30,7 @@ export const sampleProducts = [
     "Discontinued": false,
     "Category": {
       "CategoryID": 1,
-      "CategoryName": "Beverages",
+      "CategoryName": "مجید",
       "Description": "Soft drinks, coffees, teas, beers, and ales"
     },
     "FirstOrderedOn": new Date(1996, 7, 12)
