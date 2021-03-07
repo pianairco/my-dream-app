@@ -16,6 +16,8 @@
 html, body { height: 100%; }
 body { margin: 0; }
 
-
-
 button:focus {outline:0;}
+
+span.k-i-file-excel {
+  padding: 4px 8px;
+}

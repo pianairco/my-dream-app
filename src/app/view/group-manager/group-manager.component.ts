@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {products} from "../book/products";
+import {products, sampleProducts} from "../book/products";
 
 @Component({
   selector: 'app-group-manager',
@@ -7,7 +7,7 @@ import {products} from "../book/products";
   styleUrls: ['./group-manager.component.css']
 })
 export class GroupManagerComponent implements OnInit {
-  public gridData: any[] = products;
+  public gridData: any[] = sampleProducts;
 
   constructor() { }
 

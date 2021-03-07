@@ -34,15 +34,15 @@ import {Platform} from '@angular/cdk/platform';
 import {SendDirectComponent} from "./view/send-direct/send-direct.component";
 import {SendContactComponent} from "./view/send-contact/send-contact.component";
 import {BookComponent} from './view/book/book.component';
-import {GridModule} from "@progress/kendo-angular-grid";
+import {ExcelModule, GridModule, RowFilterModule} from "@progress/kendo-angular-grid";
 import {SendFileComponent} from './view/send-file/send-file.component';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {MatFileUploadModule} from 'mat-file-upload';
 import {MatTableModule} from '@angular/material/table';
-import { GroupManagerComponent } from './view/group-manager/group-manager.component';
-import { NewComponent } from './view/new/new.component';
-import { QuickAddComponent } from './view/quick-add/quick-add.component';
-import { AddFileComponent } from './view/add-file/add-file.component';
+import {GroupManagerComponent} from './view/group-manager/group-manager.component';
+import {NewComponent} from './view/new/new.component';
+import {QuickAddComponent} from './view/quick-add/quick-add.component';
+import {AddFileComponent} from './view/add-file/add-file.component';
 import {SendContactOldComponent} from "./view/send-contact-old/send-contact-old.component";
 
 // import {MatDatepickerModulePersian} from '@angular-persian/material-date-picker/src';
@@ -121,7 +121,9 @@ const MY_DATE_FORMATS = {
     MatDatepickerModule,
     ReactiveFormsModule,
     BsDropdownModule.forRoot(),
-    PerfectScrollbarModule
+    PerfectScrollbarModule,
+    ExcelModule,
+    RowFilterModule
   ],
   exports: [
     MatFormFieldModule,

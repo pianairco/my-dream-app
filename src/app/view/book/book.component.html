@@ -11,21 +11,28 @@
   </div>
 </section>
 
-<kendo-grid [data]="gridData" [height]="410" class="k-rtl" [pageable]="true" [pageSize]="10">
-  <kendo-grid-column field="Discontinued" title="Discontinued" width="20" class="k-rtl">
+<kendo-grid [data]="gridData" [height]="400" class="k-rtl"
+            [filter]="state.filter"
+            [filterable]="true"
+            [pageable]="true" [pageSize]="10">
+  <ng-template kendoGridToolbarTemplate>
+    <button type="button" kendoGridExcelCommand icon="file-excel">Export to Excel</button>
+  </ng-template>
+  <kendo-grid-column field="Discontinued" title="" width="20" class="k-rtl" >
     <ng-template kendoGridCellTemplate let-dataItem>
       <input type="checkbox" [checked]="dataItem.Discontinued" />
     </ng-template>
   </kendo-grid-column>
-  <kendo-grid-column field="ProductID" title="ردیف" width="40" class="k-rtl">
+  <kendo-grid-column field="ProductID" title="" width="15" class="k-rtl">
   </kendo-grid-column>
-  <kendo-grid-column field="ProductName" title="نام" width="40" class="k-rtl">
+  <kendo-grid-column
+    field="name" title="نام" width="40" class="k-rtl" >
   </kendo-grid-column>
-  <kendo-grid-column field="lastName" title="نام خانوادگی" width="40" class="k-rtl">
+  <kendo-grid-column field="lastName" title="نام خانوادگی" width="50" class="k-rtl">
   </kendo-grid-column>
   <kendo-grid-column field="company" title="شرکت" width="40" class="k-rtl">
   </kendo-grid-column>
-  <kendo-grid-column field="tell" title="موبایل" width="40" class="k-rtl">
+  <kendo-grid-column field="tell" title="موبایل" width="50" class="k-rtl">
   </kendo-grid-column>
   <kendo-grid-column field="email" title="ایمیل" width="40" class="k-rtl">
   </kendo-grid-column>
@@ -35,7 +42,15 @@
   </kendo-grid-column>
   <kendo-grid-column field="Options" title="گزینه ها" width="40" class="k-rtl">
   </kendo-grid-column>
-  <kendo-grid-column title="فعالیت" width="20" class="k-rtl">
-    <span><i class="k-icon k-delete"></i></span>
+  <kendo-grid-column title="فعالیت" width="80" class="k-rtl">
+    <ng-template kendoGridCellTemplate let-dataItem>
+      <button class="mx-2" mat-raised-button color="primary">ویرایش</button>
+      <button class="mx-2" mat-raised-button color="primary">حذف</button>
+    </ng-template>
   </kendo-grid-column>
+  <kendo-grid-excel fileName="Products.xlsx"></kendo-grid-excel>
 </kendo-grid>
+<section class="mt-4">
+<button class="mx-2" mat-raised-button color="primary">ارسال پیامک</button>
+<button class="mx-2" mat-raised-button color="primary">حذف</button>
+</section>

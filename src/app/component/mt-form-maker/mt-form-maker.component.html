@@ -13,10 +13,10 @@
 <!--      </div>-->
 
       <div class="mb-3">
-        <ng-container *ngIf="inputConfig.type === 'time'">
-          <mat-form-field [appearance]="inputConfig.appearance" appearance="outline">
+        <ng-container *ngIf="inputConfig.type === 'time'" appearance="outline">
+          <mat-form-field  appearance="outline">
             <mat-label>{{inputConfig.title}}</mat-label>
-            <input type="time" matInput [(ngModel)]="obj[inputConfig.name]">
+            <input type="time" matInput [(ngModel)]="obj[inputConfig.name]" appearance="outline">
           </mat-form-field>
         </ng-container>
 
