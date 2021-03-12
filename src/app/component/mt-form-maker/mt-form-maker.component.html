@@ -81,10 +81,12 @@
       </div>
     </div>
     <div class="col col-12">
-      <button *ngFor="let b of formConfig.buttons"
-              [type]="'button'"
-              (click)="btnClick(b)"
-              [class]="b.type === 'clear' ? 'btn btn-danger' : b.type === 'modal' ? 'btn btn-success' : 'btn btn-warning'" >{{b.title}}</button>
+      <div class="btn-group" role="group">
+        <button *ngFor="let b of formConfig.buttons"
+                [type]="'button'"
+                (click)="btnClick(b)"
+                [class]="b.type === 'clear' ? 'btn btn-danger' : b.type === 'modal' ? 'btn btn-success' : 'btn btn-warning'" >{{b.title}}</button>
+      </div>
 <!--      <button type="button" class="btn btn-success" (click)="submit()">ارسال</button>-->
     </div>
   </div>

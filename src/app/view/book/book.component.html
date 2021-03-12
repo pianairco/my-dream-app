@@ -1,14 +1,26 @@
 <section>
   <div class="container my-4">
-    <a class="mx-2" mat-raised-button color="primary"
-       [routerLink]="['/home/new']">درج مخاطب جدید</a>
-    <a class="mx-2" mat-raised-button color="primary"
-       [routerLink]="['/home/add-file']">افزودن از فایل</a>
-    <a class="mx-2" mat-raised-button color="primary"
-       [routerLink]="['/home/quick-add']">افزودن سریع</a>
-    <a class="mx-2" mat-raised-button color="primary"
-            [routerLink]="['/home/group-manager']">مدیریت گروه</a>
+    <div class="btn-group" role="group" aria-label="Basic example">
+      <a class="btn btn-primary"
+         [routerLink]="['/home/new']">درج مخاطب جدید</a>
+      <a class="btn btn-primary"
+         [routerLink]="['/home/add-file']">افزودن از فایل</a>
+      <a class="btn btn-primary"
+         [routerLink]="['/home/quick-add']">افزودن سریع</a>
+      <a class="btn btn-primary"
+         [routerLink]="['/home/group-manager']">مدیریت گروه</a>
+    </div>
   </div>
+<!--  <div class="container my-4">-->
+<!--    <a class="mx-2" mat-raised-button color="primary"-->
+<!--       [routerLink]="['/home/new']">درج مخاطب جدید</a>-->
+<!--    <a class="mx-2" mat-raised-button color="primary"-->
+<!--       [routerLink]="['/home/add-file']">افزودن از فایل</a>-->
+<!--    <a class="mx-2" mat-raised-button color="primary"-->
+<!--       [routerLink]="['/home/quick-add']">افزودن سریع</a>-->
+<!--    <a class="mx-2" mat-raised-button color="primary"-->
+<!--            [routerLink]="['/home/group-manager']">مدیریت گروه</a>-->
+<!--  </div>-->
 </section>
 
 <kendo-grid [data]="gridData" [height]="400" class="k-rtl"
@@ -16,7 +28,7 @@
             [filterable]="true"
             [pageable]="true" [pageSize]="10">
   <ng-template kendoGridToolbarTemplate>
-    <button type="button" kendoGridExcelCommand icon="file-excel">Export to Excel</button>
+    <button type="button" kendoGridExcelCommand icon="file-excel">دریافت فایل اکسل</button>
   </ng-template>
   <kendo-grid-column field="Discontinued" title="" width="20" class="k-rtl" >
     <ng-template kendoGridCellTemplate let-dataItem>
