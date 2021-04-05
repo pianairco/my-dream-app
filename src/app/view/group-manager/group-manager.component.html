@@ -38,24 +38,34 @@
       </section>
     </div>
   </div>
+  <section>
+    <div class="container my-4">
+      <div class="btn-group" role="group" aria-label="Basic example">
+        <button class="btn btn-primary" mat-raised-button color="primary">ثبت گروه</button>
+        <button class="btn btn-primary" mat-raised-button color="primary"
+                [routerLink]="['/home/book']">برگشت به لیست</button>
+      </div>
+    </div>
+  </section>
+
   <div class="row align-items-start">
-    <kendo-grid [data]="gridData" [height]="410" class="k-rtl">
+    <kendo-grid [data]="gridData" [height]="410" class="k-rtl" [pageable]="true" [pageSize]="10">
       <kendo-grid-column field="Discontinued" title="" width="20" class="k-rtl">
         <ng-template kendoGridCellTemplate let-dataItem>
-          <input type="checkbox" [checked]="dataItem.Discontinued" disabled/>
+          <input type="checkbox" [checked]="dataItem.Discontinued"/>
         </ng-template>
       </kendo-grid-column>
       <kendo-grid-column field="ProductID" title="ردیف" width="40" class="k-rtl">
       </kendo-grid-column>
-      <kendo-grid-column field="ProductName" title="نام گروه" width="40" class="k-rtl">
+      <kendo-grid-column field="groupName" title="نام گروه" width="40" class="k-rtl">
       </kendo-grid-column>
-      <kendo-grid-column field="Category.CategoryName" title="شرح گروه" width="40" class="k-rtl">
+      <kendo-grid-column field="groupDescription" title="شرح گروه" width="40" class="k-rtl">
       </kendo-grid-column>
-      <kendo-grid-column field="UnitPrice" title="دسترسی به کاربران" width="40" class="k-rtl">
+      <kendo-grid-column field="userAccess" title="دسترسی به کاربران" width="40" class="k-rtl">
       </kendo-grid-column>
-      <kendo-grid-column field="UnitsInStock" title="وضعیت" width="40" class="k-rtl">
+      <kendo-grid-column field="Condition" title="وضعیت" width="40" class="k-rtl">
       </kendo-grid-column>
-      <kendo-grid-column field="UnitsInStock" title="تعداد اعضا" width="40" class="k-rtl">
+      <kendo-grid-column field="numberMembers" title="تعداد اعضا" width="40" class="k-rtl">
       </kendo-grid-column>
     </kendo-grid>
   </div>

@@ -16,6 +16,12 @@
 html, body { height: 100%; }
 body { margin: 0; }
 
-
-
 button:focus {outline:0;}
+
+span.k-i-file-excel {
+  padding: 4px 8px;
+}
+
+.k-grid {
+  border-width: 3px !important;
+}

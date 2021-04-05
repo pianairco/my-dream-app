@@ -15,6 +15,7 @@ import {GroupManagerComponent} from "./view/group-manager/group-manager.componen
 import {NewComponent} from "./view/new/new.component";
 import {QuickAddComponent} from "./view/quick-add/quick-add.component";
 import {AddFileComponent} from "./view/add-file/add-file.component";
+import {ReportingComponent} from "./view/reporting/reporting.component";
 
 const routes: Routes = [
   {
@@ -33,7 +34,8 @@ const routes: Routes = [
               { path: 'book', component: BookComponent },
               {path: 'new', component : NewComponent},
               {path: 'quick-add', component : QuickAddComponent},
-              {path: 'add-file' , component : AddFileComponent}
+              {path: 'add-file' , component : AddFileComponent},
+              {path: 'reporting' ,component : ReportingComponent}
             ] }
         ]
       },

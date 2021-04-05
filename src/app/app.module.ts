@@ -24,7 +24,7 @@ import {SmsSenderComponent} from './view/sms-sender/sms-sender.component';
 import {TileComponent} from './view/tile/tile.component';
 import {FormMakerDialogComponent, MtFormMakerComponent} from './component/mt-form-maker/mt-form-maker.component';
 import {MatCheckboxModule} from '@angular/material/checkbox';
-import {GroupSenderComponent} from './view/group-sender/group-sender.component';
+import {GroupSenderComponent, GroupSenderDialogComponent} from './view/group-sender/group-sender.component';
 import {MatRadioModule} from '@angular/material/radio';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatTreeModule} from '@angular/material/tree';
@@ -34,16 +34,17 @@ import {Platform} from '@angular/cdk/platform';
 import {SendDirectComponent} from "./view/send-direct/send-direct.component";
 import {SendContactComponent} from "./view/send-contact/send-contact.component";
 import {BookComponent} from './view/book/book.component';
-import {GridModule} from "@progress/kendo-angular-grid";
+import {ExcelModule, GridModule, RowFilterModule} from "@progress/kendo-angular-grid";
 import {SendFileComponent} from './view/send-file/send-file.component';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {MatFileUploadModule} from 'mat-file-upload';
 import {MatTableModule} from '@angular/material/table';
-import { GroupManagerComponent } from './view/group-manager/group-manager.component';
-import { NewComponent } from './view/new/new.component';
-import { QuickAddComponent } from './view/quick-add/quick-add.component';
-import { AddFileComponent } from './view/add-file/add-file.component';
+import {GroupManagerComponent} from './view/group-manager/group-manager.component';
+import {NewComponent} from './view/new/new.component';
+import {QuickAddComponent} from './view/quick-add/quick-add.component';
+import {AddFileComponent} from './view/add-file/add-file.component';
 import {SendContactOldComponent} from "./view/send-contact-old/send-contact-old.component";
+import { ReportingComponent } from './view/reporting/reporting.component';
 
 // import {MatDatepickerModulePersian} from '@angular-persian/material-date-picker/src';
 
@@ -82,6 +83,7 @@ const MY_DATE_FORMATS = {
     TileComponent,
     GroupSenderComponent,
     FormMakerDialogComponent,
+    GroupSenderDialogComponent,
     SendDirectComponent,
     SendContactComponent,
     SendFileComponent,
@@ -92,7 +94,8 @@ const MY_DATE_FORMATS = {
     GroupManagerComponent,
     NewComponent,
     QuickAddComponent,
-    AddFileComponent
+    AddFileComponent,
+    ReportingComponent
   ],
   imports: [
     BrowserModule,
@@ -121,7 +124,9 @@ const MY_DATE_FORMATS = {
     MatDatepickerModule,
     ReactiveFormsModule,
     BsDropdownModule.forRoot(),
-    PerfectScrollbarModule
+    PerfectScrollbarModule,
+    ExcelModule,
+    RowFilterModule
   ],
   exports: [
     MatFormFieldModule,

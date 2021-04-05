@@ -54,15 +54,15 @@
       <input type="time" matInput [(ngModel)]="time">
     </mat-form-field>
   </div>
-
-  <div class="col col-12">
-    <button [type]="'button'"
-            class="btn btn-danger">انصراف</button>
-    <button [type]="'button'"
-            class="btn btn-success">انصراف</button>
-    <!--      <button type="button" class="btn btn-success" (click)="submit()">ارسال</button>-->
-  </div>
 </div>
+<section>
+  <div class="container my-4">
+    <div class="btn-group" role="group" aria-label="Basic example">
+      <button class="btn btn-primary" mat-raised-button color="primary">تایید</button>
+      <button class="btn btn-primary" mat-raised-button color="primary">انصراف</button>
+    </div>
+  </div>
+</section>
 
 <!--<app-mt-form-maker [formConfig]="formConfig" (submitClick)="onSubmit($event)"></app-mt-form-maker>-->
 

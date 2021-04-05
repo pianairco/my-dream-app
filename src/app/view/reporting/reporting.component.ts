@@ -1,22 +1,21 @@
-import {Component, InjectionToken, OnInit} from '@angular/core';
-import {products} from "./products";
-import {FormConfig} from "../../component/form-maker/form-maker.component";
+import { Component, OnInit } from '@angular/core';
+import {products} from "../book/products";
+import {State} from "@progress/kendo-data-query";
 import {ExcelService} from "@progress/kendo-angular-grid";
 import {L10N_PREFIX, LocalizationService} from "@progress/kendo-angular-l10n";
-import { process, State } from '@progress/kendo-data-query';
+import * as moment from "jalali-moment";
 
 @Component({
-  selector: 'app-book',
-  templateUrl: './book.component.html',
-  styleUrls: ['./book.component.css'],
+  selector: 'app-reporting',
+  templateUrl: './reporting.component.html',
+  styleUrls: ['./reporting.component.css'],
   providers: [
     ExcelService,
     LocalizationService,
     { provide: L10N_PREFIX, useValue: '' }
   ]
-
 })
-export class BookComponent implements OnInit {
+export class ReportingComponent implements OnInit {
   public gridData: any[] = products;
 
   public state: State = {

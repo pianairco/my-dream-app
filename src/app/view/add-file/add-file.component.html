@@ -11,7 +11,7 @@
           [allowMultipleFiles]="true"
           [showUploadButton]="true"
           [customSvgIcon]="'close_custom'"
-          [acceptedTypes]="'.txt, .json, .xml'"
+          [acceptedTypes]="'.xlsx'"
           (uploadClicked)="onUploadClicked($event)"
           (selectedFilesChanged)="onSelectedFilesChanged($event)"
         >
@@ -68,9 +68,13 @@
     </section>
   </div>
 </div>
-<div class="col-12">
-  <button mat-raised-button color="primary">تایید</button>
-  <button mat-raised-button color="primary">انصراف</button>
-</div>
+<section>
+  <div class="container my-4">
+    <div class="btn-group" role="group" aria-label="Basic example">
+      <button class="btn btn-primary" mat-raised-button color="primary">تایید</button>
+      <button class="btn btn-primary" mat-raised-button color="primary">انصراف</button>
+    </div>
+  </div>
+</section>
 
 

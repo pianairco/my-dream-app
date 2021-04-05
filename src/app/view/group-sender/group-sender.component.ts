@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Inject, OnInit} from '@angular/core';
 import {
   ButtonConfig,
   FormConfig,
@@ -6,6 +6,9 @@ import {
   OptionConfig,
   RadioConfig
 } from '../../component/form-maker/form-maker.component';
+import {Router} from '@angular/router';
+import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material/dialog';
+import {FormMakerDialogComponent} from '../../component/mt-form-maker/mt-form-maker.component';
 
 @Component({
   selector: 'app-group-sender',
@@ -13,6 +16,8 @@ import {
   styleUrls: ['./group-sender.component.css']
 })
 export class GroupSenderComponent implements OnInit {
+  obj: object = {};
+
   formConfig : FormConfig = {
     title: 'پنل ارسال گروهی',
     // new InputConfig('text', 'شماره فرستنده', 'sender', null, null, null),
@@ -56,7 +61,7 @@ export class GroupSenderComponent implements OnInit {
   }
 
 // {title: 'تایید ارسال تست', description: 'ارسال تست را انجام نداده اید. آیا میخواهید به مرحله بعد بروید؟', route: '/home/sms-sender'}
-  constructor() { }
+  constructor(public dialog: MatDialog) { }
 
   ngOnInit(): void {
     console.log(JSON.stringify(this.formConfig))
@@ -65,5 +70,61 @@ export class GroupSenderComponent implements OnInit {
   onSubmit(obj) {
     console.log(JSON.stringify(this.formConfig))
     console.log(JSON.stringify(obj));
+  }
+
+  radioSelect(radioConfig: RadioConfig) {
+    if(radioConfig.modal != null) {
+      this.openDialog(radioConfig.modal);
+    }
+  }
+
+  btnClick(btn) {
+    console.log(btn, this.obj)
+    if(btn.type === 'clear') {
+
+    } else if(btn.type === 'modal') {
+      for(let modal of btn.modals) {
+        if(this.obj[modal.show.name] === modal.show.equal) {
+          this.openDialog(modal);
+          break;
+        }
+      }
+    }
+  }
+
+  openDialog(data): void {
+    const dialogRef = this.dialog.open(FormMakerDialogComponent, {
+      width: '250px',
+      data: data
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed => ', result);
+    });
+  }
+}
+
+@Component({
+  selector: 'form-maker-dialog',
+  templateUrl: 'group-sender-dialog.component.html',
+})
+export class GroupSenderDialogComponent {
+
+  constructor(
+    private router: Router,
+    public dialogRef: MatDialogRef<GroupSenderDialogComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: object) {
+  }
+
+  okClick () {
+    this.router.navigate([this.data['yesRoute']])
+    this.dialogRef.close();
+  }
+
+  cancelClick(): void {
+    if(this.data['noRoute']) {
+      this.router.navigate([this.data['noRoute']])
+    }
+    this.dialogRef.close();
   }
 }

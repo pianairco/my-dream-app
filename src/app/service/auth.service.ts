@@ -12,15 +12,15 @@ export class AuthService {
   setLogin(loginInfo) {
     this.isLoggedIn = true;
 
-    // axios.post('api/sign-in', loginInfo,
-    //   {headers: {'content-type': 'application/json'}}).then(
-    //     res => {
-    //       this.isLoggedIn = true;
-    //       console.log(res);
-    //     }, err => {
-    //       console.log(err)
-    //   }
-    // );
+    axios.post('api/sign-in', loginInfo,
+      {headers: {'content-type': 'application/json'}}).then(
+        res => {
+          this.isLoggedIn = true;
+          console.log(res);
+        }, err => {
+          console.log(err)
+      }
+    );
 
   }
 

@@ -147,7 +147,8 @@ export class SidebarService {
       title: 'گزارشگیری',
       icon: 'fa fa-folder',
       active: false,
-      type: 'simple'
+      type: 'simple',
+      route: '/home/reporting'
     }
   ];
   constructor() { }

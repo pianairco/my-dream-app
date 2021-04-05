@@ -1,1 +1,42 @@
-<app-mt-form-maker [formConfig]="formConfig" (submitClick)="onSubmit($event)"></app-mt-form-maker>
+<div class="container m-5">
+  <div class="row align-items-start">
+    <div class="col col-6">
+      <h1 >پنل ارسال پیامک</h1>
+    </div>
+  </div>
+</div>
+<div class="row align-items-start">
+  <div class="col col-6">
+    <mat-form-field appearance="outline">
+      <mat-label>شماره فرستنده</mat-label>
+      <mat-select>
+        <mat-option></mat-option>
+        <mat-option></mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div class="col col-6">
+    <p>
+      <mat-form-field appearance="outline">
+        <mat-label>شماره گیرندگان</mat-label>
+        <textarea matInput [rows]="6"></textarea>
+      </mat-form-field>
+    </p>
+  </div>
+  <div class="col col-6">
+    <p>
+      <mat-form-field appearance="outline">
+        <mat-label>متن پیامک</mat-label>
+        <textarea matInput [rows]="6"></textarea>
+      </mat-form-field>
+    </p>
+  </div>
+</div>
+<section>
+  <div class="container my-4">
+    <div class="btn-group" role="group" aria-label="Basic example">
+      <button class="btn btn-primary" mat-raised-button color="primary">مرحله قبل</button>
+      <button class="btn btn-primary" mat-raised-button color="primary">مرحله بعد</button>
+    </div>
+  </div>
+</section>

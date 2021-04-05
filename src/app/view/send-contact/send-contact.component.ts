@@ -20,7 +20,7 @@ export class SendContactComponent implements OnInit {
       // new InputConfig('text', 'شماره گیرنده', 'getter', null, null, null, null),
       // new InputConfig('empty', 'شماره گیرنده', 'getter', null, null, null, null),
       new InputConfig('date', 'تاریخ', 'deliveries', null,null,null, null),
-      new InputConfig('time', 'متن پیامک', 'bodyMessage', null,null, null, null),
+      new InputConfig('time', 'ساعت', 'bodyMessage', null,null, null, null),
     ],
     buttons: [
       new ButtonConfig('مرحله بعد', 'modal', []),

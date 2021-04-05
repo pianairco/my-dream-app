@@ -3,7 +3,6 @@
     <div class="col col-6">
       <h1  *ngIf="formConfig.title">{{formConfig.title}}</h1>
     </div>
-
   </div>
   <div class="row align-items-start">
     <div class="col col-6" *ngFor="let inputConfig of formConfig.inputs" appearance="outline">
@@ -13,10 +12,10 @@
 <!--      </div>-->
 
       <div class="mb-3">
-        <ng-container *ngIf="inputConfig.type === 'time'">
-          <mat-form-field [appearance]="inputConfig.appearance" appearance="outline">
+        <ng-container *ngIf="inputConfig.type === 'time'" appearance="outline">
+          <mat-form-field  appearance="outline">
             <mat-label>{{inputConfig.title}}</mat-label>
-            <input type="time" matInput [(ngModel)]="obj[inputConfig.name]">
+            <input type="time" matInput [(ngModel)]="obj[inputConfig.name]" appearance="outline">
           </mat-form-field>
         </ng-container>
 
@@ -32,8 +31,7 @@
             [customSvgIcon]="'close_custom'"
             [acceptedTypes]="'.txt, .json, .xml'"
             (uploadClicked)="onUploadClicked($event)"
-            (selectedFilesChanged)="onSelectedFilesChanged($event)"
-          >
+            (selectedFilesChanged)="onSelectedFilesChanged($event)">
           </mat-file-upload>
         </ng-container>
         <ng-container *ngIf="inputConfig.type === 'empty'">
@@ -68,7 +66,7 @@
         </mat-form-field>
 
         <div class="pb-1" *ngIf="inputConfig.type === 'radio'">
-          <label  [id]="inputConfig.name">{{inputConfig.title}}</label>
+          <label [id]="inputConfig.name">{{inputConfig.title}}</label>
         </div>
         <mat-radio-group aria-labelledby="{{inputConfig.name}}"
                          [(ngModel)]="obj[inputConfig.name]"
@@ -81,10 +79,12 @@
       </div>
     </div>
     <div class="col col-12">
-      <button *ngFor="let b of formConfig.buttons"
-              [type]="'button'"
-              (click)="btnClick(b)"
-              [class]="b.type === 'clear' ? 'btn btn-danger' : b.type === 'modal' ? 'btn btn-success' : 'btn btn-warning'" >{{b.title}}</button>
+      <div class="btn-group" role="group">
+        <button *ngFor="let b of formConfig.buttons"
+                [type]="'button'"
+                (click)="btnClick(b)"
+                [class]="b.type === 'clear' ? 'btn btn-danger' : b.type === 'modal' ? 'btn btn-success' : 'btn btn-warning'" >{{b.title}}</button>
+      </div>
 <!--      <button type="button" class="btn btn-success" (click)="submit()">ارسال</button>-->
     </div>
   </div>

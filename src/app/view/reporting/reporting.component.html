@@ -1,28 +1,13 @@
 <div class="container m-5">
   <div class="row align-items-start">
     <div class="col col-6">
-      <h1 >دفتر تلفن</h1>
+      <h1 >گزارشگیری</h1>
     </div>
   </div>
 </div>
-<section>
-  <div class="container my-4">
-    <div class="btn-group" role="group" aria-label="Basic example">
-      <a class="btn btn-primary"
-         [routerLink]="['/home/new']">درج مخاطب جدید</a>
-      <a class="btn btn-primary"
-         [routerLink]="['/home/add-file']">افزودن از فایل</a>
-      <a class="btn btn-primary"
-         [routerLink]="['/home/quick-add']">افزودن سریع</a>
-      <a class="btn btn-primary"
-         [routerLink]="['/home/group-manager']">مدیریت گروه</a>
-    </div>
-  </div>
-</section>
-
 <kendo-grid [data]="gridData" [height]="400" class="k-rtl"
             [filter]="state.filter"
-            [filterable]="true"
+            [filterable]="false"
             [pageable]="true" [pageSize]="10">
   <ng-template kendoGridToolbarTemplate>
     <button type="button" kendoGridExcelCommand icon="file-excel">دریافت فایل اکسل</button>
@@ -38,7 +23,7 @@
   </kendo-grid-column>
   <kendo-grid-column field="lastName" title="نام خانوادگی" width="50" class="k-rtl" [filterable]="false">
   </kendo-grid-column>
-  <kendo-grid-column field="company" title="شرکت" width="40" class="k-rtl" [filterable]="true">
+  <kendo-grid-column field="company" title="شرکت" width="40" class="k-rtl" [filterable]="false">
   </kendo-grid-column>
   <kendo-grid-column field="tell" title="موبایل" width="50" class="k-rtl" [filterable]="false">
   </kendo-grid-column>
@@ -50,21 +35,15 @@
   </kendo-grid-column>
   <kendo-grid-column field="Options" title="گزینه ها" width="40" class="k-rtl" [filterable]="false">
   </kendo-grid-column>
-  <kendo-grid-column title="فعالیت" width="100" class="k-rtl">
-    <ng-template kendoGridCellTemplate let-dataItem>
-      <div class="btn-group" role="group" aria-label="Basic example">
-        <button class="btn btn-primary">ویرایش</button>
-        <button class="btn btn-primary">حذف</button>
-      </div>
-    </ng-template>
-  </kendo-grid-column>
   <kendo-grid-excel fileName="Products.xlsx"></kendo-grid-excel>
 </kendo-grid>
 <section>
   <div class="container my-4">
-  <div class="btn-group" role="group" aria-label="Basic example">
-<button class="btn btn-primary">ارسال پیامک</button>
-<button class="btn btn-primary">حذف</button>
-  </div>
+    <div class="btn-group" role="group" aria-label="Basic example">
+      <button class="btn btn-primary">ارسال</button>
+      <button class="btn btn-primary">حذف</button>
+    </div>
   </div>
 </section>
+
+
