@@ -9,7 +9,7 @@ import {Router} from '@angular/router';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements OnInit, AfterViewInit  {
+export class LoginComponent implements OnInit, AfterViewInit {
   modalDirect: Bootstrap.Modal;
   @ViewChild('demoModal') input;
   showModal = true;
@@ -17,11 +17,12 @@ export class LoginComponent implements OnInit, AfterViewInit  {
 
   loginInfo: {
     username: string,
-    password: string
-   } = {
+    password: string,
+  } = {
     username: '',
-    password: ''
+    password: '',
   }
+
 
   constructor(
     private router: Router,
@@ -46,8 +47,26 @@ export class LoginComponent implements OnInit, AfterViewInit  {
   }
 
   login() {
-    this.authService.setLogin(this.loginInfo);
-    this.router.navigate(["/home/sms-sender"]);
-    // this.router.navigate(["/tile/container"]);
+    if (this.loginInfo.username === '' || this.loginInfo.password === '') {
+      console.log("username and password are mandatory")
+    } else {
+      this.authService.setLogin(this.loginInfo).then(res => {
+        this.authService.getUserInfo().then(res => {
+          this.router.navigate(["/home/sms-sender"]);
+        }, err => {
+
+        });
+      }, err => {
+      });
+
+      // this.router.navigate(["/tile/container"]);
+    }
   }
+
+  // login() {
+  //   this.authService.setLogin(this.loginInfo);
+  //   this.router.navigate(["/home/sms-sender"]);
+  //   // this.router.navigate(["/tile/container"]);
+  // }
 }
+

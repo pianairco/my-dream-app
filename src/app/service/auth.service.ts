@@ -5,23 +5,43 @@ import axios from "axios";
   providedIn: 'root'
 })
 export class AuthService {
-  isLoggedIn: boolean = false;
+  isLoggedIn: boolean = true;
+  balance: number = 0;
 
   constructor() { }
 
-  setLogin(loginInfo) {
-    this.isLoggedIn = true;
+  setLogin(loginInfo): Promise<any> {
+    // this.isLoggedIn = true;
 
-    axios.post('api/sign-in', loginInfo,
-      {headers: {'content-type': 'application/json'}}).then(
+    return new Promise((resolve, reject) => {
+      // @ts-ignore
+      axios.get('/services/auth/login', loginInfo,
+      ).then(
         res => {
           this.isLoggedIn = true;
           console.log(res);
+          resolve();
         }, err => {
           console.log(err)
-      }
-    );
+          reject(err);
+        }
+      );
+    });
+  }
 
+  getUserInfo(): Promise<number> {
+    // @ts-ignore
+    return new Promise((resolve, reject) => {
+      axios.post('/services/dashboard/info', null, {}).then(
+        res => {
+          this.balance = res['data']['balance'];
+          resolve(this.balance);
+        }, err => {
+          console.log(err)
+          reject(err);
+        }
+      );
+    });
   }
 
   setLogout() {

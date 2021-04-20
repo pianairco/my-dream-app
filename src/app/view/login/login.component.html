@@ -23,7 +23,7 @@
               <p>
                 <mat-form-field appearance="outline">
                   <mat-label>نام کاربری</mat-label>
-                  <input matInput [(ngModel)]="loginInfo.username">
+                  <input type="text" matInput [(ngModel)]="loginInfo.username" required>
                   <mat-icon matSuffix></mat-icon>
                 </mat-form-field>
               </p>
@@ -32,7 +32,7 @@
               <p>
                 <mat-form-field appearance="outline">
                   <mat-label>کلمه عبور</mat-label>
-                  <input matInput [attr.type]="hide ? 'password' : 'text'" [(ngModel)]="loginInfo.password">
+                  <input matInput [attr.type]="hide ? 'password' : 'text'" [(ngModel)]="loginInfo.password" required>
                   <mat-icon matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
                     {{hide ? 'visibility_off' : 'visibility'}}
                   </mat-icon>
