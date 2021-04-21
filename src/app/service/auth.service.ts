@@ -7,6 +7,7 @@ import axios from "axios";
 export class AuthService {
   isLoggedIn: boolean = true;
   balance: number = 0;
+  loginToken = null;
 
   constructor() { }
 
@@ -15,10 +16,11 @@ export class AuthService {
 
     return new Promise((resolve, reject) => {
       // @ts-ignore
-      axios.get('/services/auth/login', loginInfo,
+      axios.post('/services/auth/login', loginInfo, {}
       ).then(
         res => {
           this.isLoggedIn = true;
+          this.loginToken = res['data'];
           console.log(res);
           resolve();
         }, err => {
@@ -32,7 +34,11 @@ export class AuthService {
   getUserInfo(): Promise<number> {
     // @ts-ignore
     return new Promise((resolve, reject) => {
-      axios.post('/services/dashboard/info', null, {}).then(
+      axios.post('/services/dashboard/info', null, {
+        headers: {
+          'Authorization': 'Bearer ' + this.loginToken['access_token']
+        }
+      }).then(
         res => {
           this.balance = res['data']['balance'];
           resolve(this.balance);
