@@ -48,7 +48,7 @@ export class LoginComponent implements OnInit, AfterViewInit {
 
   login() {
     if (this.loginInfo.username === '' || this.loginInfo.password === '') {
-      console.log("username and password are mandatory")
+      alert("username and password are mandatory")
     } else {
       this.authService.setLogin(this.loginInfo).then(res => {
         this.authService.getUserInfo().then(res => {

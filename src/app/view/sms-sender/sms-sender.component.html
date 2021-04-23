@@ -9,9 +9,9 @@
   <div class="col col-6">
     <mat-form-field appearance="outline">
       <mat-label>شماره فرستنده</mat-label>
-      <mat-select>
-        <mat-option></mat-option>
-        <mat-option></mat-option>
+      <mat-select [(ngModel)]="model['senderNumber']">
+        <mat-option *ngFor="let sender of smsSenders"
+          [value]="sender">{{sender}}</mat-option>
       </mat-select>
     </mat-form-field>
   </div>
@@ -19,7 +19,7 @@
     <p>
       <mat-form-field appearance="outline">
         <mat-label>شماره گیرندگان</mat-label>
-        <textarea matInput [rows]="6"></textarea>
+        <textarea matInput [rows]="6" [(ngModel)]="model['recipient']"></textarea>
       </mat-form-field>
     </p>
   </div>
@@ -27,16 +27,21 @@
     <p>
       <mat-form-field appearance="outline">
         <mat-label>متن پیامک</mat-label>
-        <textarea matInput [rows]="6"></textarea>
+        <textarea matInput [rows]="6"
+                  [(ngModel)]="model['text']"></textarea>
+        <mat-hint align="end">{{model['text'].length || 0}}/80</mat-hint>
+        <mat-hint align="start">{{model['text'].length < 80 ? 'صفحه 1' : 'صفحه ' + ceil(model['text'].length / 80)}}</mat-hint>
       </mat-form-field>
     </p>
+
   </div>
 
 <section>
   <div class="container my-4">
     <div class="btn-group" role="group" aria-label="Basic example">
-      <button class="btn btn-primary" mat-raised-button color="primary">مرحله قبل</button>
-      <button class="btn btn-primary" mat-raised-button color="primary">مرحله بعد</button>
+      <button class="btn btn-primary" mat-raised-button color="primary" (click)="send()">ارسال</button>
+<!--      <button class="btn btn-primary" mat-raised-button color="primary">مرحله قبل</button>-->
+<!--      <button class="btn btn-primary" mat-raised-button color="primary">مرحله بعد</button>-->
     </div>
   </div>
 </section>

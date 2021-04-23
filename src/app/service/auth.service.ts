@@ -11,6 +11,12 @@ export class AuthService {
 
   constructor() { }
 
+  getBearerToken() {
+    if(this.loginToken != null)
+      return this.loginToken['access_token'];
+    return null;
+  }
+
   setLogin(loginInfo): Promise<any> {
     // this.isLoggedIn = true;
 
