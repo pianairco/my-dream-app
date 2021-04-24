@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import axios from "axios";
 import {AuthService} from "./auth.service";
+import * as uuid from 'uuid';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +16,7 @@ export class RestService {
       axios.post('/services/dashboard/enqueue', {
         'recipient': model['recipient'],
         'text': model['text'],
-        'uid': 0
+        'uid': uuid.v4()
       }, {
         headers: {
           'Authorization': 'Bearer ' + this.authService.getBearerToken()
