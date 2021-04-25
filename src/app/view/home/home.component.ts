@@ -7,6 +7,7 @@ import {SidebarService} from '../../sidebar.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+  public sidebarState2 = false;
 
   constructor(public sidebarservice: SidebarService) {
   }

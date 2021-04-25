@@ -6,7 +6,7 @@ import {RootComponent} from './view/root/root.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatSelectModule} from '@angular/material/select';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {LoginComponent} from './view/login/login.component';
+import {DialogDataExampleDialog, LoginComponent} from './view/login/login.component';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {MatIconModule} from '@angular/material/icon';
@@ -74,6 +74,7 @@ const MY_DATE_FORMATS = {
   declarations: [
     RootComponent,
     LoginComponent,
+    DialogDataExampleDialog,
     SidebarComponent,
     HomeComponent,
     ContainerComponent,

@@ -5,6 +5,7 @@ import { Injectable } from '@angular/core';
 })
 export class SidebarService {
   toggled = false;
+
   _hasBackgroundImage = true;
   menus = [
     /*{

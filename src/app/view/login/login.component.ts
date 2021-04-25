@@ -1,8 +1,9 @@
-import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, Inject, OnInit, ViewChild} from '@angular/core';
 import Bootstrap from 'bootstrap/dist/js/bootstrap';
 import {SidebarService} from '../../sidebar.service';
 import {AuthService} from '../../service/auth.service';
 import {Router} from '@angular/router';
+import {MAT_DIALOG_DATA, MatDialog} from "@angular/material/dialog";
 
 @Component({
   selector: 'app-login',
@@ -25,6 +26,7 @@ export class LoginComponent implements OnInit, AfterViewInit {
 
 
   constructor(
+    public dialog: MatDialog,
     private router: Router,
     private authService: AuthService,
     public sidebarservice: SidebarService) {
@@ -48,7 +50,12 @@ export class LoginComponent implements OnInit, AfterViewInit {
 
   login() {
     if (this.loginInfo.username === '' || this.loginInfo.password === '') {
-      alert("username and password are mandatory")
+      this.dialog.open(DialogDataExampleDialog, {
+        data: {
+          animal: 'panda'
+        }
+      });
+      // alert("username and password are mandatory")
     } else {
       this.authService.setLogin(this.loginInfo).then(res => {
         this.authService.getUserInfo().then(res => {
@@ -70,3 +77,14 @@ export class LoginComponent implements OnInit, AfterViewInit {
   // }
 }
 
+export interface DialogData {
+  animal: 'panda' | 'unicorn' | 'lion';
+}
+
+@Component({
+  selector: 'dialog-data-example-dialog',
+  templateUrl: 'dialog-data-example-dialog.component.html',
+})
+export class DialogDataExampleDialog {
+  constructor(@Inject(MAT_DIALOG_DATA) public data: DialogData) {}
+}

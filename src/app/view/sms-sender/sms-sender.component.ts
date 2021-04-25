@@ -34,7 +34,7 @@ export class SmsSenderComponent implements OnInit {
 
   send() {
     this.restService.sendSms(this.model).then(res => {
-      alert("sms sent successfully!");
+      alert("sms sent successfully! uid is " + res);
     }, err => {
 
     });

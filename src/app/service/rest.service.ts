@@ -10,20 +10,27 @@ export class RestService {
 
   constructor(private authService: AuthService) { }
 
-  sendSms(model): Promise<void> {
+  getRandomUID(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min) + min); //The maximum is exclusive and the minimum is inclusive
+  }
+
+  sendSms(model): Promise<number> {
     // @ts-ignore
     return new Promise((resolve, reject) => {
+      let randomUID = this.getRandomUID(10000000, 90000000);
       axios.post('/services/dashboard/enqueue', {
         'recipient': model['recipient'],
         'text': model['text'],
-        'uid': uuid.v4()
+        'uid': randomUID
       }, {
         headers: {
           'Authorization': 'Bearer ' + this.authService.getBearerToken()
         }
       }).then(
         res => {
-          resolve();
+          resolve(randomUID);
         }, err => {
           console.log(err)
           reject(err);
