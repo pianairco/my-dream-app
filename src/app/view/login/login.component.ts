@@ -52,7 +52,7 @@ export class LoginComponent implements OnInit, AfterViewInit {
     if (this.loginInfo.username === '' || this.loginInfo.password === '') {
       this.dialog.open(DialogDataExampleDialog, {
         data: {
-          animal: 'panda'
+          message: 'username and password are mandatory'
         }
       });
       // alert("username and password are mandatory")
@@ -78,7 +78,7 @@ export class LoginComponent implements OnInit, AfterViewInit {
 }
 
 export interface DialogData {
-  animal: 'panda' | 'unicorn' | 'lion';
+  message: string;
 }
 
 @Component({
