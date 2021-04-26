@@ -44,7 +44,9 @@ import {NewComponent} from './view/new/new.component';
 import {QuickAddComponent} from './view/quick-add/quick-add.component';
 import {AddFileComponent} from './view/add-file/add-file.component';
 import {SendContactOldComponent} from "./view/send-contact-old/send-contact-old.component";
-import { ReportingComponent } from './view/reporting/reporting.component';
+import {ReportingComponent} from './view/reporting/reporting.component';
+import {MatSnackBarModule} from "@angular/material/snack-bar";
+import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 
 // import {MatDatepickerModulePersian} from '@angular-persian/material-date-picker/src';
 
@@ -81,6 +83,7 @@ const MY_DATE_FORMATS = {
     FormMakerComponent,
     MtFormMakerComponent,
     SmsSenderComponent,
+    // NotificationComponent,
     TileComponent,
     GroupSenderComponent,
     FormMakerDialogComponent,
@@ -116,6 +119,8 @@ const MY_DATE_FORMATS = {
     MatRadioModule,
     MatTreeModule,
     MatProgressBarModule,
+    MatSnackBarModule,
+    MatProgressSpinnerModule,
     MatFileUploadModule,
     GridModule,
     MatTreeModule,

@@ -7,6 +7,8 @@ import axios from "axios";
 export class AuthService {
   isLoggedIn: boolean = true;
   balance: number = 0;
+  message: string;
+  name: string;
   loginToken = null;
 
   constructor() { }
@@ -30,7 +32,7 @@ export class AuthService {
           console.log(res);
           resolve();
         }, err => {
-          console.log(err)
+          console.log(err);
           reject(err);
         }
       );
@@ -47,9 +49,11 @@ export class AuthService {
       }).then(
         res => {
           this.balance = res['data']['balance'];
-          resolve(this.balance);
+          this.message = res['data']['message'];
+          this.name = res['data']['name'];
+          resolve(res['data']);
         }, err => {
-          console.log(err)
+          console.log(err);
           reject(err);
         }
       );

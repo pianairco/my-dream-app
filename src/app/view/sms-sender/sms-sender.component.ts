@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {ButtonConfig, FormConfig, InputConfig, OptionConfig} from '../../component/form-maker/form-maker.component';
 import {RestService} from "../../service/rest.service";
+import {DialogDataExampleDialog} from "../login/login.component";
+import {MatDialog} from "@angular/material/dialog";
+import {MatSnackBar} from "@angular/material/snack-bar";
 
 @Component({
   selector: 'app-sms-sender',
@@ -19,7 +22,10 @@ export class SmsSenderComponent implements OnInit {
 
   smsSenders: string[] = ['093312345243', '093319382798'];
 
-  constructor(private restService: RestService) { }
+  constructor(
+    private _snackBar: MatSnackBar,
+    public dialog: MatDialog,
+    private restService: RestService) { }
 
   ngOnInit(): void {
   }
@@ -33,10 +39,18 @@ export class SmsSenderComponent implements OnInit {
   }
 
   send() {
-    this.restService.sendSms(this.model).then(res => {
-      alert("sms sent successfully! uid is " + res);
-    }, err => {
-
-    });
+    if(!this.model.text) {
+      this.dialog.open(DialogDataExampleDialog, {
+        data: {
+          title: 'error',
+          message: 'لطفا نامکاربری وکلمه عبور را وارد نمایید.'
+        }
+      });
+    } else {
+      this.restService.sendSms(this.model).then(res => {
+        this._snackBar.open('sms sent successfully', "success", {duration: 5 * 1000});
+      }, err => {
+      });
+    }
   }
 }

@@ -150,6 +150,12 @@ export class SidebarService {
       active: false,
       type: 'simple',
       route: '/home/reporting'
+    },{
+      title: 'خروج',
+      icon: 'fa fa-folder',
+      active: false,
+      type: 'simple',
+      route: '/login'
     }
   ];
   constructor() { }

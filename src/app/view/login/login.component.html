@@ -16,7 +16,7 @@
       <div class="modal-content">
         <div class="modal-header ">
           <div class="container">
-            <div class="col-12 text-center">
+            <div class="col-12 text-center" style="color: blue">
           ورود به سامانه
             </div>
           </div>
@@ -24,15 +24,12 @@
         <div class="modal-body">
           <div class="container">
             <div class="col-12 text-center">
-              <div class="user-pic" style="margin-bottom: 10px">
-                <img class="img-responsive img-rounded" style="max-height: 64px; border-radius: 40px;" src="assets/img/user.jpg" alt="User picture">
-              </div>
-            </div>
-            <div class="col-12 text-center">
               <p>
                 <mat-form-field appearance="outline">
                   <mat-label>نام کاربری</mat-label>
-                  <input type="text" matInput [(ngModel)]="loginInfo.username" required style="padding-bottom: 4px !important;">
+                  <input type="text" matInput
+                         [disabled]="wait"
+                         [(ngModel)]="loginInfo.username" required style="padding-bottom: 4px !important;">
                   <mat-icon matSuffix></mat-icon>
                 </mat-form-field>
               </p>
@@ -41,7 +38,9 @@
               <p>
                 <mat-form-field appearance="outline">
                   <mat-label>کلمه عبور</mat-label>
-                  <input matInput [attr.type]="hide ? 'password' : 'text'" [(ngModel)]="loginInfo.password" required>
+                  <input matInput [attr.type]="hide ? 'password' : 'text'"
+                         [disabled]="wait"
+                         [(ngModel)]="loginInfo.password" required>
                   <mat-icon matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
                     {{hide ? 'visibility_off' : 'visibility'}}
                   </mat-icon>
@@ -49,7 +48,10 @@
               </p>
             </div>
             <div class="col-12 text-center">
-              <button mat-raised-button color="primary" (click)="login()">ورود</button>
+              <button mat-raised-button color="link" (click)="login()" [disabled]="wait">
+                <mat-spinner  *ngIf="wait"></mat-spinner>
+                <span *ngIf="!wait">ورود</span>
+              </button>
             </div>
           </div>
         </div>

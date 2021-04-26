@@ -15,6 +15,7 @@ export class LoginComponent implements OnInit, AfterViewInit {
   @ViewChild('demoModal') input;
   showModal = true;
   hide = true;
+  wait = false;
 
   loginInfo: {
     username: string,
@@ -22,7 +23,7 @@ export class LoginComponent implements OnInit, AfterViewInit {
   } = {
     username: '',
     password: '',
-  }
+  };
 
 
   constructor(
@@ -49,19 +50,23 @@ export class LoginComponent implements OnInit, AfterViewInit {
   }
 
   login() {
+    // this.wait = true;
     if (this.loginInfo.username === '' || this.loginInfo.password === '') {
       this.dialog.open(DialogDataExampleDialog, {
         data: {
-          message: 'username and password are mandatory'
+          title: 'خطا',
+          message: 'لطفا نام کاربری وکلمه عبور را وارد نمایید.'
         }
       });
       // alert("username and password are mandatory")
     } else {
+      this.wait = true;
       this.authService.setLogin(this.loginInfo).then(res => {
         this.authService.getUserInfo().then(res => {
+          this.wait = false;
           this.router.navigate(["/home/sms-sender"]);
         }, err => {
-
+          this.wait = false;
         });
       }, err => {
       });
@@ -78,6 +83,7 @@ export class LoginComponent implements OnInit, AfterViewInit {
 }
 
 export interface DialogData {
+  title: string;
   message: string;
 }
 
