@@ -15,7 +15,7 @@ export class LoginComponent implements OnInit, AfterViewInit {
   @ViewChild('demoModal') input;
   showModal = true;
   hide = true;
-  wait = false;
+  wait = true;
 
   loginInfo: {
     username: string,
@@ -50,7 +50,7 @@ export class LoginComponent implements OnInit, AfterViewInit {
   }
 
   login() {
-    // this.wait = true;
+    this.wait = true;
     if (this.loginInfo.username === '' || this.loginInfo.password === '') {
       this.dialog.open(DialogDataExampleDialog, {
         data: {
