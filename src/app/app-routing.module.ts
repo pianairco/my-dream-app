@@ -21,7 +21,8 @@ const routes: Routes = [
   {
     path: '', canActivate:[LoginGuard], children: [
       { path: '', children: [
-          { path: '', redirectTo: '/home/sms-sender', pathMatch: 'full' },
+          { path: '', component: LoginComponent, canActivate:[LoginGuard] },
+          // { path: '', redirectTo: '/home/sms-sender', pathMatch: 'full' },
           { path: 'home', component: HomeComponent, canActivate:[LoginGuard], children:[
               { path: '', redirectTo: '/sms-sender', pathMatch: 'full' },
               { path: 'sms-sender', component: SmsSenderComponent },
@@ -39,7 +40,7 @@ const routes: Routes = [
             ] }
         ]
       },
-      { path: 'login', component: LoginComponent, canActivate:[LoginGuard] },
+      // { path: 'login', component: LoginComponent, canActivate:[LoginGuard] },
     ]
   }
 ];

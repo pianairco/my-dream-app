@@ -15,14 +15,16 @@ export class LoginComponent implements OnInit, AfterViewInit {
   @ViewChild('demoModal') input;
   showModal = true;
   hide = true;
-  wait = true;
+  wait = false;
 
   loginInfo: {
     username: string,
     password: string,
+    captcha: string
   } = {
     username: '',
     password: '',
+    captcha: ''
   };
 
 
@@ -69,6 +71,7 @@ export class LoginComponent implements OnInit, AfterViewInit {
           this.wait = false;
         });
       }, err => {
+        this.wait = false;
       });
 
       // this.router.navigate(["/tile/container"]);
