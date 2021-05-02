@@ -103,10 +103,10 @@ const MY_DATE_FORMATS = {
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
     AppRoutingModule,
-    BrowserAnimationsModule,
     MatSelectModule,
     MatFormFieldModule,
     MatInputModule,

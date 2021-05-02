@@ -1,8 +1,8 @@
 <div class="page-wrapper" [ngClass]="{'toggled' : getSideBarState()}">
-  <app-sidebar *ngIf="!getSideBarState()"></app-sidebar>
+  <app-sidebar ></app-sidebar>
   <main class="page-content">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <button class="btn" type="button" (click)="toggleSidebar()">
+      <button class="btn" type="button" (click)="toggleSidebar()" [@slide]="getState()">
         <span *ngIf="!getSideBarState()" class="fa fa-bars" style="color: white"></span>
         <span *ngIf="getSideBarState()" class="fa fa-bars" style="color: white"></span>
 <!--        <span class="navbar-toggler-icon"></span>-->

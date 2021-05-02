@@ -1,4 +1,17 @@
-<nav id="sidebar" class="sidebar" >
+<nav id="sidebar-icon" class="sidebar2"  [@slide2]="getState2()">
+  <div class="sidebar-content">
+    <perfect-scrollbar>
+      <div class="sidebar-menu">
+        <div class="container">
+          <button class="btn btn-link" style="margin-top: 7px; color: white" (click)="toggleSidebar()">
+            <span class="fa fa-bars"></span>
+          </button>
+        </div>
+      </div>
+    </perfect-scrollbar>
+  </div>
+</nav>
+<nav id="sidebar" class="sidebar" [@slide]="getState2()">
   <!--  [ngClass]="{'sidebar-bg' : hasBackgroundImage()}"-->
   <div class="sidebar-content">
     <perfect-scrollbar>

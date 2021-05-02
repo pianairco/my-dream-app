@@ -16,12 +16,14 @@ import {NewComponent} from "./view/new/new.component";
 import {QuickAddComponent} from "./view/quick-add/quick-add.component";
 import {AddFileComponent} from "./view/add-file/add-file.component";
 import {ReportingComponent} from "./view/reporting/reporting.component";
+import {MainComponent} from "./view/main/main.component";
 
 const routes: Routes = [
   {
     path: '', canActivate:[LoginGuard], children: [
       { path: '', children: [
           { path: '', component: LoginComponent, canActivate:[LoginGuard] },
+          { path: 'main', component: MainComponent },
           // { path: '', redirectTo: '/home/sms-sender', pathMatch: 'full' },
           { path: 'home', component: HomeComponent, canActivate:[LoginGuard], children:[
               { path: '', redirectTo: '/sms-sender', pathMatch: 'full' },

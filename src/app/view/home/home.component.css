@@ -37,7 +37,7 @@
   right: 0px;
 }
 .page-wrapper.toggled .page-content {
-  padding-right: 0;
+  padding-right: 60px;
 }
 .page-wrapper .attribution {
   position: fixed;

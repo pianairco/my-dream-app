@@ -1,10 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import {SidebarService} from '../../sidebar.service';
+import {animate, state, style, transition, trigger} from "@angular/animations";
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  styleUrls: ['./home.component.css'],
+  animations: [
+    trigger('slide', [
+      state('up', style({ 'pointer-events': 'auto', opacity: 1 })),
+      state('down', style({ 'pointer-events': 'none', opacity: 0 })),
+      transition('up <=> down', animate(500))
+    ])
+  ]
 })
 export class HomeComponent implements OnInit {
   public sidebarState2 = false;
@@ -13,6 +21,10 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
+  }
+
+  getState() {
+    return this.sidebarservice.getSidebarState() ? 'down' : 'up';
   }
 
   toggleSidebar() {

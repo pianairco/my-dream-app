@@ -44,7 +44,7 @@
     "@progress/kendo-licensing": "^1.1.3",
     "@progress/kendo-theme-bootstrap": "^4.31.0",
     "@types/axios": "^0.14.0",
-    "bootstrap": "^5.0.0-beta1",
+    "bootstrap": "^5.0.0-beta3",
     "jalali-moment": "^3.3.10",
     "mat-file-upload": "^11.1.2",
     "ngx-bootstrap": "^6.2.0",
