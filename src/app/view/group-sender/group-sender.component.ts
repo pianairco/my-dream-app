@@ -61,7 +61,9 @@ export class GroupSenderComponent implements OnInit {
   }
 
 // {title: 'تایید ارسال تست', description: 'ارسال تست را انجام نداده اید. آیا میخواهید به مرحله بعد بروید؟', route: '/home/sms-sender'}
-  constructor(public dialog: MatDialog) { }
+  constructor(
+    private router: Router,
+    public dialog: MatDialog) { }
 
   ngOnInit(): void {
     console.log(JSON.stringify(this.formConfig))
@@ -73,6 +75,7 @@ export class GroupSenderComponent implements OnInit {
   }
 
   radioSelect(radioConfig: RadioConfig) {
+    console.log(radioConfig)
     if(radioConfig.modal != null) {
       this.openDialog(radioConfig.modal);
     }
@@ -93,22 +96,26 @@ export class GroupSenderComponent implements OnInit {
   }
 
   openDialog(data): void {
-    const dialogRef = this.dialog.open(FormMakerDialogComponent, {
+    const dialogRef = this.dialog.open(GroupSenderDialogComponent, {
       width: '250px',
       data: data
     });
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed => ', result);
+      if(result.status === 'ok') {
+        console.log(result.data)
+        // this.router.navigate([result.data['yesRoute']])
+      }
     });
   }
 }
 
 @Component({
-  selector: 'form-maker-dialog',
+  selector: 'group-sender-dialog',
   templateUrl: 'group-sender-dialog.component.html',
 })
-export class GroupSenderDialogComponent {
+export class GroupSenderDialogComponent implements OnInit{
 
   constructor(
     private router: Router,
@@ -116,15 +123,20 @@ export class GroupSenderDialogComponent {
     @Inject(MAT_DIALOG_DATA) public data: object) {
   }
 
+  ngOnInit(): void {
+    console.log(JSON.stringify(this.data))
+  }
+
   okClick () {
-    this.router.navigate([this.data['yesRoute']])
-    this.dialogRef.close();
+    console.log({status: 'ok', data: this.data})
+    // this.router.navigate([this.data['yesRoute']])
+    this.dialogRef.close({status: 'ok', data: this.data});
   }
 
   cancelClick(): void {
     if(this.data['noRoute']) {
       this.router.navigate([this.data['noRoute']])
     }
-    this.dialogRef.close();
+    this.dialogRef.close('cancel');
   }
 }
