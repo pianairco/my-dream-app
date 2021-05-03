@@ -9,6 +9,9 @@ import {
 import {Router} from '@angular/router';
 import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material/dialog';
 import {FormMakerDialogComponent} from '../../component/mt-form-maker/mt-form-maker.component';
+import {DialogDataExampleDialog} from "../login/login.component";
+import {RestService} from "../../service/rest.service";
+import {MatSnackBar} from "@angular/material/snack-bar";
 
 @Component({
   selector: 'app-group-sender',
@@ -62,6 +65,8 @@ export class GroupSenderComponent implements OnInit {
 
 // {title: 'تایید ارسال تست', description: 'ارسال تست را انجام نداده اید. آیا میخواهید به مرحله بعد بروید؟', route: '/home/sms-sender'}
   constructor(
+    private restService: RestService,
+    private _snackBar: MatSnackBar,
     private router: Router,
     public dialog: MatDialog) { }
 
@@ -98,7 +103,22 @@ export class GroupSenderComponent implements OnInit {
     console.log(this.obj['title'])
     console.log(this.obj['bodyMessage'])
     console.log(this.obj['sender'])
-    console.log(this.obj['deliveries'])
+    console.log(this.obj['deliveries']);
+
+
+    if(!this.obj['bodyMessage']) {
+      this.dialog.open(DialogDataExampleDialog, {
+        data: {
+          title: 'error',
+          message: 'لطفا نامکاربری وکلمه عبور را وارد نمایید.'
+        }
+      });
+    } else {
+      this.restService.sendSms(this.obj).then(res => {
+        this._snackBar.open('sms sent successfully', "success", {duration: 5 * 1000});
+      }, err => {
+      });
+    }
   }
 
   openDialog(data): void {
