@@ -114,7 +114,7 @@ export class GroupSenderComponent implements OnInit {
         }
       });
     } else {
-      this.restService.sendSms(this.obj).then(res => {
+      this.restService.sendGroupSms(this.obj).then(res => {
         this._snackBar.open('sms sent successfully', "success", {duration: 5 * 1000});
       }, err => {
       });
