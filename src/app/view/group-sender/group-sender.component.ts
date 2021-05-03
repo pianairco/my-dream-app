@@ -82,17 +82,23 @@ export class GroupSenderComponent implements OnInit {
   }
 
   btnClick(btn) {
-    console.log(btn, this.obj)
-    if(btn.type === 'clear') {
+    // console.log(btn, this.obj)
+    // if(btn.type === 'clear') {
+    //
+    // } else if(btn.type === 'modal') {
+    //   for(let modal of btn.modals) {
+    //     if(this.obj[modal.show.name] === modal.show.equal) {
+    //       this.openDialog(modal);
+    //       break;
+    //     }
+    //   }
+    // }
 
-    } else if(btn.type === 'modal') {
-      for(let modal of btn.modals) {
-        if(this.obj[modal.show.name] === modal.show.equal) {
-          this.openDialog(modal);
-          break;
-        }
-      }
-    }
+    console.log(this.obj)
+    console.log(this.obj['title'])
+    console.log(this.obj['bodyMessage'])
+    console.log(this.obj['sender'])
+    console.log(this.obj['deliveries'])
   }
 
   openDialog(data): void {
