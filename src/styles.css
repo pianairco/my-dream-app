@@ -32,7 +32,7 @@ span.k-i-file-excel {
   font-weight: bold;
   background-color: #aacff3;
   margin-top: 25px;
-  border: 2px solid gray;
+  /*border: 2px solid gray;*/
   border-bottom: none;
   border-top-left-radius: 25px;
   border-top-right-radius: 25px;
@@ -40,7 +40,7 @@ span.k-i-file-excel {
 
 .my-form {
   padding: 20px;
-  border: 2px solid gray;
+  border: 2px solid #aacff3;
   border-radius: 25px;
   background-color: white;
   margin-bottom: 10px;
