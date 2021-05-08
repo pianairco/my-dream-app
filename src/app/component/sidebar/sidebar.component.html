@@ -8,6 +8,15 @@
           </button>
         </div>
       </div>
+      <div class="sidebar-menu" style="margin-top: 134px;">
+        <ul>
+            <li *ngFor="let menu of menus" [ngClass]="{'active': menu.active}">
+              <a *ngIf="menu.type !== 'header' && menu.hasOwnProperty('route')" (mouseenter)="toggleSidebar()">
+                <i class="{{menu.icon}}"></i>
+              </a>
+            </li>
+          </ul>
+      </div>
     </perfect-scrollbar>
   </div>
 </nav>

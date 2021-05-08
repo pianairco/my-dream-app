@@ -60,11 +60,17 @@
   z-index: 999;
   /*transition: right 0.3s ease;*/
 }
+
+.sidebar2 a {
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
 .sidebar a {
   text-decoration: none;
   transition: color 0.3s ease;
 }
-.sidebar .sidebar-content {
+.sidebar .sidebar-content, .sidebar2 .sidebar-content {
   max-height: calc(100% - 30px);
   height: calc(100% - 30px);
   overflow-y: auto;
@@ -127,7 +133,7 @@
 .sidebar .sidebar-content .sidebar-search .input-group-append .input-group-text {
   border-right: 0;
 }
-.sidebar .sidebar-content .sidebar-menu {
+.sidebar .sidebar-content .sidebar-menu, .sidebar2 .sidebar-content .sidebar-menu {
   padding-bottom: 10px;
 }
 .sidebar .sidebar-content .sidebar-menu .header-menu span {
@@ -136,7 +142,7 @@
   padding: 15px 20px 5px 20px;
   display: inline-block;
 }
-.sidebar .sidebar-content .sidebar-menu ul {
+.sidebar .sidebar-content .sidebar-menu ul, .sidebar2 .sidebar-content .sidebar-menu ul {
   list-style-type: none;
   padding: 0;
   margin: 0;
@@ -148,7 +154,14 @@
   position: relative;
   padding: 8px 30px 8px 20px;
 }
-.sidebar .sidebar-content .sidebar-menu ul li a i {
+.sidebar2 .sidebar-content .sidebar-menu ul li a {
+  display: inline-block;
+  width: 100%;
+  text-decoration: none;
+  position: relative;
+  padding: 8px 15px 8px 15px;
+}
+.sidebar .sidebar-content .sidebar-menu ul li a i, .sidebar2 .sidebar-content .sidebar-menu ul li a i {
   margin-left: 10px;
   font-size: 12px;
   width: 30px;
@@ -157,7 +170,7 @@
   text-align: center;
   border-radius: 4px;
 }
-.sidebar .sidebar-content .sidebar-menu ul li a:hover > i::before {
+.sidebar .sidebar-content .sidebar-menu ul li a:hover > i::before, .sidebar2 .sidebar-content .sidebar-menu ul li a:hover > i::before {
   display: inline-block;
   /*animation: swing ease-in-out 0.5s 1 alternate;*/
 }
@@ -166,7 +179,14 @@
   margin-top: 8px;
   margin-right: 5px;
 }
-.sidebar .sidebar-content .sidebar-menu .sidebar-dropdown > a:after {
+
+.sidebar2 .sidebar-content .sidebar-menu ul li a span.label, .sidebar2 .sidebar-content .sidebar-menu ul li a span.badge {
+  float: left;
+  margin-top: 8px;
+  margin-right: 5px;
+}
+
+.sidebar .sidebar-content .sidebar-menu .sidebar-dropdown > a:after, .sidebar2 .sidebar-content .sidebar-menu .sidebar-dropdown > a:after {
   font-family: "Font Awesome 5 Free";
   font-weight: 900;
   content: "\f105";
@@ -348,13 +368,27 @@
 .sidebar .sidebar-profile .user-info .user-role, .sidebar .sidebar-profile .user-info .user-status, .sidebar .sidebar-search input.search-menu, .sidebar .sidebar-search .input-group-text, .sidebar .sidebar-header > a, .sidebar .sidebar-menu ul li a, .sidebar .sidebar-footer > div > a, .sidebar #close-sidebar {
   color: #bdbdbd;
 }
+.sidebar2 .sidebar-profile .user-info .user-role, .sidebar2 .sidebar-profile .user-info .user-status, .sidebar2 .sidebar-search input.search-menu, .sidebar2 .sidebar-search .input-group-text, .sidebar2 .sidebar-header > a, .sidebar2 .sidebar-menu ul li a, .sidebar2 .sidebar-footer > div > a, .sidebar2 #close-sidebar {
+  color: #bdbdbd;
+}
 .sidebar .sidebar-menu ul li:hover > a, .sidebar .sidebar-menu .sidebar-dropdown.active > a, .sidebar .sidebar-profile .user-info, .sidebar .sidebar-header > a:hover, .sidebar .sidebar-footer > div > a:hover i, .sidebar #close-sidebar:hover {
+  color: #fff;
+}
+.sidebar2 .sidebar-menu ul li:hover > a, .sidebar2 .sidebar-menu .sidebar-dropdown.active > a, .sidebar2 .sidebar-profile .user-info, .sidebar2 .sidebar-header > a:hover, .sidebar2 .sidebar-footer > div > a:hover i, .sidebar2 #close-sidebar:hover {
   color: #fff;
 }
 .sidebar ul li:hover a i, .sidebar .sidebar-dropdown .sidebar-submenu li a:hover:before, .sidebar .sidebar-search input.search-menu:focus + span, .sidebar .sidebar-menu .sidebar-dropdown.active a i {
   color: #fff;
 }
+.sidebar2 ul li:hover a i, .sidebar2 .sidebar-dropdown .sidebar-submenu li a:hover:before, .sidebar2 .sidebar-search input.search-menu:focus + span, .sidebar2 .sidebar-menu .sidebar-dropdown.active a i {
+  color: #fff;
+}
 .sidebar .sidebar-menu ul li a i, .sidebar .sidebar-menu .sidebar-dropdown div, .sidebar .sidebar-search input.search-menu, .sidebar .sidebar-search .input-group-text {
+  background-color: #2b2b2b;
+  border: none;
+  margin-right: 1px;
+}
+.sidebar2 .sidebar-menu ul li a i, .sidebar2 .sidebar-menu .sidebar-dropdown div, .sidebar2 .sidebar-search input.search-menu, .sidebar2 .sidebar-search .input-group-text {
   background-color: #2b2b2b;
   border: none;
   margin-right: 1px;
