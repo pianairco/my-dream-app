@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import axios from "axios";
+import {BehaviorSubject, Observable} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,31 @@ export class AuthService {
   name: string;
   loginToken = null;
 
-  constructor() { }
+  private _userInfoSubject: any;
+  private _userInfo: UserInfo;
+
+  get userInfoSubject(): Observable<UserInfo> {
+    return this._userInfoSubject.asObservable();
+  }
+
+  get userInfo(): UserInfo {
+    return this._userInfo;
+  }
+
+  set userInfo(userInfo) {
+    this._userInfo = userInfo;
+    this._userInfoSubject.next(this._userInfo);
+  }
+
+  // setUserInfo(userInfo) {
+  //   this._userInfo = userInfo;
+  //   this._userInfoSubject.next(this._userInfo);
+  // }
+
+  constructor() {
+    this._userInfo = new UserInfo();
+    this._userInfoSubject = new BehaviorSubject<any>(this._userInfo);
+  }
 
   getBearerToken() {
     if(this.loginToken != null)
@@ -48,6 +73,8 @@ export class AuthService {
         }
       }).then(
         res => {
+          this.userInfo = res['data'];
+          // this.setUserInfo(res['data']);
           this.balance = res['data']['balance'];
           this.message = res['data']['message'];
           this.name = res['data']['name'];
@@ -63,4 +90,10 @@ export class AuthService {
   setLogout() {
     this.isLoggedIn = false;
   }
+}
+
+export class UserInfo {
+  balance: string;
+  message: string;
+  name: string;
 }

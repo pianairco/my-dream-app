@@ -32,6 +32,9 @@ export class RestService {
          }
        }).then(
          res => {
+           this.authService.getUserInfo().then(res => {
+           }, err => {
+           });
            resolve(randomUID);
          }, err => {
            console.log(err)
