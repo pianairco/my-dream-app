@@ -8,32 +8,24 @@
 <kendo-grid [data]="gridData" [height]="400" class="k-rtl"
             [filter]="state.filter"
             [filterable]="false"
-            [pageable]="true" [pageSize]="10">
+            [pageable]="true" [skip]="skip" [pageSize]="model.pageSize" (pageChange)="changePage($event)">
   <ng-template kendoGridToolbarTemplate>
     <button type="button" kendoGridExcelCommand icon="file-excel">دریافت فایل اکسل</button>
   </ng-template>
-  <kendo-grid-column field="Discontinued" title="" width="20" class="k-rtl" [filterable]="false">
+  <kendo-grid-column field="Discontinued" title="" width="10" class="k-rtl" [filterable]="false">
     <ng-template kendoGridCellTemplate let-dataItem>
       <input type="checkbox" [checked]="dataItem.Discontinued"/>
     </ng-template>
   </kendo-grid-column>
-  <kendo-grid-column field="ProductID" title="" width="15" class="k-rtl" [filterable]="false">
+  <kendo-grid-column field="recipient" title="شماره گیرنده" width="40" class="k-rtl" [filterable]="false">
   </kendo-grid-column>
-  <kendo-grid-column field="name" title="نام" width="40" class="k-rtl" [filterable]="false">
+  <kendo-grid-column field="status" title="وضعیت" width="20" class="k-rtl" [filterable]="false">
   </kendo-grid-column>
-  <kendo-grid-column field="lastName" title="نام خانوادگی" width="50" class="k-rtl" [filterable]="false">
+  <kendo-grid-column field="text" title="متن" width="30" class="k-rtl" [filterable]="false">
   </kendo-grid-column>
-  <kendo-grid-column field="company" title="شرکت" width="40" class="k-rtl" [filterable]="false">
+  <kendo-grid-column field="time" title="زمان" width="20" class="k-rtl" [filterable]="false">
   </kendo-grid-column>
-  <kendo-grid-column field="tell" title="موبایل" width="50" class="k-rtl" [filterable]="false">
-  </kendo-grid-column>
-  <kendo-grid-column field="email" title="ایمیل" width="40" class="k-rtl" [filterable]="false">
-  </kendo-grid-column>
-  <kendo-grid-column field="Gender" title="جنسیت" width="40" class="k-rtl" [filterable]="false">
-  </kendo-grid-column>
-  <kendo-grid-column field="description" title="شرح" width="40" class="k-rtl" [filterable]="false">
-  </kendo-grid-column>
-  <kendo-grid-column field="Options" title="گزینه ها" width="40" class="k-rtl" [filterable]="false">
+  <kendo-grid-column field="uid" title="شماره پیگیری" width="20" class="k-rtl" [filterable]="false">
   </kendo-grid-column>
   <kendo-grid-excel fileName="Products.xlsx"></kendo-grid-excel>
 </kendo-grid>

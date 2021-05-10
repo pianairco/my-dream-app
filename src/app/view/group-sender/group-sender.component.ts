@@ -30,8 +30,8 @@ export class GroupSenderComponent implements OnInit {
         new OptionConfig("09128899098", "09128899098", false),
         new OptionConfig("09128899093", "09128899093", false)
       ], null),
-      new InputConfig('text-array', 'شماره گیرندگان', 'deliveries', null,null,null, null),
-      new InputConfig('textarea', 'متن پیامک', 'bodyMessage', null,null, null,null),
+      new InputConfig('text-array', 'شماره گیرندگان', 'recipient', null,null,null, null),
+      new InputConfig('textarea', 'متن پیامک', 'text', null,null, null,null),
       // new InputConfig('date', 'تاریخ', 'date', null, 'outline', null,null),
       new InputConfig('radio', 'نحوه وارد کردن مخاطبین', 'sendType', null,null, null,[
         new RadioConfig("وارد کردن مستقیم شماره ها", "1", null),
@@ -100,17 +100,15 @@ export class GroupSenderComponent implements OnInit {
     // }
 
     console.log(this.obj)
-    console.log(this.obj['title'])
-    console.log(this.obj['bodyMessage'])
-    console.log(this.obj['sender'])
-    console.log(this.obj['deliveries']);
+    console.log(this.obj['text'])
+    console.log(this.obj['recipient']);
 
 
-    if(!this.obj['bodyMessage']) {
+    if(!this.obj) {
       this.dialog.open(DialogDataExampleDialog, {
         data: {
           title: 'error',
-          message: 'لطفا نامکاربری وکلمه عبور را وارد نمایید.'
+          message: 'لطفا نام کاربری وکلمه عبور را وارد نمایید.'
         }
       });
     } else {

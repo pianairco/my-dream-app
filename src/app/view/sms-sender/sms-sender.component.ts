@@ -4,7 +4,6 @@ import {RestService} from "../../service/rest.service";
 import {DialogDataExampleDialog} from "../login/login.component";
 import {MatDialog} from "@angular/material/dialog";
 import {MatSnackBar} from "@angular/material/snack-bar";
-import {AuthService} from "../../service/auth.service";
 
 @Component({
   selector: 'app-sms-sender',
@@ -26,7 +25,6 @@ export class SmsSenderComponent implements OnInit {
   constructor(
     private _snackBar: MatSnackBar,
     public dialog: MatDialog,
-    private authService: AuthService,
     private restService: RestService) { }
 
   ngOnInit(): void {

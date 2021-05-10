@@ -10,7 +10,8 @@ import {MAT_DIALOG_DATA} from "@angular/material/dialog";
 })
 export class RestService {
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService) {
+  }
 
   getRandomUID(min, max) {
     min = Math.ceil(min);
@@ -20,28 +21,32 @@ export class RestService {
 
   sendSms(model): Promise<number> {
 
-     return new Promise((resolve, reject) => {
-       let randomUID = this.getRandomUID(10000000, 90000000);
-       axios.post('/services/dashboard/enqueue', {
-         'recipient': model['recipient'],
-         'text': model['text'],
-         'uid': randomUID
-       }, {
-         headers: {
-           'Authorization': 'Bearer ' + this.authService.getBearerToken()
-         }
-       }).then(
-         res => {
-           this.authService.getUserInfo().then(res => {
-           }, err => {
-           });
-           resolve(randomUID);
-         }, err => {
-           console.log(err)
-           reject(err);
-         }
-       );
-     });
+    return new Promise((resolve, reject) => {
+      let randomUID = this.getRandomUID(10000000, 90000000);
+      axios.post('/services/dashboard/enqueue', {
+        "messages": [
+          {
+            'recipient': model['recipient'],
+            'text': model['text'],
+            'uid': randomUID
+          }
+        ]
+      }, {
+        headers: {
+          'Authorization': 'Bearer ' + this.authService.getBearerToken()
+        }
+      }).then(
+        res => {
+          this.authService.getUserInfo().then(res => {
+          }, err => {
+          });
+          resolve(randomUID);
+        }, err => {
+          console.log(err)
+          reject(err);
+        }
+      );
+    });
 
     // @ts-ignore
 
@@ -50,10 +55,16 @@ export class RestService {
   sendGroupSms(model): Promise<number> {
     return new Promise((resolve, reject) => {
       let randomUID = this.getRandomUID(10000000, 90000000);
+      let messages = [];
+      for (let m of model['recipient'].split(/[\r\n]+/)) {
+        messages.push({
+          'recipient': m,
+          'text': model['text'],
+          'uid': randomUID
+        })
+      }
       axios.post('/services/dashboard/enqueue', {
-        'recipient': model['deliveries'],
-        'text': model['bodyMessage'],
-        'uid': randomUID
+        "messages": messages
       }, {
         headers: {
           'Authorization': 'Bearer ' + this.authService.getBearerToken()
@@ -62,12 +73,32 @@ export class RestService {
         res => {
           resolve(randomUID);
         }, err => {
-          console.log(err)
+          console.log(err);
           reject(err);
         }
       );
     });
   }
+
+  reporting(model): Promise<number> {
+
+    return new Promise((resolve, reject) => {
+
+      axios.post('/services/dashboard/report', model, {
+        headers: {
+          'Authorization': 'Bearer ' + this.authService.getBearerToken()
+        }
+      }).then(
+        res => {
+          resolve(res['data']);
+        }, err => {
+          console.log(err);
+          reject(err);
+        }
+      );
+    });
+  }
+
 }
 
 

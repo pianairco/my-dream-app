@@ -155,7 +155,7 @@ export class SidebarService {
       icon: 'fa fa-folder',
       active: false,
       type: 'simple',
-      route: '/login'
+      route: ''
     }
   ];
   constructor() { }
