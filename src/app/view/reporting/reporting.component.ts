@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import {products} from "../book/products";
 import {State} from "@progress/kendo-data-query";
-import {ExcelService} from "@progress/kendo-angular-grid";
+import {DataStateChangeEvent, ExcelService, GridDataResult} from "@progress/kendo-angular-grid";
 import {L10N_PREFIX, LocalizationService} from "@progress/kendo-angular-l10n";
 import {RestService} from "../../service/rest.service";
 import * as moment from "jalali-moment";
+import {ReportService} from "../../service/report.service";
+import {Observable} from "rxjs";
 
 @Component({
   selector: 'app-reporting',
@@ -20,16 +22,8 @@ export class ReportingComponent implements OnInit {
 
   public state: State = {
     skip: 0,
-    take: 5,
-
-    // Initial filter descriptor
-    filter: {
-      logic: 'and',
-      filters: [{ field: 'lastName', operator: 'contains', value: '' }]
-    }
+    take: 10
   };
-
-  skip: number = 0;
 
   model: RequestReportDto = {
     start: 0,
@@ -38,35 +32,28 @@ export class ReportingComponent implements OnInit {
     end: 0,
   };
 
-  gridData: ResponseReportDto[];
-
-
-  constructor(private restService: RestService) { }
-
-  ngOnInit(): void {
-  }
-
-  changePage(event) {
-    console.log(event)
-    event.take;
-    this.skip = event.skip;
-    this.model.page = event.skip / this.model.pageSize;
-  }
-
   startDate = ''
   startTime = ''
   endDate = ''
   endTime = ''
 
-  // dateChange(event: any, dateInput: any,picker:any) {
-  //   var faDate = dateInput.value;
-  //   console.log(faDate)
-  //   moment.locale('fa');
-  //   var enDateMomentFormat  = moment(faDate).locale('en');
-  //   var enDate = new Date(enDateMomentFormat.toLocaleString());
-  //   picker._validSelected = enDate;
-  //   picker.startAt = enDate;
-  // }
+  public view: Observable<GridDataResult>;
+
+  constructor(private restService: RestService, public reportService: ReportService) {
+    this.view = reportService.asObservable();
+    this.reportService.query(this.state, this.model);
+  }
+
+  ngOnInit(): void {
+    this.view.subscribe(res => {
+      console.log(res)
+    })
+  }
+
+  public dataStateChange(state: DataStateChangeEvent): void {
+    this.state = state;
+    this.reportService.query(state, this.model);
+  }
 
   report() {
     let m1 = moment(this.startDate).format();
@@ -77,13 +64,16 @@ export class ReportingComponent implements OnInit {
 
     console.log(m1, m2)
     console.log(this.model.start, this.model.end)
+    console.log(this.state)
 
-    this.restService.reporting(this.model).then(res => {
-      res['count'];
-      res['total'];
-      this.gridData = res['messages'];
-    }, err => {
-    });
+    this.reportService.query(this.state, this.model);
+
+    // this.restService.reporting(this.model).then(res => {
+    //   res['count'];
+    //   res['total'];
+    //   this.gridData = res['messages'];
+    // }, err => {
+    // });
   }
 }
 

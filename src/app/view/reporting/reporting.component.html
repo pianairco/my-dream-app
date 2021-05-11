@@ -33,13 +33,17 @@
       <input type="time" matInput [(ngModel)]="endTime">
     </mat-form-field>
   </div>
-  <div class="col col-12">
+  <div class="col col-12 mb-3">
     <button class="btn btn-outline-success" (click)="report()">جستجو</button>
   </div>
-<kendo-grid [data]="gridData" [height]="400" class="k-rtl"
-            [filter]="state.filter"
-            [filterable]="false"
-            [pageable]="true" [pageSize]="10">
+<kendo-grid class="k-rtl"
+            [data]="view | async"
+            scrollable="none"
+            [loading]="reportService.loading"
+            [pageable]="true"
+            [skip]="state.skip"
+            [pageSize]="state.take"
+            (dataStateChange)="dataStateChange($event)">
   <ng-template kendoGridToolbarTemplate>
     <button type="button" kendoGridExcelCommand icon="file-excel">دریافت فایل اکسل</button>
   </ng-template>
