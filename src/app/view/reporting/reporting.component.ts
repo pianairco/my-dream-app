@@ -44,35 +44,6 @@ export class ReportingComponent implements OnInit {
   constructor(private restService: RestService) { }
 
   ngOnInit(): void {
-    this.gridData = [
-      {
-        recipient: '1',
-        status: 1,
-        text: '1',
-        time: '1',
-        uid: 1,
-      },
-      {
-        recipient: '2',
-        status: 2,
-        text: '2',
-        time: '2',
-        uid: 2,
-      },
-      {
-        recipient: '3',
-        status: 3,
-        text: '3',
-        time: '3',
-        uid: 3,
-      }
-    ];
-    // this.restService.reporting(this.model).then(res => {
-    //   res['count'];
-    //   res['total'];
-    //   this.gridData = res['messages'];
-    // }, err => {
-    // });
   }
 
   changePage(event) {
@@ -80,13 +51,39 @@ export class ReportingComponent implements OnInit {
     event.take;
     this.skip = event.skip;
     this.model.page = event.skip / this.model.pageSize;
+  }
 
-    // this.restService.reporting(this.model).then(res => {
-    //   res['count'];
-    //   res['total'];
-    //   this.gridData = res['messages'];
-    // }, err => {
-    // });
+  startDate = ''
+  startTime = ''
+  endDate = ''
+  endTime = ''
+
+  // dateChange(event: any, dateInput: any,picker:any) {
+  //   var faDate = dateInput.value;
+  //   console.log(faDate)
+  //   moment.locale('fa');
+  //   var enDateMomentFormat  = moment(faDate).locale('en');
+  //   var enDate = new Date(enDateMomentFormat.toLocaleString());
+  //   picker._validSelected = enDate;
+  //   picker.startAt = enDate;
+  // }
+
+  report() {
+    let m1 = moment(this.startDate).format();
+    this.model.start = new Date(moment(m1.substr(0, 10) + 'T' + this.startTime + ':00').format()).getTime()
+
+    let m2 = moment(this.endDate).format();
+    this.model.end = new Date(moment(m2.substr(0, 10) + 'T' + this.startTime + ':00').format()).getTime()
+
+    console.log(m1, m2)
+    console.log(this.model.start, this.model.end)
+
+    this.restService.reporting(this.model).then(res => {
+      res['count'];
+      res['total'];
+      this.gridData = res['messages'];
+    }, err => {
+    });
   }
 }
 
