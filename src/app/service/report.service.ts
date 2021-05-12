@@ -6,6 +6,7 @@ import {GridDataResult} from "@progress/kendo-angular-grid";
 import { map, tap } from 'rxjs/operators';
 import {toODataString} from "@progress/kendo-data-query";
 import {RequestReportDto} from "../view/reporting/reporting.component";
+import {RestService} from "./rest.service";
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +17,7 @@ export class ReportService extends BehaviorSubject<GridDataResult> {
   gridDataResultSubject: any;
   gridDataResult: GridDataResult = {data: [], total: 0};
 
-  constructor(private authService: AuthService) {
+  constructor(private authService: AuthService, private restService: RestService) {
     super(null);
     this.gridDataResultSubject = new BehaviorSubject<any>(this.gridDataResult);
   }
@@ -30,7 +31,18 @@ export class ReportService extends BehaviorSubject<GridDataResult> {
     const queryStr = '${toODataString(state)}&$count=true';
     this.loading = true;
 
-    axios.get(this.BASE_URL + '/report', {
+    this.restService.reporting(requestReportDto).then(res => {
+      let obj = <GridDataResult> {
+        data: res['messages'],
+        total: res['total']
+      };
+      this.loading = false;
+      this.gridDataResultSubject.next(obj);
+    }, err => {
+      this.loading = false;
+    });
+
+    /*axios.get(this.BASE_URL + '/report', {
       headers: {
         'Authorization': 'Bearer ' + this.authService.getBearerToken()
       }
@@ -44,7 +56,7 @@ export class ReportService extends BehaviorSubject<GridDataResult> {
       this.gridDataResultSubject.next(obj);
     }, err => {
       this.loading = false;
-    });
+    });*/
     return this.gridDataResultSubject.asObservable();
   }
 }
