@@ -36,12 +36,13 @@ export class ReportingComponent implements OnInit {
   startTime = ''
   endDate = ''
   endTime = ''
-
+  startDateTime: moment.Moment = null;
+  endDateTime: moment.Moment = null;
   public view: Observable<GridDataResult>;
 
   constructor(private restService: RestService, public reportService: ReportService) {
     this.view = reportService.asObservable();
-    this.reportService.query(this.state, this.model);
+    // this.reportService.query(this.state, this.model);
   }
 
   ngOnInit(): void {
@@ -50,19 +51,39 @@ export class ReportingComponent implements OnInit {
     })
   }
 
+  datePickerConfig = {
+    drops: 'down',
+    format: 'YYYY/MM/DD-HH:mm:ss',
+    locale: 'fa'
+  }
+
+  startChange(e) {
+  }
+
   public dataStateChange(state: DataStateChangeEvent): void {
     this.state = state;
     this.reportService.query(state, this.model);
   }
 
   report() {
-    let m1 = moment(this.startDate).format();
-    this.model.start = new Date(moment(m1.substr(0, 10) + 'T' + this.startTime + ':00').format()).getTime()
+    if(this.startDateTime == null) {
+      console.log("start date time is mandatory")
+      return;
+    } else if(this.endDateTime == null) {
+      console.log("end date time is mandatory")
+      return;
+    }
 
-    let m2 = moment(this.endDate).format();
-    this.model.end = new Date(moment(m2.substr(0, 10) + 'T' + this.startTime + ':00').format()).getTime()
+    // let m1 = moment(this.startDate).format();
+    this.model.start = new Date(this.startDateTime.locale('en').format()).getTime();
+    // this.model.start = new Date(moment(m1.substr(0, 10) + 'T' + this.startTime + ':00').format()).getTime()
 
-    console.log(m1, m2)
+    // let m2 = moment(this.endDate).format();
+    this.model.end = new Date(this.endDateTime.locale('en').format()).getTime()
+    // this.model.end = new Date(moment(m2.substr(0, 10) + 'T' + this.startTime + ':00').format()).getTime()
+
+    console.log(this.startDateTime, this.endDateTime)
+    // console.log(m1, m2)
     console.log(this.model.start, this.model.end)
     console.log(this.state)
 

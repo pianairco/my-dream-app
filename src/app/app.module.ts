@@ -47,6 +47,7 @@ import {SendContactOldComponent} from "./view/send-contact-old/send-contact-old.
 import {ReportingComponent} from './view/reporting/reporting.component';
 import {MatSnackBarModule} from "@angular/material/snack-bar";
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
+import {DpDatePickerModule} from "ng2-jalali-date-picker";
 
 // import {MatDatepickerModulePersian} from '@angular-persian/material-date-picker/src';
 
@@ -132,7 +133,8 @@ const MY_DATE_FORMATS = {
     BsDropdownModule.forRoot(),
     PerfectScrollbarModule,
     ExcelModule,
-    RowFilterModule
+    RowFilterModule,
+    DpDatePickerModule
   ],
   exports: [
     MatFormFieldModule,

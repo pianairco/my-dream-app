@@ -47,6 +47,7 @@
     "bootstrap": "^5.0.0-beta3",
     "jalali-moment": "^3.3.10",
     "mat-file-upload": "^11.1.2",
+    "ng2-jalali-date-picker": "^2.4.2",
     "ngx-bootstrap": "^6.2.0",
     "ngx-perfect-scrollbar": "^10.1.0",
     "popper.js": "^1.16.1",

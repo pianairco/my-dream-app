@@ -6,6 +6,27 @@
   </div>
 <div class="row align-items-start my-form">
   <div class="col col-6">
+    <dp-date-picker
+      dir="rtl"
+      [config]="datePickerConfig"
+      [(ngModel)]="startDateTime"
+      (onChange)="startChange($event)"
+      mode="daytime"
+      placeholder="تاریخ و زمان شروع"
+      theme="dp-material">
+    </dp-date-picker>
+  </div>
+  <div class="col col-6">
+    <dp-date-picker
+      dir="rtl"
+      [(ngModel)]="endDateTime"
+      [config]="datePickerConfig"
+      mode="daytime"
+      placeholder="تاریخ و زمان پایان"
+      theme="dp-material">
+    </dp-date-picker>
+  </div>
+  <!--<div class="col col-6">
     <mat-form-field appearance="outline">
       <input #dateInput matInput [matDatepicker]="picker1" [(ngModel)]="startDate"
               placeholder="تاریخ شروع">
@@ -32,8 +53,8 @@
       <mat-label>ساعت پایان</mat-label>
       <input type="time" matInput [(ngModel)]="endTime">
     </mat-form-field>
-  </div>
-  <div class="col col-12 mb-3">
+  </div>-->
+  <div class="col col-12 mb-3 mt-3">
     <button class="btn btn-outline-success" (click)="report()">جستجو</button>
   </div>
 <kendo-grid class="k-rtl"
