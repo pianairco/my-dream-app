@@ -11,6 +11,7 @@ import {MatSnackBar} from "@angular/material/snack-bar";
   styleUrls: ['./sms-sender.component.css']
 })
 export class SmsSenderComponent implements OnInit {
+  wait = false;
 
   model: {
     text: string;
@@ -39,17 +40,20 @@ export class SmsSenderComponent implements OnInit {
   }
 
   send() {
+    this.wait = true;
     if(!this.model.text) {
       this.dialog.open(DialogDataExampleDialog, {
         data: {
-          title: 'error',
-          message: 'لطفا نامکاربری وکلمه عبور را وارد نمایید.'
+          title: 'خطا',
+          message: 'لطفا نام کاربری وکلمه عبور را وارد نمایید.'
         }
       });
     } else {
       this.restService.sendSms(this.model).then(res => {
-        this._snackBar.open('sms sent successfully', "success", {duration: 5 * 1000});
+        this._snackBar.open('پیامک با موفقیت ارسال گردید', "پیغام", {duration: 5 * 1000});
+        this.wait = false;
       }, err => {
+        this.wait = false;
       });
     }
   }

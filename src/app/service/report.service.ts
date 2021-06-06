@@ -17,6 +17,7 @@ export class ReportService extends BehaviorSubject<GridDataResult> {
   gridDataResultSubject: any;
   gridDataResult: GridDataResult = {data: [], total: 0};
 
+
   constructor(private authService: AuthService, private restService: RestService) {
     super(null);
     this.gridDataResultSubject = new BehaviorSubject<any>(this.gridDataResult);
@@ -28,7 +29,10 @@ export class ReportService extends BehaviorSubject<GridDataResult> {
   }
 
   protected fetch(state: any, requestReportDto: RequestReportDto): Observable<GridDataResult> {
-    const queryStr = '${toODataString(state)}&$count=true';
+    requestReportDto.page = (state.skip / state.take);
+    if(requestReportDto.page< 1) requestReportDto.page = 1;
+    requestReportDto.pageSize = state.take;
+    console.log(requestReportDto);
     this.loading = true;
 
     this.restService.reporting(requestReportDto).then(res => {

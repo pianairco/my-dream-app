@@ -10,7 +10,7 @@
 }
 
 *:not(.material-icons, .fa, .far, .fas, .fab, .k-icon) {
-  font-family: IRANSansWeb;
+  font-family: IRANSansWeb !important;
 }
 
 html, body { height: 100%; }
@@ -30,7 +30,7 @@ span.k-i-file-excel {
   padding-top: 25px;
   padding-bottom: 10px;
   font-weight: bold;
-  background-color: #aacff3;
+  background-color: #c9c3c3;
   margin-top: 25px;
   /*border: 2px solid gray;*/
   border-bottom: none;
@@ -40,7 +40,7 @@ span.k-i-file-excel {
 
 .my-form {
   padding: 20px;
-  border: 2px solid #aacff3;
+  border: 2px solid #c9c3c3;
   border-radius: 25px;
   background-color: white;
   margin-bottom: 10px;

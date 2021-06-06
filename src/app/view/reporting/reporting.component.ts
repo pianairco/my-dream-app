@@ -27,15 +27,15 @@ export class ReportingComponent implements OnInit {
 
   model: RequestReportDto = {
     start: 0,
-    page: 1,
-    pageSize: 4,
+    page:1,
+    pageSize: 100,
     end: 0,
   };
 
-  startDate = ''
-  startTime = ''
-  endDate = ''
-  endTime = ''
+  startDate = '';
+  startTime = '';
+  endDate = '';
+  endTime = '';
   startDateTime: moment.Moment = null;
   endDateTime: moment.Moment = null;
   public view: Observable<GridDataResult>;
@@ -55,7 +55,7 @@ export class ReportingComponent implements OnInit {
     drops: 'down',
     format: 'YYYY/MM/DD-HH:mm:ss',
     locale: 'fa'
-  }
+  };
 
   startChange(e) {
   }
@@ -64,6 +64,7 @@ export class ReportingComponent implements OnInit {
     this.state = state;
     this.reportService.query(state, this.model);
   }
+
 
   report() {
     if(this.startDateTime == null) {

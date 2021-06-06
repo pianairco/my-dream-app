@@ -1,53 +1,61 @@
 <div class="container">
   <div class="row align-items-start my-header justify-content-md-center">
     <div class="col col-md-auto text-center">
-      <h1 style="color: blue">پنل ارسال پیامک</h1>
+      <h1 style="color: #082843">پنل ارسال پیامک</h1>
     </div>
   </div>
 
-  <div class="row align-items-start my-form ">
-    <div class="col col-6 text-center">
-      <mat-form-field appearance="outline" style="width:300px;">
-        <mat-label>شماره فرستنده</mat-label>
-        <mat-select [(ngModel)]="model['senderNumber']">
-          <mat-option *ngFor="let sender of smsSenders"
-                      [value]="sender">{{sender}}</mat-option>
-        </mat-select>
-      </mat-form-field>
-    </div>
-    <div class="col col-6 text-center">
-      <p>
-        <mat-form-field appearance="outline" style="width:300px;">
-          <mat-label>شماره گیرندگان</mat-label>
-          <textarea matInput [rows]="10" [(ngModel)]="model['recipient']"></textarea>
-          <mat-hint align="start">لطفا در هر خط یک شماره تلفن وارد نمایید</mat-hint>
+  <div class="row align-items-start my-form justify-content-center">
+  <div class="col col-12">
+    <div class="row align-items-start justify-content-center">
+      <div class="col col-12 col-md-6 text-center">
+        <mat-form-field appearance="outline" style="width:100%;">
+          <mat-label>شماره فرستنده</mat-label>
+          <mat-select [(ngModel)]="model['senderNumber']">
+            <mat-option *ngFor="let sender of smsSenders"
+                        [value]="sender">{{sender}}</mat-option>
+          </mat-select>
         </mat-form-field>
-      </p>
-    </div>
-    <div class="col col-6 text-center">
-      <div class="col-12 text-center pt-4">
-        <a href="#">متن پیش نویس</a>
       </div>
-      <p>
-        <mat-form-field appearance="outline" style="width: 300px;">
-          <mat-label>متن پیامک</mat-label>
-          <textarea matInput [rows]="10"
-                    [(ngModel)]="model['text']"></textarea>
-          <mat-hint align="end">{{model['text'].length || 0}}/80</mat-hint>
-          <mat-hint align="start">{{model['text'].length < 80 ? 'صفحه 1' : 'صفحه ' + ceil(model['text'].length / 80)}}</mat-hint>
-        </mat-form-field>
-      </p>
-
     </div>
+    <div class="row align-items-start justify-content-center">
+      <div class="col col-12 col-md-6 text-center">
+        <p>
+          <mat-form-field appearance="outline" style="width:100%;">
+            <mat-label>شماره گیرندگان</mat-label>
+            <textarea matInput [rows]="10" [(ngModel)]="model['recipient']"></textarea>
+            <mat-hint align="start">لطفا در هر خط یک شماره تلفن وارد نمایید</mat-hint>
+          </mat-form-field>
+        </p>
+      </div>
+    </div>
+    <div class="row align-items-start justify-content-center">
+      <div class="col col-12 col-md-6 text-center">
+        <div class="col-12 text-center pt-4">
+          <a href="#">متن پیش نویس</a>
+        </div>
+        <p>
+          <mat-form-field appearance="outline" style="width: 100%;">
+            <mat-label>متن پیامک</mat-label>
+            <textarea matInput [rows]="10"
+                      [(ngModel)]="model['text']"></textarea>
+            <mat-hint align="end">{{model['text'].length || 0}}/80</mat-hint>
+            <mat-hint align="start">{{model['text'].length < 80 ? 'صفحه 1' : 'صفحه ' + ceil(model['text'].length / 80)}}</mat-hint>
+          </mat-form-field>
+        </p>
 
-    <section>
-      <div class="container my-4 ">
-        <div class="btn-group" role="group" aria-label="Basic example">
-          <button style="width: 150px;" class="btn btn-outline-primary" mat-raised-button color="primary" (click)="send()">ارسال</button>
-          <!--      <button class="btn btn-primary" mat-raised-button color="primary">مرحله قبل</button>-->
-          <!--      <button class="btn btn-primary" mat-raised-button color="primary">مرحله بعد</button>-->
+      </div>
+    </div>
+    <div class="row align-items-start justify-content-center">
+      <div class="col col-12 col-md-6">
+        <div class="d-grid gap-2">
+          <button class="btn btn-outline-primary" mat-raised-button color="primary" (click)="send()" [disabled]="wait">
+            <mat-spinner  *ngIf="wait"></mat-spinner>
+            <span *ngIf="!wait">ارسال</span>
+          </button>
         </div>
       </div>
-    </section>
+    </div>
+  </div>
   </div>
 </div>

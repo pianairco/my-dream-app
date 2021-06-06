@@ -107,13 +107,13 @@ export class GroupSenderComponent implements OnInit {
     if(!this.obj) {
       this.dialog.open(DialogDataExampleDialog, {
         data: {
-          title: 'error',
+          title: 'خطا',
           message: 'لطفا نام کاربری وکلمه عبور را وارد نمایید.'
         }
       });
     } else {
       this.restService.sendGroupSms(this.obj).then(res => {
-        this._snackBar.open('sms sent successfully', "success", {duration: 5 * 1000});
+        this._snackBar.open('پیامک با موفقیت ارسال گردید.', "پیغام", {duration: 5 * 1000});
       }, err => {
       });
     }
