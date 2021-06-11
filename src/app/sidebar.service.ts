@@ -132,7 +132,7 @@ export class SidebarService {
     },
     {
       title: 'ارسال گروهی',
-      icon: 'fa fa-calender',
+      icon: 'far fa-share-square',
       active: false,
       type: 'simple',
       route: '/home/group-sender'

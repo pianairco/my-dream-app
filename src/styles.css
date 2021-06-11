@@ -26,22 +26,35 @@ span.k-i-file-excel {
   border-width: 3px !important;
 }
 
+.k-i-file-excel {
+  padding-right: 16px !important;
+}
+
+.mat-form-field-appearance-outline .mat-form-field-outline {
+  color: gray;
+}
+/* Font color */
+input.mat-input-element {
+  color: white;
+}
+
 .my-header {
   padding-top: 25px;
   padding-bottom: 10px;
   font-weight: bold;
-  background-color: #c9c3c3;
+  background-color: inherit;
+  /*background-color: #c9c3c3;*/
   margin-top: 25px;
   /*border: 2px solid gray;*/
-  border-bottom: none;
+  border-bottom: solid 1px #c9c3c3;
   border-top-left-radius: 25px;
   border-top-right-radius: 25px;
 }
 
 .my-form {
   padding: 20px;
-  border: 2px solid #c9c3c3;
-  border-radius: 25px;
+  /*border: 2px solid #c9c3c3;
+  border-radius: 25px;*/
   background-color: white;
   margin-bottom: 10px;
   border-top: none;
