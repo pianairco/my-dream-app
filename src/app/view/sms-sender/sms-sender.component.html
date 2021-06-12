@@ -9,9 +9,9 @@
   <div class="col col-12">
     <div class="row align-items-start justify-content-center">
       <div class="col col-12 col-md-6 text-center">
-        <mat-form-field appearance="outline" style="width:100%;">
+        <mat-form-field  appearance="outline" style="width:100%;">
           <mat-label>شماره فرستنده</mat-label>
-          <mat-select [(ngModel)]="model['senderNumber']">
+          <mat-select required [(ngModel)]="model['senderNumber']">
             <mat-option *ngFor="let sender of smsSenders"
                         [value]="sender">{{sender}}</mat-option>
           </mat-select>
@@ -23,7 +23,7 @@
         <p>
           <mat-form-field appearance="outline" style="width:100%;">
             <mat-label>شماره گیرندگان</mat-label>
-            <textarea matInput [rows]="10" [(ngModel)]="model['recipient']"></textarea>
+            <textarea required matInput [rows]="10" [(ngModel)]="model['recipient']"></textarea>
             <mat-hint align="start">لطفا در هر خط یک شماره تلفن وارد نمایید</mat-hint>
           </mat-form-field>
         </p>
@@ -37,7 +37,7 @@
         <p>
           <mat-form-field appearance="outline" style="width: 100%;">
             <mat-label>متن پیامک</mat-label>
-            <textarea matInput [rows]="10"
+            <textarea required matInput [rows]="10"
                       [(ngModel)]="model['text']"></textarea>
             <mat-hint align="end">{{model['text'].length || 0}}/80</mat-hint>
             <mat-hint align="start">{{model['text'].length < 80 ? 'صفحه 1' : 'صفحه ' + ceil(model['text'].length / 80)}}</mat-hint>
