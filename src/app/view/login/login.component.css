@@ -6,3 +6,14 @@
   padding-bottom: 2px !important;
   margin-bottom: 2px !important;
 }
+
+.modal-background {
+  background-color: aquamarine;
+  background-size: cover;
+  background-image: url('../../../assets/sms-login.png');
+}
+
+.modal-dialog {
+  padding-right: 50px;
+  padding-left: 50px;
+}
