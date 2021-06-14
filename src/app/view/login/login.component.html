@@ -11,7 +11,7 @@
   <div #demoModal class="modal fade" id="exampleModal"
        [style.display]="showModal ? 'block' : 'none'"
        [class.show]="showModal"
-       tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" >
+       tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" style="alignment: center" >
       <div class="modal-content p-0" style="border-radius: 8px; width: 400px;alignment: center;">
         <div class="modal-header pb-0" style="border-bottom: none">
@@ -72,7 +72,7 @@
                   <div class="col-12 k-text-right">
                     <button mat-raised-button color="primary" (click)="login()" [disabled]="wait" style="height: 43px">
                       <mat-spinner  *ngIf="wait"></mat-spinner>
-                      <span *ngIf="!wait">ورود</span>
+                      <span *ngIf="!wait">ورود به پنل پیامک</span>
                     </button>
                     <button mat-button color="primary" style="height: 43px; float: left">
                       <span>رمز خود را فراموش کرده اید؟</span>

@@ -1,0 +1,14 @@
+.modal {
+  z-index: 999;
+}
+
+.mat-form-field-wrapper {
+  padding-bottom: 2px !important;
+  margin-bottom: 2px !important;
+}
+
+.modal-background {
+  background-size: cover;
+  background-image: url('../../../assets/img/Bg7.jpg');
+}
+

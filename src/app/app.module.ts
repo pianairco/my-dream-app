@@ -48,6 +48,8 @@ import {ReportingComponent} from './view/reporting/reporting.component';
 import {MatSnackBarModule} from "@angular/material/snack-bar";
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 import {DpDatePickerModule} from "ng2-jalali-date-picker";
+import { Login1Component } from './view/login1/login1.component';
+import {Login2Component} from "./view/login2/login2.component";
 
 // import {MatDatepickerModulePersian} from '@angular-persian/material-date-picker/src';
 
@@ -100,7 +102,9 @@ const MY_DATE_FORMATS = {
     NewComponent,
     QuickAddComponent,
     AddFileComponent,
-    ReportingComponent
+    ReportingComponent,
+    Login1Component,
+    Login2Component
   ],
   imports: [
     BrowserModule,

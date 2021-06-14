@@ -150,7 +150,22 @@ export class SidebarService {
       active: false,
       type: 'simple',
       route: '/home/reporting'
-    },{
+    },
+    {
+      title: 'ورود',
+      icon: 'far fa-share-square',
+      active: false,
+      type: 'simple',
+      route: '/home/login1'
+    },
+    {
+      title: 'ورود2',
+      icon: 'far fa-share-square',
+      active: false,
+      type: 'simple',
+      route: '/home/login2'
+    },
+    {
       title: 'خروج',
       icon: 'fa fa-folder',
       active: false,

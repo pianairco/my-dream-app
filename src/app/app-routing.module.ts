@@ -16,6 +16,8 @@ import {NewComponent} from "./view/new/new.component";
 import {QuickAddComponent} from "./view/quick-add/quick-add.component";
 import {AddFileComponent} from "./view/add-file/add-file.component";
 import {ReportingComponent} from "./view/reporting/reporting.component";
+import {Login1Component} from "./view/login1/login1.component";
+import {Login2Component} from "./view/login2/login2.component";
 
 const routes: Routes = [
   {
@@ -36,7 +38,9 @@ const routes: Routes = [
               {path: 'new', component : NewComponent},
               {path: 'quick-add', component : QuickAddComponent},
               {path: 'add-file' , component : AddFileComponent},
-              {path: 'reporting' ,component : ReportingComponent}
+              {path: 'reporting' ,component : ReportingComponent},
+              {path: 'login1' , component : Login1Component},
+              {path: 'login2' , component : Login2Component}
             ] }
         ]
       },

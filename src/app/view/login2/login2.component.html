@@ -1,0 +1,47 @@
+<div #demoModal class="modal-background modal fade" id="exampleModal"
+     [style.display]="showModal ? 'block' : 'none'"
+     [class.show]="showModal"
+     tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" style="alignment: center" >
+    <div class="modal-content p-0" style="border: none; border-radius: 8px;alignment: center;">
+      <div class="container p-3">
+        <div class="row">
+          <div class="col col-12 text-center align-self-center">
+            <div class="container p-0">
+              <div class="row " >
+                <div class="col col-12 text-center pb-3 text-center" style="color: blue; font-weight: bold; font-size: 18px">
+                  ورود به سامانه
+                </div>
+                <div class="col col-12 ">
+                  <p>
+                    <mat-form-field appearance="outline" style="width:80%;">
+                      <mat-label>نام کاربری</mat-label>
+                      <input type="text" matInput
+                             required style="padding-bottom: 1px !important;">
+                      <mat-icon matSuffix>account_circle</mat-icon>
+                    </mat-form-field>
+                  </p>
+                </div>
+                <div class="col col-12 ">
+                  <p>
+                    <mat-form-field appearance="outline" style="width:80%;">
+                      <mat-label>کلمه عبور</mat-label>
+                      <input type="text" matInput
+                             required style="padding-bottom: 1px !important;">
+                      <mat-icon matSuffix>account_circle</mat-icon>
+                    </mat-form-field>
+                  </p>
+                </div>
+                <div class="col col-12">
+                  <button mat-raised-button color="primary" (click)="showModal = false"  style="width: 80%; height: 43px">
+                    <span >ورود</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
