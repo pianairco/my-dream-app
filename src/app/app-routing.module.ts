@@ -18,6 +18,7 @@ import {AddFileComponent} from "./view/add-file/add-file.component";
 import {ReportingComponent} from "./view/reporting/reporting.component";
 import {Login1Component} from "./view/login1/login1.component";
 import {Login2Component} from "./view/login2/login2.component";
+import {Login3Component} from "./view/login3/login3.component";
 
 const routes: Routes = [
   {
@@ -40,7 +41,8 @@ const routes: Routes = [
               {path: 'add-file' , component : AddFileComponent},
               {path: 'reporting' ,component : ReportingComponent},
               {path: 'login1' , component : Login1Component},
-              {path: 'login2' , component : Login2Component}
+              {path: 'login2' , component : Login2Component},
+              {path: 'login3' , component : Login3Component}
             ] }
         ]
       },

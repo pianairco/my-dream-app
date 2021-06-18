@@ -50,6 +50,7 @@ import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 import {DpDatePickerModule} from "ng2-jalali-date-picker";
 import { Login1Component } from './view/login1/login1.component';
 import {Login2Component} from "./view/login2/login2.component";
+import {Login3Component} from "./view/login3/login3.component";
 
 // import {MatDatepickerModulePersian} from '@angular-persian/material-date-picker/src';
 
@@ -104,7 +105,8 @@ const MY_DATE_FORMATS = {
     AddFileComponent,
     ReportingComponent,
     Login1Component,
-    Login2Component
+    Login2Component,
+    Login3Component
   ],
   imports: [
     BrowserModule,

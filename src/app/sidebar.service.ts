@@ -151,19 +151,26 @@ export class SidebarService {
       type: 'simple',
       route: '/home/reporting'
     },
-    {
+    /*{
       title: 'ورود',
       icon: 'far fa-share-square',
       active: false,
       type: 'simple',
       route: '/home/login1'
-    },
+    },*/
     {
       title: 'ورود2',
       icon: 'far fa-share-square',
       active: false,
       type: 'simple',
       route: '/home/login2'
+    },
+    {
+      title: 'ورود3',
+      icon: 'far fa-share-square',
+      active: false,
+      type: 'simple',
+      route: '/home/login3'
     },
     {
       title: 'خروج',
