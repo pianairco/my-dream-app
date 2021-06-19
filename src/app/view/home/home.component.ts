@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {SidebarService} from '../../sidebar.service';
 import {animate, state, style, transition, trigger} from "@angular/animations";
+import * as moment from "jalali-moment";
 
 @Component({
   selector: 'app-home',
@@ -40,5 +41,10 @@ export class HomeComponent implements OnInit {
 
   hideSidebar() {
     this.sidebarservice.setSidebarState(true);
+  }
+
+  getTime() {
+    return moment().locale('fa').format('DD jMMM YYYY');
+    // return moment().locale('fa').format('YYYY/MM/DD');
   }
 }

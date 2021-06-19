@@ -1,10 +1,8 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
-import {LoginComponent} from './view/login/login.component';
 import {ContainerComponent} from './view/container/container.component';
 import {LoginGuard} from './guard/login.guard';
 import {SmsSenderComponent} from './view/sms-sender/sms-sender.component';
-import {TileComponent} from './view/tile/tile.component';
 import {HomeComponent} from './view/home/home.component';
 import {GroupSenderComponent} from './view/group-sender/group-sender.component';
 import {SendDirectComponent} from "./view/send-direct/send-direct.component";
@@ -16,9 +14,7 @@ import {NewComponent} from "./view/new/new.component";
 import {QuickAddComponent} from "./view/quick-add/quick-add.component";
 import {AddFileComponent} from "./view/add-file/add-file.component";
 import {ReportingComponent} from "./view/reporting/reporting.component";
-import {Login1Component} from "./view/login1/login1.component";
-import {Login2Component} from "./view/login2/login2.component";
-import {Login3Component} from "./view/login3/login3.component";
+import {LoginComponent} from "./view/login/login.component";
 
 const routes: Routes = [
   {
@@ -40,13 +36,13 @@ const routes: Routes = [
               {path: 'quick-add', component : QuickAddComponent},
               {path: 'add-file' , component : AddFileComponent},
               {path: 'reporting' ,component : ReportingComponent},
-              {path: 'login1' , component : Login1Component},
+              /*{path: 'login1' , component : LoginComponent},
               {path: 'login2' , component : Login2Component},
-              {path: 'login3' , component : Login3Component}
+              {path: 'login3' , component : Login3Component}*/
             ] }
         ]
       },
-      // { path: 'login', component: LoginComponent, canActivate:[LoginGuard] },
+      // { path: 'login', component: LoginOldComponent, canActivate:[LoginGuard] },
     ]
   }
 ];

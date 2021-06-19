@@ -6,7 +6,10 @@ import {RootComponent} from './view/root/root.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatSelectModule} from '@angular/material/select';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {DialogDataExampleDialog, LoginComponent} from './view/login/login.component';
+import {
+  DialogDataExampleDialogOld,
+  LoginOldComponent
+} from './view/login-old/login-old.component';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {MatIconModule} from '@angular/material/icon';
@@ -48,7 +51,7 @@ import {ReportingComponent} from './view/reporting/reporting.component';
 import {MatSnackBarModule} from "@angular/material/snack-bar";
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 import {DpDatePickerModule} from "ng2-jalali-date-picker";
-import { Login1Component } from './view/login1/login1.component';
+import {DialogDataExampleDialog, LoginComponent} from './view/login/login.component';
 import {Login2Component} from "./view/login2/login2.component";
 import {Login3Component} from "./view/login3/login3.component";
 
@@ -79,8 +82,8 @@ const MY_DATE_FORMATS = {
 @NgModule({
   declarations: [
     RootComponent,
-    LoginComponent,
-    DialogDataExampleDialog,
+    LoginOldComponent,
+    DialogDataExampleDialogOld,
     SidebarComponent,
     HomeComponent,
     ContainerComponent,
@@ -104,7 +107,8 @@ const MY_DATE_FORMATS = {
     QuickAddComponent,
     AddFileComponent,
     ReportingComponent,
-    Login1Component,
+    LoginComponent,
+    DialogDataExampleDialog,
     Login2Component,
     Login3Component
   ],

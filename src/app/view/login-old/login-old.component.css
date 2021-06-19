@@ -13,3 +13,7 @@
   background-image: url('../../../assets/sms-login.png');
 }
 
+.modal-dialog {
+  padding-right: 50px;
+  padding-left: 50px;
+}

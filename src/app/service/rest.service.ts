@@ -1,9 +1,6 @@
-import {Component, Inject, Injectable} from '@angular/core';
+import {Injectable} from '@angular/core';
 import axios from "axios";
 import {AuthService} from "./auth.service";
-import * as uuid from 'uuid';
-import {DialogDataExampleDialog} from "../view/login/login.component";
-import {MAT_DIALOG_DATA} from "@angular/material/dialog";
 
 @Injectable({
   providedIn: 'root'
