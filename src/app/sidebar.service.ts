@@ -131,18 +131,26 @@ export class SidebarService {
       // },
     },
     {
-      title: 'ارسال گروهی',
-      icon: 'far fa-share-square',
-      active: false,
-      type: 'simple',
-      route: '/home/group-sender'
-    },
-    {
-      title: 'ارسال پیامک',
+      title: 'ازسال پیامک',
       icon: 'fa fa-globe',
       active: false,
-      type: 'simple',
-      route: '/home/sms-sender'
+      type: 'dropdown',
+      submenus: [
+        {
+          title: 'ارسال گروهی',
+          icon: 'far fa-share-square',
+          active: false,
+          type: 'simple',
+          route: '/home/group-sender'
+        },
+        {
+          title: 'ارسال پیامک',
+          icon: 'fa fa-globe',
+          active: false,
+          type: 'simple',
+          route: '/home/sms-sender'
+        },
+      ]
     },
     {
       title: 'گزارشگیری',

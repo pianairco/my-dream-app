@@ -3,8 +3,8 @@
     <perfect-scrollbar>
       <div class="sidebar-menu">
         <div class="container">
-          <button class="btn btn-link" style="margin-top: 7px; color: white" (click)="toggleSidebar()">
-            <span class="fa fa-bars"></span>
+          <button class="btn btn-link" style="margin-top: 9px; color: white" (click)="toggleSidebar()">
+            <span class="fas fa-cog"></span>
           </button>
         </div>
       </div>
@@ -25,9 +25,9 @@
   <div class="sidebar-content">
     <perfect-scrollbar
       *ngIf="!sidebarservice.getSidebarState()"
-      style="padding-top: 50px;">
-      <div class="sidebar-header">
-        <a >سامانه پیام کوتاه</a>
+      style="padding-top: 0px;">
+      <div class="sidebar-header text-center">
+        <p style="color: white;" class="text-center">سامانه پیام کوتاه</p>
       </div>
 
       <div class="sidebar-profile" *ngIf="!sidebarservice.getSidebarState()">
@@ -46,6 +46,17 @@
           </span>
         </div>
       </div>
+
+      <div class="container p-0">
+        <div class="row p-0">
+          <div class="col col-12">
+            <div class="d-grid gap-2 py-0 px-3">
+              <button href="#" class="btn btn-sm py-0 my-btn px-1" style="border-radius: 26px;">میزان اعتبار بر اساس اپراتورها</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <!--      <div class="sidebar-search">-->
       <!--        <div>-->
       <!--          <div class="input-group">-->
@@ -72,10 +83,10 @@
               <span>{{menu.title}}</span>
               <span *ngIf="menu.badge" class="badge badge-pill" [ngClass]="menu.badge.class">{{menu.badge.text}}</span>
             </a>
-            <div *ngIf="menu.type === 'dropdown'" class="sidebar-submenu" [@slide]="getState(menu)">
+            <div *ngIf="menu.type === 'dropdown'" class="sidebar-submenu" [@slide3]="getState(menu)">
               <ul>
                 <li *ngFor="let submenu of menu.submenus">
-                  <a *ngIf="submenu.hasOwnProperty('route')"> {{submenu.title}}
+                  <a *ngIf="submenu.hasOwnProperty('route')" [routerLink]="[submenu['route']]"> {{submenu.title}}
                     <span *ngIf="submenu.badge" class="badge badge-pill" [ngClass]="submenu.badge.class">{{submenu.badge.text}}</span>
                   </a>
                 </li>

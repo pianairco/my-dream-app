@@ -22,6 +22,11 @@ import {AuthService} from "../../service/auth.service";
       state('up', style({ opacity: 1 })),
       state('down', style({ opacity: 0 })),
       transition('up <=> down', animate(700))
+    ]),
+    trigger('slide3', [
+      state('up', style({ height: 0 })),
+      state('down', style({ height: '*' })),
+      transition('up <=> down', animate(500))
     ])
   ]
 })
