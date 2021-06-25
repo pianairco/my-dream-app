@@ -26,11 +26,11 @@
                   </div>
                   <div class="col col-12 ">
                     <p>
-                      <mat-form-field appearance="outline" style="width:80%;">
+                      <mat-form-field appearance="outline" style="width: 80%;">
                         <mat-label>کلمه عبور</mat-label>
-                        <input type="text" matInput
-                               [(ngModel)]="loginInfo.password"
-                               required style="padding-bottom: 1px !important;">
+                        <input matInput [attr.type]="hide ? 'password' : 'text'"
+                               [disabled]="wait"
+                               [(ngModel)]="loginInfo.password" required>
                         <mat-icon matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
                           {{hide ? 'visibility_off' : 'visibility'}}
                         </mat-icon>

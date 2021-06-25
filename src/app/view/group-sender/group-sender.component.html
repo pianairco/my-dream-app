@@ -48,8 +48,10 @@
                          [(ngModel)]="obj[inputConfig.name]"
                          *ngIf="inputConfig.type === 'radio'">
           <mat-radio-button *ngFor="let radio of inputConfig.radios"
+                            [disabled]="radio.disabled"
                             (change)="radioSelect(radio)"
                             class="px-1"
+                            [checked]="radio.activate"
                             [value]="radio.value">{{radio.title}}</mat-radio-button>
         </mat-radio-group>
       </div>
@@ -58,7 +60,7 @@
       <div class="btn-group" role="group">
         <button *ngFor="let b of formConfig.buttons"
                 [type]="'button'"
-                (click)="btnClick(b)"
+                (click)="openDialog(b)"
                 [class]="b.type === 'clear' ? 'btn btn-danger' : b.type === 'modal' ? 'btn btn-success' : 'btn btn-warning'" >{{b.title}}</button>
       </div>
       <!--      <button type="button" class="btn btn-success" (click)="submit()">ارسال</button>-->

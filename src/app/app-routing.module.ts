@@ -15,6 +15,7 @@ import {QuickAddComponent} from "./view/quick-add/quick-add.component";
 import {AddFileComponent} from "./view/add-file/add-file.component";
 import {ReportingComponent} from "./view/reporting/reporting.component";
 import {LoginComponent} from "./view/login/login.component";
+import {GroupComponent} from "./view/group/group.component";
 
 const routes: Routes = [
   {
@@ -36,6 +37,7 @@ const routes: Routes = [
               {path: 'quick-add', component : QuickAddComponent},
               {path: 'add-file' , component : AddFileComponent},
               {path: 'reporting' ,component : ReportingComponent},
+              {path: 'group', component: GroupComponent },
               /*{path: 'login1' , component : LoginComponent},
               {path: 'login2' , component : Login2Component},
               {path: 'login3' , component : Login3Component}*/

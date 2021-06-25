@@ -131,8 +131,8 @@ export class SidebarService {
       // },
     },
     {
-      title: 'ازسال پیامک',
-      icon: 'fa fa-globe',
+      title: 'ارسال پیامک',
+      icon: 'fas fa-envelope',
       active: false,
       type: 'dropdown',
       submenus: [
@@ -144,7 +144,7 @@ export class SidebarService {
           route: '/home/group-sender'
         },
         {
-          title: 'ارسال پیامک',
+          title: 'ارسال تکی',
           icon: 'fa fa-globe',
           active: false,
           type: 'simple',
@@ -158,6 +158,13 @@ export class SidebarService {
       active: false,
       type: 'simple',
       route: '/home/reporting'
+    },
+    {
+      title: 'گروهی',
+      icon: 'fa fa-tachometer-alt',
+      active: false,
+      type: 'simple',
+      route: '/home/group'
     },
     {
       title: 'خروج',

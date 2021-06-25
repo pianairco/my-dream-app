@@ -89,12 +89,16 @@ export class RadioConfig {
     title: string,
     description: string,
     route: string
-  }
+  };
+  disabled: boolean;
+  activate: boolean;
 
-  constructor(title, value, modal) {
+  constructor(title, value, modal, disabled, activate) {
     this.title = title;
     this.value = value;
     this.modal = modal;
+    this.disabled = disabled;
+    this.activate = activate;
   }
 }
 

@@ -34,9 +34,9 @@ export class GroupSenderComponent implements OnInit {
       new InputConfig('textarea', 'متن پیامک', 'text', null,null, null,null),
       // new InputConfig('date', 'تاریخ', 'date', null, 'outline', null,null),
       new InputConfig('radio', 'نحوه وارد کردن مخاطبین', 'sendType', null,null, null,[
-        new RadioConfig("وارد کردن مستقیم شماره ها", "1", null),
-        new RadioConfig("دفتر تلفن", "2", null),
-        new RadioConfig("فایل متن", "3", null)
+        new RadioConfig("وارد کردن مستقیم شماره ها", "1", null, false, false),
+        new RadioConfig("دفتر تلفن", "2", null, false, false),
+        new RadioConfig("فایل متن", "3", null, false, true)
       ]),
     ],
     buttons: [
