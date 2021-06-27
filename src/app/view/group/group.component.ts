@@ -12,6 +12,7 @@ import {Router} from "@angular/router";
 })
 export class GroupComponent implements OnInit {
   wait = false;
+  readyToSend = false
   model: {
     text: string;
     senderNumber: string;
@@ -19,7 +20,7 @@ export class GroupComponent implements OnInit {
   } = {
     'text': '',
     'senderNumber': '',
-    'inputType': 3
+    'inputType': 0
   };
   smsSenders = ['09128899098', '09128899093'];
   panelOpenState = false;
@@ -37,6 +38,23 @@ export class GroupComponent implements OnInit {
     return Math.ceil(value)
   }
 
+  nextToTextFile() {
+    const dialogRef = this.dialog.open(UploadFileDialogComponent, {
+      width: '500px',
+      data: {
+        title: 'ورود شماره از طریق فایل',
+      }
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed => ', result);
+      if(result.status === 0) {
+        this.readyToSend = true;
+      } else if(result.status === 1) {
+        this.model.inputType = 0;
+      }
+    });
+  }
+
   send() {
     if(!this.model.senderNumber || !this.model.text || !this.model.inputType) {
       this.dialog.open(DialogDataExampleDialog, {
@@ -51,6 +69,43 @@ export class GroupComponent implements OnInit {
       }, err => {
       });
     }
+  }
+}
+
+@Component({
+  selector: 'upload-file-dialog',
+  templateUrl: 'upload-file-dialog.component.html',
+})
+export class UploadFileDialogComponent implements OnInit{
+
+  constructor(
+    private router: Router,
+    public dialogRef: MatDialogRef<GroupDialogComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: object) {
+  }
+
+  ngOnInit(): void {
+    console.log(JSON.stringify(this.data))
+  }
+
+  onUploadClicked(file) {
+    this.dialogRef.close({
+        status: 0,
+        file: file
+      });
+  }
+
+  onSelectedFilesChanged(file) {
+  }
+
+  okClick () {
+  }
+
+  cancelClick(): void {
+    this.dialogRef.close({
+      status: 1,
+      file: null
+    });
   }
 }
 

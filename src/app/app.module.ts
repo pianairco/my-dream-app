@@ -54,7 +54,7 @@ import {DpDatePickerModule} from "ng2-jalali-date-picker";
 import {DialogDataExampleDialog, LoginComponent} from './view/login/login.component';
 import {Login2Component} from "./view/login2/login2.component";
 import {Login3Component} from "./view/login3/login3.component";
-import {GroupComponent, GroupDialogComponent} from './view/group/group.component';
+import {GroupComponent, GroupDialogComponent, UploadFileDialogComponent} from './view/group/group.component';
 import {MatExpansionModule} from "@angular/material/expansion";
 
 // import {MatDatepickerModulePersian} from '@angular-persian/material-date-picker/src';
@@ -114,6 +114,7 @@ const MY_DATE_FORMATS = {
     Login2Component,
     Login3Component,
     GroupComponent,
+    UploadFileDialogComponent,
     GroupDialogComponent
   ],
   imports: [

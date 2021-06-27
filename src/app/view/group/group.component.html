@@ -53,42 +53,54 @@
                       </p>
                     </div>
                   </div>
-                  <div class="row align-items-start justify-content-start mb-4">
-                    <div class="col col-auto ">
+                  <div class="row align-items-start justify-content-start">
+                    <div class="col col-auto">
                       <div class="pb-1 mb-2 align-items-start justify-content-start" style="text-align: right" >
-                        <label id="inputType"  >نحوه ورود مخاطبین</label>
+                        <label id="inputType">نحوه ورود مخاطبین</label>
                       </div>
-                      <mat-radio-group aria-labelledby="inputType"
-                                       [(ngModel)]="model.inputType">
 
-                        <mat-radio-button
-                          [disabled]="true"
-                          class="px-1"
-                          [checked]="false"
-                          [value]="1">وارد کردن مستقیم شماره ها</mat-radio-button>
+                        <mat-radio-group aria-labelledby="inputType"
+                                         [(ngModel)]="model.inputType">
 
-                      <mat-radio-button
-                        [disabled]="true"
-                        class="px-1"
-                        [checked]="false"
-                        [value]="2">دفتر تلفن</mat-radio-button>
+                          <mat-radio-button
+                            [disabled]="true"
+                            class="px-1"
+                            [checked]="false"
+                            [value]="1">وارد کردن مستقیم شماره ها</mat-radio-button>
 
+                          <mat-radio-button
+                            [disabled]="true"
+                            class="px-1"
+                            [checked]="false"
+                            [value]="2">دفتر تلفن</mat-radio-button>
 
-                      <mat-radio-button
-                        [disabled]="false"
-                        class="px-1"
-                        [checked]="true"
-                        [value]="3">فایل متن</mat-radio-button>
-                      </mat-radio-group>
+                          <mat-radio-button
+                            [disabled]="false"
+                            class="px-1"
+                            [checked]="true"
+                            [value]="3">فایل متن</mat-radio-button>
+                        </mat-radio-group>
                     </div>
 
+                  </div>
+                  <div class="row align-items-start mb-4">
+                    <div class="col col-auto ">
+                      <span *ngIf="model.inputType == 0 || !readyToSend">&nbsp;</span>
+                      <span *ngIf="model.inputType == 3 && readyToSend"
+                            style="color: #109410">فایل با موفقیت انتخاب شد</span>
+                    </div>
                   </div>
                   <div class="row align-items-start justify-content-center">
                     <div class="col col-12 ">
                       <div class="d-grid gap-2">
-                        <button class="btn btn-outline-primary" mat-raised-button color="primary" (click)="send()" [disabled]="wait">
+                        <button *ngIf="model.inputType == 0 || readyToSend" class="btn btn-outline-primary" mat-raised-button color="primary"
+                                 (click)="send()" [disabled]="wait">
                           <mat-spinner  *ngIf="wait"></mat-spinner>
                           <span *ngIf="!wait">ارسال</span>
+                        </button>
+                        <button *ngIf="model.inputType == 3 && !readyToSend" class="btn btn-outline-primary" mat-raised-button color="primary"
+                                (click)="nextToTextFile()" [disabled]="wait">
+                          <span >مرحله بعد</span>
                         </button>
                       </div>
                     </div>
@@ -109,7 +121,7 @@
               <div class="row align-items-start my-header px-3" style="margin-right: 0px">
                 <div class="col col-auto">
                   <h4 col col-2 style="color: #082843">
-                    <i class="far fa-question-circle" style="padding: 4px; font-size: 18px; border-radius: 16px; margin-left: 4px"></i>راهنما : ارسال گروهی</h4>
+                    <i class="far fa-question-circle" style="padding: 4px; font-size: 18px; border-radius: 16px; margin-left: 4px;color: crimson"></i >راهنما : ارسال گروهی</h4>
                 </div>
               </div>
               <div class="row align-items-start  px-1 pt-2" style="margin-right: 10px">
@@ -117,62 +129,41 @@
                   <mat-expansion-panel (opened)="panelOpenState = true"
                                        (closed)="panelOpenState = false">
                     <mat-expansion-panel-header>
-                      <mat-panel-title>
-                        Self aware panel
+                      <mat-panel-title >
+                        عنوان ارسال
                       </mat-panel-title>
-
                     </mat-expansion-panel-header>
-                    <p>I'm visible because I am open</p>
+                    <p>در این فیلد شما یک عنوان برای ارسالتان مشخص می کنید. عنوان ارسال تنها مربوط به خودتان می باشد و به هیچ وجه برای مخاطبین ارسال نمیشود. این قسمت بیشتر برای راحتی کار شما در گزارشگیری و پی گیری ارسالهایتان در ارسال انبوه گنجانده شده.</p>
                   </mat-expansion-panel>
-
-
                   <mat-expansion-panel (opened)="panelOpenState = true"
                                        (closed)="panelOpenState = false">
                     <mat-expansion-panel-header>
                       <mat-panel-title>
-                        Self aware panel
+                        شماره فرستنده
                       </mat-panel-title>
-
                     </mat-expansion-panel-header>
-                    <p>I'm visible because I am open</p>
+                    <p>شماره ای است که شما قصد ارسال پیام به وسیله آن را دارید و بعد از ارسال پیام، این شماره به عنوان شماره فرستنده روی گوشی مخاطبینتان نمایش داده می شود.</p>
                   </mat-expansion-panel>
-
-
                   <mat-expansion-panel (opened)="panelOpenState = true"
                                        (closed)="panelOpenState = false">
                     <mat-expansion-panel-header>
                       <mat-panel-title>
-                        Self aware panel
+                       متن پیامک
                       </mat-panel-title>
-
                     </mat-expansion-panel-header>
-                    <p>I'm visible because I am open</p>
+                    <p>متنی است که قصد ارسال آن را دارید.در زیر قسمتی که متن پیام را وارد می کنید،عداد صفحات، هم چنین تعداد حروفی که نوشته شده و تعداد حروف مجاز برای یک صفحه، نمایش داده می شود. (توجه داشته باشید که در ارسال پیام تعداد صفحات در تعرفه پیامک شما ضرب می شود.)</p>
                   </mat-expansion-panel>
-
-
                   <mat-expansion-panel (opened)="panelOpenState = true"
                                        (closed)="panelOpenState = false">
                     <mat-expansion-panel-header>
                       <mat-panel-title>
-                        Self aware panel
+                        نحوه وارد کردن مخاطبین از طربق فایل متنی
                       </mat-panel-title>
-
                     </mat-expansion-panel-header>
-                    <p>I'm visible because I am open</p>
+                    <p>اگر شماره های مخاطبین شما در دفترچه تلفن شما نباشند میتوانید آنها را در فایل متنی نیز ذخیره کنید.
+                      دقت نمایید که فایل متنی ورودی باید حتما مانند فایل نمونه باشد.
+                      (همان فایل نمونه دانلود وشماره ها برروی همان فایل وارد شود)</p>
                   </mat-expansion-panel>
-
-
-                  <mat-expansion-panel (opened)="panelOpenState = true"
-                                       (closed)="panelOpenState = false">
-                    <mat-expansion-panel-header>
-                      <mat-panel-title>
-                        Self aware panel
-                      </mat-panel-title>
-
-                    </mat-expansion-panel-header>
-                    <p>I'm visible because I am open</p>
-                  </mat-expansion-panel>
-
                 </mat-accordion>
               </div>
             </div>
