@@ -12,7 +12,8 @@ import {Router} from "@angular/router";
 })
 export class GroupComponent implements OnInit {
   wait = false;
-  readyToSend = false
+  readyToSend = false;
+  pageId = 'master';
   model: {
     text: string;
     senderNumber: string;
@@ -38,23 +39,41 @@ export class GroupComponent implements OnInit {
     return Math.ceil(value)
   }
 
-  nextToTextFile() {
-    const dialogRef = this.dialog.open(UploadFileDialogComponent, {
-      width: '500px',
-      data: {
-        title: 'ورود شماره از طریق فایل',
-      }
-    });
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed => ', result);
-      if(result.status === 0) {
-        this.readyToSend = true;
-      } else if(result.status === 1) {
-        this.model.inputType = 0;
-      }
-    });
+  nextStep() {
+    if(this.model.inputType == 'text-file') {
+      this.pageId = 'text-file';
+    } else if(this.model.inputType == 'direct') {
+      this.pageId = 'direct';
+    }
+    // const dialogRef = this.dialog.open(UploadFileDialogComponent, {
+    //   width: '500px',
+    //   data: {
+    //     title: 'ورود شماره از طریق فایل',
+    //   }
+    // });
+    // dialogRef.afterClosed().subscribe(result => {
+    //   console.log('The dialog was closed => ', result);
+    //   if(result.status === 0) {
+    //     this.readyToSend = true;
+    //   } else if(result.status === 1) {
+    //     this.model.inputType = 0;
+    //   }
+    // });
   }
 
+  onUploadClicked(file) {
+    console.log(file)
+
+  }
+
+  onSelectedFilesChanged(file) {
+    this.readyToSend = true;
+  }
+
+  backToMaster() {
+    this.model.inputType = 'master';
+    this.pageId = 'master';
+  }
   send() {
     if(!this.model.senderNumber || !this.model.text || !this.model.inputType) {
       this.dialog.open(DialogDataExampleDialog, {
