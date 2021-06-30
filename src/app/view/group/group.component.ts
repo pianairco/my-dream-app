@@ -40,9 +40,9 @@ export class GroupComponent implements OnInit {
   }
 
   nextStep() {
-    if(this.model.inputType == 'text-file') {
+    if (this.model.inputType == 'text-file') {
       this.pageId = 'text-file';
-    } else if(this.model.inputType == 'direct') {
+    } else if (this.model.inputType == 'direct') {
       this.pageId = 'direct';
     }
     // const dialogRef = this.dialog.open(UploadFileDialogComponent, {
@@ -61,9 +61,9 @@ export class GroupComponent implements OnInit {
     // });
   }
 
+
   onUploadClicked(file) {
     console.log(file)
-
   }
 
   onSelectedFilesChanged(file) {

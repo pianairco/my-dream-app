@@ -90,7 +90,7 @@
                             style="color: #109410">فایل با موفقیت انتخاب شد</span>
                     </div>
                   </div>
-                  <div class="row ">
+                  <div class="row "><!--align-items-start justify-content-center-->
                     <div class="col col-auto ">
 <!--                      <div class="d-grid gap-2">-->
                         <!--<button *ngIf="model.inputType == 0 || readyToSend" class="btn btn-outline-primary" mat-raised-button color="primary"
@@ -187,7 +187,7 @@
                         <mat-form-field appearance="outline" style="width:100%;">
                           <mat-label>شماره گیرندگان</mat-label>
                           <textarea required matInput [rows]="5" [(ngModel)]="model['recipient']"></textarea>
-<!--                          <mat-hint align="start">لطفا در هر خط یک شماره تلفن وارد نمایید</mat-hint>-->
+                          <mat-hint align="start">لطفا در هر خط یک شماره تلفن وارد نمایید</mat-hint>
                         </mat-form-field>
                       </p>
                     </div>
@@ -234,10 +234,39 @@
                                        (closed)="panelOpenState = false">
                     <mat-expansion-panel-header>
                       <mat-panel-title >
-                        شماره های مخاطبین
+                        عنوان ارسال
                       </mat-panel-title>
                     </mat-expansion-panel-header>
-                    <p>در این قسمت شما می توانید شماره های مخاطبینتان را به صورت دستی وارد نمایید.توجه نمایید مابین شماره ها از کاراکتر اینتر استفاده نمایید.</p>
+                    <p>در این فیلد شما یک عنوان برای ارسالتان مشخص می کنید. عنوان ارسال تنها مربوط به خودتان می باشد و به هیچ وجه برای مخاطبین ارسال نمیشود. این قسمت بیشتر برای راحتی کار شما در گزارشگیری و پی گیری ارسالهایتان در ارسال انبوه گنجانده شده.</p>
+                  </mat-expansion-panel>
+                  <mat-expansion-panel (opened)="panelOpenState = true"
+                                       (closed)="panelOpenState = false">
+                    <mat-expansion-panel-header>
+                      <mat-panel-title>
+                        شماره فرستنده
+                      </mat-panel-title>
+                    </mat-expansion-panel-header>
+                    <p>شماره ای است که شما قصد ارسال پیام به وسیله آن را دارید و بعد از ارسال پیام، این شماره به عنوان شماره فرستنده روی گوشی مخاطبینتان نمایش داده می شود.</p>
+                  </mat-expansion-panel>
+                  <mat-expansion-panel (opened)="panelOpenState = true"
+                                       (closed)="panelOpenState = false">
+                    <mat-expansion-panel-header>
+                      <mat-panel-title>
+                        متن پیامک
+                      </mat-panel-title>
+                    </mat-expansion-panel-header>
+                    <p>متنی است که قصد ارسال آن را دارید.در زیر قسمتی که متن پیام را وارد می کنید،عداد صفحات، هم چنین تعداد حروفی که نوشته شده و تعداد حروف مجاز برای یک صفحه، نمایش داده می شود. (توجه داشته باشید که در ارسال پیام تعداد صفحات در تعرفه پیامک شما ضرب می شود.)</p>
+                  </mat-expansion-panel>
+                  <mat-expansion-panel (opened)="panelOpenState = true"
+                                       (closed)="panelOpenState = false">
+                    <mat-expansion-panel-header>
+                      <mat-panel-title>
+                        نحوه وارد کردن مخاطبین از طربق فایل متنی
+                      </mat-panel-title>
+                    </mat-expansion-panel-header>
+                    <p>اگر شماره های مخاطبین شما در دفترچه تلفن شما نباشند میتوانید آنها را در فایل متنی نیز ذخیره کنید.
+                      دقت نمایید که فایل متنی ورودی باید حتما مانند فایل نمونه باشد.
+                      (همان فایل نمونه دانلود وشماره ها برروی همان فایل وارد شود)</p>
                   </mat-expansion-panel>
                 </mat-accordion>
               </div>
@@ -311,7 +340,7 @@
               <div class="row align-items-start my-header px-3" style="margin-right: 0px">
                 <div class="col col-auto">
                   <h4 col col-2 style="color: #082843">
-                    <i class="far fa-question-circle" style="padding: 4px; font-size: 18px; border-radius: 16px; margin-left: 4px;color: crimson"></i >راهنما : ارسال پیام کوتاه</h4>
+                    <i class="far fa-question-circle" style="padding: 4px; font-size: 18px; border-radius: 16px; margin-left: 4px;color: crimson"></i >راهنما : ارسال گروهی</h4>
                 </div>
               </div>
               <div class="row align-items-start  px-1 pt-2" style="margin-right: 10px">
@@ -323,7 +352,16 @@
                         وارد کردن مخاطبین ازفایل متنی
                       </mat-panel-title>
                     </mat-expansion-panel-header>
-                    <p></p>
+                    <p>در این فیلد شما یک عنوان برای ارسالتان مشخص می کنید. عنوان ارسال تنها مربوط به خودتان می باشد و به هیچ وجه برای مخاطبین ارسال نمیشود. این قسمت بیشتر برای راحتی کار شما در گزارشگیری و پی گیری ارسالهایتان در ارسال انبوه گنجانده شده.</p>
+                  </mat-expansion-panel>
+                  <mat-expansion-panel (opened)="panelOpenState = true"
+                                       (closed)="panelOpenState = false">
+                    <mat-expansion-panel-header>
+                      <mat-panel-title>
+                        شماره فرستنده
+                      </mat-panel-title>
+                    </mat-expansion-panel-header>
+                    <p>شماره ای است که شما قصد ارسال پیام به وسیله آن را دارید و بعد از ارسال پیام، این شماره به عنوان شماره فرستنده روی گوشی مخاطبینتان نمایش داده می شود.</p>
                   </mat-expansion-panel>
                 </mat-accordion>
               </div>
