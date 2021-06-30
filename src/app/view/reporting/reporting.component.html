@@ -1,99 +1,187 @@
-<div class="container">
-  <div class="row align-items-start my-header">
-    <div class="col col-6">
-      <h1 style="color: blue">گزارشگیری</h1>
+<div class="container mb-4">
+  <div class="row align-items-start justify-content-md-right">
+    <div class="col col-md-12 text-center justify-content-md-center">
+      <div class="container" style="box-shadow: 0px 10px 34px 5px rgb(100 80 80 / 44%);">
+        <div class="row align-items-start my-header justify-content-md-center">
+          <div class="col col-12 text-center">
+            <div class="container">
+              <div class="row align-items-start my-header px-3" style="margin-right: 0px">
+                <div class="col col-md-auto">
+                  <h4 style="color: #082843">
+                    <i class="fa fa-chart-line" style="padding: 4px; font-size: 18px; border-radius: 16px; margin-left: 4px"></i>گزارشگیری</h4>
+                </div>
+              </div>
+
+              <div class="row align-items-start my-form justify-content-center">
+                <div class="row align-items-start my-form">
+                  <div class="col col-4">
+                    <dp-date-picker
+                      dir="rtl"
+                      [config]="datePickerConfig"
+                      [(ngModel)]="startDateTime"
+                      (onChange)="startChange($event)"
+                      mode="daytime"
+                      placeholder="تاریخ و زمان شروع"
+                      theme="dp-material">
+                    </dp-date-picker>
+                  </div>
+                  <div class="col col-4">
+                    <dp-date-picker
+                      dir="rtl"
+                      [(ngModel)]="endDateTime"
+                      [config]="datePickerConfig"
+                      mode="daytime"
+                      placeholder="تاریخ و زمان پایان"
+                      theme="dp-material">
+                    </dp-date-picker>
+                  </div>
+                  <div class="col col-2 mb-3">
+                    <button class="btn btn-primary fa fa-search form-control-feedback" mat-raised-button (click)="report()">جستجو</button>
+                  </div>
+                  <kendo-grid class="k-rtl"
+                              [data]="view | async"
+                              scrollable="none"
+                              [loading]="reportService.loading"
+                              [pageable]="true"
+                              [skip]="state.skip"
+                              [pageSize]="state.take"
+                              (dataStateChange)="dataStateChange($event)">
+                    <ng-template kendoGridToolbarTemplate>
+                      <button type="button" kendoGridExcelCommand icon="file-excel">دریافت فایل اکسل</button>
+                    </ng-template>
+                    <kendo-grid-column field="Discontinued" title="" width="10" class="k-rtl" [filterable]="false">
+                      <ng-template kendoGridCellTemplate let-dataItem>
+                        <input type="checkbox" [checked]="dataItem.Discontinued"/>
+                      </ng-template>
+                    </kendo-grid-column>
+                    <kendo-grid-column
+                      field="recipient" title="شماره گیرنده" width="40" class="k-rtl" [filterable]="false">
+                    </kendo-grid-column>
+                    <kendo-grid-column field="status" title="وضعیت" width="20" class="k-rtl" [filterable]="false">
+                    </kendo-grid-column>
+                    <kendo-grid-column field="text" title="متن" width="30" class="k-rtl" [filterable]="false">
+                    </kendo-grid-column>
+                    <kendo-grid-column field="time" title="زمان" width="20" class="k-rtl" [filterable]="false">
+                    </kendo-grid-column>
+                    <kendo-grid-column field="uid" title="شماره پیگیری" width="20" class="k-rtl" [filterable]="false">
+                    </kendo-grid-column>
+                    <kendo-grid-excel fileName="Products.xlsx"></kendo-grid-excel>
+                  </kendo-grid>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
-<div class="row align-items-start my-form">
-  <div class="col col-6">
-    <dp-date-picker
-      dir="rtl"
-      [config]="datePickerConfig"
-      [(ngModel)]="startDateTime"
-      (onChange)="startChange($event)"
-      mode="daytime"
-      placeholder="تاریخ و زمان شروع"
-      theme="dp-material">
-    </dp-date-picker>
-  </div>
-  <div class="col col-6">
-    <dp-date-picker
-      dir="rtl"
-      [(ngModel)]="endDateTime"
-      [config]="datePickerConfig"
-      mode="daytime"
-      placeholder="تاریخ و زمان پایان"
-      theme="dp-material">
-    </dp-date-picker>
-  </div>
-  <!--<div class="col col-6">
-    <mat-form-field appearance="outline">
-      <input #dateInput matInput [matDatepicker]="picker1" [(ngModel)]="startDate"
-              placeholder="تاریخ شروع">
-      <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
-      <mat-datepicker #picker1></mat-datepicker>
-    </mat-form-field>
-  </div>
-  <div class="col col-6">
-    <mat-form-field appearance="outline">
-      <input #dateInput matInput [matDatepicker]="picker2" [(ngModel)]="endDate"
-              placeholder="تاریخ پایان">
-      <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
-      <mat-datepicker #picker2></mat-datepicker>
-    </mat-form-field>
-  </div>
-  <div class="col col-6" appearance="outline">
-    <mat-form-field appearance="outline">
-      <mat-label>ساعت شروع</mat-label>
-      <input type="time" matInput [(ngModel)]="startTime">
-    </mat-form-field>
-  </div>
-  <div class="col col-6" appearance="outline">
-    <mat-form-field appearance="outline">
-      <mat-label>ساعت پایان</mat-label>
-      <input type="time" matInput [(ngModel)]="endTime">
-    </mat-form-field>
-  </div>-->
-  <div class="col col-12 mb-3 mt-3">
-    <button class="btn btn-outline-success" (click)="report()">جستجو</button>
-  </div>
-<kendo-grid class="k-rtl"
-            [data]="view | async"
-            scrollable="none"
-            [loading]="reportService.loading"
-            [pageable]="true"
-            [skip]="state.skip"
-            [pageSize]="state.take"
-            (dataStateChange)="dataStateChange($event)">
-  <ng-template kendoGridToolbarTemplate>
-    <button type="button" kendoGridExcelCommand icon="file-excel">دریافت فایل اکسل</button>
-  </ng-template>
-  <kendo-grid-column field="Discontinued" title="" width="10" class="k-rtl" [filterable]="false">
-    <ng-template kendoGridCellTemplate let-dataItem>
-      <input type="checkbox" [checked]="dataItem.Discontinued"/>
-    </ng-template>
-  </kendo-grid-column>
-  <kendo-grid-column
-                     field="recipient" title="شماره گیرنده" width="40" class="k-rtl" [filterable]="false">
-  </kendo-grid-column>
-  <kendo-grid-column field="status" title="وضعیت" width="20" class="k-rtl" [filterable]="false">
-  </kendo-grid-column>
-  <kendo-grid-column field="text" title="متن" width="30" class="k-rtl" [filterable]="false">
-  </kendo-grid-column>
-  <kendo-grid-column field="time" title="زمان" width="20" class="k-rtl" [filterable]="false">
-  </kendo-grid-column>
-  <kendo-grid-column field="uid" title="شماره پیگیری" width="20" class="k-rtl" [filterable]="false">
-  </kendo-grid-column>
-  <kendo-grid-excel fileName="Products.xlsx"></kendo-grid-excel>
-</kendo-grid>
-<!--<section>-->
-<!--  <div class="container my-4">-->
-<!--    <div class="btn-group" role="group" aria-label="Basic example">-->
-<!--      <button class="btn btn-primary">ارسال</button>-->
-<!--      <button class="btn btn-primary">حذف</button>-->
+</div>
+
+
+
+
+
+
+
+
+
+
+<!--<div class="container">-->
+<!--  <div class="row align-items-start my-header">-->
+<!--    <div class="col col-6">-->
+<!--      <h1 style="color: blue">گزارشگیری</h1>-->
 <!--    </div>-->
 <!--  </div>-->
-<!--</section>-->
-</div>
-</div>
+<!--<div class="row align-items-start my-form">-->
+<!--  <div class="col col-6">-->
+<!--    <dp-date-picker-->
+<!--      dir="rtl"-->
+<!--      [config]="datePickerConfig"-->
+<!--      [(ngModel)]="startDateTime"-->
+<!--      (onChange)="startChange($event)"-->
+<!--      mode="daytime"-->
+<!--      placeholder="تاریخ و زمان شروع"-->
+<!--      theme="dp-material">-->
+<!--    </dp-date-picker>-->
+<!--  </div>-->
+<!--  <div class="col col-6">-->
+<!--    <dp-date-picker-->
+<!--      dir="rtl"-->
+<!--      [(ngModel)]="endDateTime"-->
+<!--      [config]="datePickerConfig"-->
+<!--      mode="daytime"-->
+<!--      placeholder="تاریخ و زمان پایان"-->
+<!--      theme="dp-material">-->
+<!--    </dp-date-picker>-->
+<!--  </div>-->
+<!--  &lt;!&ndash;<div class="col col-6">-->
+<!--    <mat-form-field appearance="outline">-->
+<!--      <input #dateInput matInput [matDatepicker]="picker1" [(ngModel)]="startDate"-->
+<!--              placeholder="تاریخ شروع">-->
+<!--      <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>-->
+<!--      <mat-datepicker #picker1></mat-datepicker>-->
+<!--    </mat-form-field>-->
+<!--  </div>-->
+<!--  <div class="col col-6">-->
+<!--    <mat-form-field appearance="outline">-->
+<!--      <input #dateInput matInput [matDatepicker]="picker2" [(ngModel)]="endDate"-->
+<!--              placeholder="تاریخ پایان">-->
+<!--      <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>-->
+<!--      <mat-datepicker #picker2></mat-datepicker>-->
+<!--    </mat-form-field>-->
+<!--  </div>-->
+<!--  <div class="col col-6" appearance="outline">-->
+<!--    <mat-form-field appearance="outline">-->
+<!--      <mat-label>ساعت شروع</mat-label>-->
+<!--      <input type="time" matInput [(ngModel)]="startTime">-->
+<!--    </mat-form-field>-->
+<!--  </div>-->
+<!--  <div class="col col-6" appearance="outline">-->
+<!--    <mat-form-field appearance="outline">-->
+<!--      <mat-label>ساعت پایان</mat-label>-->
+<!--      <input type="time" matInput [(ngModel)]="endTime">-->
+<!--    </mat-form-field>-->
+<!--  </div>&ndash;&gt;-->
+<!--  <div class="col col-12 mb-3 mt-3">-->
+<!--    <button class="btn btn-outline-success" (click)="report()">جستجو</button>-->
+<!--  </div>-->
+<!--<kendo-grid class="k-rtl"-->
+<!--            [data]="view | async"-->
+<!--            scrollable="none"-->
+<!--            [loading]="reportService.loading"-->
+<!--            [pageable]="true"-->
+<!--            [skip]="state.skip"-->
+<!--            [pageSize]="state.take"-->
+<!--            (dataStateChange)="dataStateChange($event)">-->
+<!--  <ng-template kendoGridToolbarTemplate>-->
+<!--    <button type="button" kendoGridExcelCommand icon="file-excel">دریافت فایل اکسل</button>-->
+<!--  </ng-template>-->
+<!--  <kendo-grid-column field="Discontinued" title="" width="10" class="k-rtl" [filterable]="false">-->
+<!--    <ng-template kendoGridCellTemplate let-dataItem>-->
+<!--      <input type="checkbox" [checked]="dataItem.Discontinued"/>-->
+<!--    </ng-template>-->
+<!--  </kendo-grid-column>-->
+<!--  <kendo-grid-column-->
+<!--                     field="recipient" title="شماره گیرنده" width="40" class="k-rtl" [filterable]="false">-->
+<!--  </kendo-grid-column>-->
+<!--  <kendo-grid-column field="status" title="وضعیت" width="20" class="k-rtl" [filterable]="false">-->
+<!--  </kendo-grid-column>-->
+<!--  <kendo-grid-column field="text" title="متن" width="30" class="k-rtl" [filterable]="false">-->
+<!--  </kendo-grid-column>-->
+<!--  <kendo-grid-column field="time" title="زمان" width="20" class="k-rtl" [filterable]="false">-->
+<!--  </kendo-grid-column>-->
+<!--  <kendo-grid-column field="uid" title="شماره پیگیری" width="20" class="k-rtl" [filterable]="false">-->
+<!--  </kendo-grid-column>-->
+<!--  <kendo-grid-excel fileName="Products.xlsx"></kendo-grid-excel>-->
+<!--</kendo-grid>-->
+<!--&lt;!&ndash;<section>&ndash;&gt;-->
+<!--&lt;!&ndash;  <div class="container my-4">&ndash;&gt;-->
+<!--&lt;!&ndash;    <div class="btn-group" role="group" aria-label="Basic example">&ndash;&gt;-->
+<!--&lt;!&ndash;      <button class="btn btn-primary">ارسال</button>&ndash;&gt;-->
+<!--&lt;!&ndash;      <button class="btn btn-primary">حذف</button>&ndash;&gt;-->
+<!--&lt;!&ndash;    </div>&ndash;&gt;-->
+<!--&lt;!&ndash;  </div>&ndash;&gt;-->
+<!--&lt;!&ndash;</section>&ndash;&gt;-->
+<!--</div>-->
+<!--</div>-->
 
