@@ -1,3 +1,7 @@
 table {
   width: 100%;
 }
+
+.k-grid-header .k-link{
+  text-align: center !important;
+}

@@ -1,6 +1,23 @@
 /* You can add global styles to this file, and also import other style files */
 /*.k-rtl .k-grid-aria-root .k-grid-header {*/
+.k-filtercell .k-filtercell-operator {
+  width: 37px;
+}
+
+.k-toolbar, .k-grid-pager {
+  background-color: inherit !important;
+}
+
+.k-header {
+  text-align: center !important;
+}
+
+.k-grid td {
+  text-align: center !important;
+}
+
 .k-grid-header {
+  text-align: center !important;
   padding: 0px 0px 0px 17px !important;
 }
 
