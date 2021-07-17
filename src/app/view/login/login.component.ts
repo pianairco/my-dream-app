@@ -54,11 +54,14 @@ export class LoginComponent implements OnInit, AfterViewInit {
   login() {
     this.wait = true;
     if (this.loginInfo.username === '' || this.loginInfo.password === '') {
-      this.dialog.open(DialogDataExampleDialog, {
+      let matDialogRef = this.dialog.open(DialogDataExampleDialog, {
         data: {
           title: 'خطا',
           message: 'لطفا نام کاربری وکلمه عبور را وارد نمایید.'
         }
+      });
+      matDialogRef.afterClosed().subscribe(res => {
+        this.wait = false;
       });
       // alert("username and password are mandatory")
     } else {
@@ -71,7 +74,15 @@ export class LoginComponent implements OnInit, AfterViewInit {
           this.wait = false;
         });
       }, err => {
-        this.wait = false;
+        let matDialogRef = this.dialog.open(DialogDataExampleDialog, {
+          data: {
+            title: 'خطا',
+            message: 'نام کاربری وکلمه عبور نادرست می باشند'
+          }
+        });
+        matDialogRef.afterClosed().subscribe(res => {
+          this.wait = false;
+        });
       });
 
       // this.router.navigate(["/tile/container"]);

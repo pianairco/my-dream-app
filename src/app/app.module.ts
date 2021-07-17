@@ -56,6 +56,7 @@ import {Login2Component} from "./view/login2/login2.component";
 import {Login3Component} from "./view/login3/login3.component";
 import {GroupComponent, GroupDialogComponent, UploadFileDialogComponent} from './view/group/group.component';
 import {MatExpansionModule} from "@angular/material/expansion";
+import {NgxMaskModule} from "ngx-mask";
 
 // import {MatDatepickerModulePersian} from '@angular-persian/material-date-picker/src';
 
@@ -150,7 +151,8 @@ const MY_DATE_FORMATS = {
     PerfectScrollbarModule,
     ExcelModule,
     RowFilterModule,
-    DpDatePickerModule
+    DpDatePickerModule,
+    NgxMaskModule.forRoot()
   ],
   exports: [
     MatFormFieldModule,

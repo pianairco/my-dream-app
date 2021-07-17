@@ -40,11 +40,28 @@ export class GroupComponent implements OnInit {
   }
 
   nextStep() {
-    if (this.model.inputType == 'text-file') {
-      this.pageId = 'text-file';
-    } else if (this.model.inputType == 'direct') {
-      this.pageId = 'direct';
+    if(!this.model.senderNumber) {
+      this.dialog.open(DialogDataExampleDialog, {
+        data: {
+          title: 'خطا',
+          message: 'لطفا شماره فرستنده را وارد نمایید.'
+        }
+      });
+    } else if(!this.model.text) {
+      this.dialog.open(DialogDataExampleDialog, {
+        data: {
+          title: 'خطا',
+          message: 'لطفا متن را وارد نمایید.'
+        }
+      });
+    } else {
+      if (this.model.inputType == 'text-file') {
+        this.pageId = 'text-file';
+      } else if (this.model.inputType == 'direct') {
+        this.pageId = 'direct';
+      }
     }
+
     // const dialogRef = this.dialog.open(UploadFileDialogComponent, {
     //   width: '500px',
     //   data: {

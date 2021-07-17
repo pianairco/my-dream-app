@@ -42,12 +42,15 @@ export class SmsSenderComponent implements OnInit {
   send() {
     this.wait = true;
     if(!this.model.text) {
-      this.dialog.open(DialogDataExampleDialog, {
+      let matDialogRef = this.dialog.open(DialogDataExampleDialog, {
         data: {
           title: 'خطا',
           message: 'لطفا نام کاربری وکلمه عبور را وارد نمایید.'
         }
       });
+      matDialogRef.afterClosed().subscribe(res => {
+        this.wait = false;
+      })
     } else {
       this.restService.sendSms(this.model).then(res => {
         this._snackBar.open('پیامک با موفقیت ارسال گردید', "پیغام", {duration: 5 * 1000});

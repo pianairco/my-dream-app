@@ -28,9 +28,10 @@
                     <div class="col col-12 text-center">
                       <p class="pb-0 mb-0">
                         <mat-form-field appearance="outline" style="width:100%;">
-                          <mat-label>شماره گیرندگان</mat-label>
-                          <textarea required matInput [rows]="5" [(ngModel)]="model['recipient']"></textarea>
-                          <mat-hint align="start">لطفا در هر خط یک شماره تلفن وارد نمایید</mat-hint>
+                          <mat-label>شماره گیرنده</mat-label>
+                          <input matInput type="text" prefix="09" [mask]="'000000000'" [(ngModel)]="model['recipient']">
+<!--                          <textarea required matInput [rows]="5" [(ngModel)]="model['recipient']"></textarea>-->
+<!--                          <mat-hint align="start">لطفا در هر خط یک شماره تلفن وارد نمایید</mat-hint>-->
                         </mat-form-field>
                       </p>
                     </div>
